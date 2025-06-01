@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 function Navbar() {
   const [show, setShow] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const { t } = useTranslation();
+  const { } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {

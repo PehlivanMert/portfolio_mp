@@ -1,26 +1,10 @@
 import "./styles.css";
-
-import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useRef, useState } from "react";
-import { object, string } from "yup";
-
-import { Fade } from "react-awesome-reveal";
-import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa";
-import { socialLinks } from "../../Data/index";
-
-const validationSchema = object().shape({
-  name: string().required("Required"),
-  email: string().email("Invalid email").required("Required"),
-  message: string().required("Required"),
-});
 
 const Contact = () => {
   const form = useRef(null);
-  const [sendResult, setSendResult] = useState(false);
-  const [status, setStatus] = useState({ submitted: false, success: false, message: "" });
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,13 +29,6 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
   };
 
   return (

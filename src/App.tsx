@@ -2,7 +2,6 @@ import "./App.css";
 import { useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 
 import Contact from "./Sections/Contact";
 import Footer from "./Sections/Footer";
@@ -15,7 +14,7 @@ import Education from "./Sections/Education";
 
 function App() {
   const [theme, setTheme] = useState("light");
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
