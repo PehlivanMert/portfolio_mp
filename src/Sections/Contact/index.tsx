@@ -1,12 +1,45 @@
 import "./styles.css";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa";
+import { useRef, useState } from "react";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form gönderimi simülasyonu
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      if (!form.current) return;
+
+      await emailjs.sendForm(
+        'YOUR_SERVICE_ID', // Email.js Service ID
+        'YOUR_TEMPLATE_ID', // Email.js Template ID
+        form.current,
+        'YOUR_PUBLIC_KEY' // Email.js Public Key
+      );
+
+      setSubmitStatus({
+        type: 'success',
+        message: 'Mesajınız başarıyla gönderildi!'
+      });
+      form.current.reset();
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -77,13 +110,14 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.4, type: "spring", stiffness: 120 }}
           >
-            <form onSubmit={handleSubmit} className="bg-[#23234a]/80 rounded-2xl p-8 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300">
+            <form ref={form} onSubmit={handleSubmit} className="bg-[#23234a]/80 rounded-2xl p-8 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300">
               <div className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-gray-300 mb-2">Name</label>
                   <input
                     type="text"
                     id="name"
+                    name="user_name"
                     className="w-full px-4 py-3 bg-[#18181b] border border-[#5A5EE6]/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
                     required
                   />
@@ -93,6 +127,7 @@ const Contact = () => {
                   <input
                     type="email"
                     id="email"
+                    name="user_email"
                     className="w-full px-4 py-3 bg-[#18181b] border border-[#5A5EE6]/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
                     required
                   />
@@ -101,19 +136,38 @@ const Contact = () => {
                   <label htmlFor="message" className="block text-gray-300 mb-2">Message</label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={6}
                     className="w-full px-4 py-3 bg-[#18181b] border border-[#5A5EE6]/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
                     required
                   ></textarea>
                 </div>
+                {submitStatus.type && (
+                  <div className={`p-4 rounded-xl ${submitStatus.type === 'success'
+                      ? 'bg-green-500/10 text-green-400 border border-green-500/30'
+                      : 'bg-red-500/10 text-red-400 border border-red-500/30'
+                    }`}>
+                    {submitStatus.message}
+                  </div>
+                )}
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center gap-2"
+                  className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                   type="submit"
+                  disabled={isSubmitting}
                 >
-                  <FaPaperPlane className="text-xl" />
-                  <span>Send Message</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Gönderiliyor...</span>
+                    </>
+                  ) : (
+                    <>
+                      <FaPaperPlane className="text-xl" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </motion.button>
               </div>
             </form>

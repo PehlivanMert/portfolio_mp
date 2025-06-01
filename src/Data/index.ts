@@ -156,7 +156,7 @@ export const socialLinks = [
         id: 6,
         name: "CV",
         icon: "cv",
-        url: "/src/Assets/Mert Pehlivan Cv.pdf",
+        url: "/Mert Pehlivan Cv.pdf",
     },
 ];
 
