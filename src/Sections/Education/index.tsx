@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { educationData, certificatesData } from "../../Data";
-import { FaGraduationCap, FaCertificate, FaCode, FaUniversity, FaLaptopCode, FaChalkboardTeacher, FaBook, FaAward } from "react-icons/fa";
+import { FaGraduationCap, FaCertificate, FaCode, FaUniversity, FaLaptopCode, FaAward } from "react-icons/fa";
 import { SiUdemy, SiLinkedin } from "react-icons/si";
 import { MdSchool } from "react-icons/md";
 import { useState } from "react";
@@ -306,8 +306,8 @@ const Education = () => {
                             key={category.id}
                             onClick={() => setActiveCategory(category.id)}
                             className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category.id
-                                    ? "bg-blue-500 text-white"
-                                    : "bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
+                                ? "bg-blue-500 text-white"
+                                : "bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
                                 }`}
                         >
                             {category.name}

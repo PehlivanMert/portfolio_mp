@@ -1,30 +1,9 @@
 import { motion } from "framer-motion";
 import { FaCode, FaServer, FaDatabase, FaTools, FaCloud, FaJava, FaAws } from "react-icons/fa";
 import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVisualstudiocode, SiQuarkus } from "react-icons/si";
-import { BsLightbulb, BsPeople, BsChatDots, BsLightningCharge, BsCheckCircle, BsBook, BsRocketTakeoff, BsGraphUp, BsClock, BsHeart, BsBox } from "react-icons/bs";
+import { BsLightbulb, BsPeople, BsChatDots, BsLightningCharge, BsCheckCircle, BsBook, BsRocketTakeoff, BsGraphUp, BsClock, BsHeart } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import React from "react";
-
-const technicalSkills = [
-    { name: "Java", icon: FaJava, color: "#007396" },
-    { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F" },
-    { name: "Quarkus", icon: SiQuarkus, color: "#4695EB" },
-    { name: "Micronaut", icon: BsRocketTakeoff, color: "#FF0000" },
-    { name: "Hibernate", icon: SiSpringboot, color: "#BCAE79" },
-    { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-    { name: "React", icon: SiReact, color: "#61DAFB" },
-    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
-    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-    { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
-    { name: "Firebase", icon: SiSpringboot, color: "#FFCA28" },
-    { name: "Elasticsearch", icon: SiSpringboot, color: "#005571" },
-    { name: "Kubernetes", icon: SiKubernetes, color: "#326CE5" },
-    { name: "Docker", icon: SiDocker, color: "#2496ED" },
-    { name: "AWS", icon: FaAws, color: "#FF9900" },
-    { name: "Git", icon: SiSpringboot, color: "#F05032" },
-    { name: "HTML", icon: SiSpringboot, color: "#E34F26" },
-    { name: "CSS", icon: SiSpringboot, color: "#1572B6" }
-];
 
 const softSkills = [
     { name: "Problem Solving", icon: BsLightbulb, color: "#FFD700", description: "Analytical thinking and creative solutions" },
