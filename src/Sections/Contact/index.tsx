@@ -20,11 +20,18 @@ const Contact = () => {
     try {
       if (!form.current) return;
 
-      await emailjs.sendForm(
-        'YOUR_SERVICE_ID', // Email.js Service ID
-        'YOUR_TEMPLATE_ID', // Email.js Template ID
-        form.current,
-        'YOUR_PUBLIC_KEY' // Email.js Public Key
+      const templateParams = {
+        name: form.current.user_name.value,
+        email: form.current.user_email.value,
+        message: form.current.message.value,
+        time: new Date().toLocaleString()
+      };
+
+      await emailjs.send(
+        'service_spwrwuf',
+        'template_nr3ulu9',
+        templateParams,
+        'GjZMTqmpdDVpB8KJy'
       );
 
       setSubmitStatus({
@@ -144,8 +151,8 @@ const Contact = () => {
                 </div>
                 {submitStatus.type && (
                   <div className={`p-4 rounded-xl ${submitStatus.type === 'success'
-                      ? 'bg-green-500/10 text-green-400 border border-green-500/30'
-                      : 'bg-red-500/10 text-red-400 border border-red-500/30'
+                    ? 'bg-green-500/10 text-green-400 border border-green-500/30'
+                    : 'bg-red-500/10 text-red-400 border border-red-500/30'
                     }`}>
                     {submitStatus.message}
                   </div>
