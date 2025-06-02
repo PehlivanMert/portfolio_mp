@@ -148,12 +148,6 @@ export const socialLinks = [
     },
     {
         id: 5,
-        name: "Phone",
-        icon: "phone",
-        url: "tel:+905466378100",
-    },
-    {
-        id: 6,
         name: "CV",
         icon: "cv",
         url: "/Mert Pehlivan Cv.pdf",

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FaCode, FaServer, FaDatabase, FaTools, FaCloud, FaJava, FaAws } from "react-icons/fa";
-import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVisualstudiocode, SiQuarkus } from "react-icons/si";
+import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVisualstudiocode, SiQuarkus, SiApachekafka, SiRabbitmq, SiVim, SiLinux, SiUbuntu } from "react-icons/si";
 import { BsLightbulb, BsPeople, BsChatDots, BsLightningCharge, BsCheckCircle, BsBook, BsRocketTakeoff, BsGraphUp, BsClock, BsHeart } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import React from "react";
@@ -59,7 +59,9 @@ const Skills = () => {
                 { name: "Spring Boot", icon: <SiSpringboot className="w-6 h-6" style={{ color: "#6DB33F" }} /> },
                 { name: "Quarkus", icon: <SiQuarkus className="w-6 h-6" style={{ color: "#4695EB" }} /> },
                 { name: "Micronaut", icon: <BsRocketTakeoff className="w-6 h-6" style={{ color: "#FF0000" }} /> },
-                { name: "Node.js", icon: <SiNodedotjs className="w-6 h-6" style={{ color: "#339933" }} /> }
+                { name: "Node.js", icon: <SiNodedotjs className="w-6 h-6" style={{ color: "#339933" }} /> },
+                { name: "Kafka", icon: <SiApachekafka className="w-6 h-6" style={{ color: "#231F20" }} /> },
+                { name: "RabbitMQ", icon: <SiRabbitmq className="w-6 h-6" style={{ color: "#FF6600" }} /> }
             ]
         },
         {
@@ -90,7 +92,9 @@ const Skills = () => {
             items: [
                 { name: "Docker", icon: <SiDocker className="w-6 h-6" style={{ color: "#2496ED" }} /> },
                 { name: "Kubernetes", icon: <SiKubernetes className="w-6 h-6" style={{ color: "#326CE5" }} /> },
-                { name: "AWS", icon: <FaAws className="w-6 h-6" style={{ color: "#FF9900" }} /> }
+                { name: "AWS", icon: <FaAws className="w-6 h-6" style={{ color: "#FF9900" }} /> },
+                { name: "Linux", icon: <SiLinux className="w-6 h-6" style={{ color: "#FCC624" }} /> },
+                { name: "Ubuntu", icon: <SiUbuntu className="w-6 h-6" style={{ color: "#E95420" }} /> }
             ]
         },
         {
@@ -106,7 +110,8 @@ const Skills = () => {
                 { name: "Swagger", icon: <SiSwagger className="w-6 h-6" style={{ color: "#85EA2D" }} /> },
                 { name: "IntelliJ IDEA", icon: <SiIntellijidea className="w-6 h-6" style={{ color: "#000000" }} /> },
                 { name: "VS Code", icon: <SiVisualstudiocode className="w-6 h-6" style={{ color: "#007ACC" }} /> },
-                { name: "Eclipse", icon: <SiEclipseide className="w-6 h-6" style={{ color: "#2C2255" }} /> }
+                { name: "Eclipse", icon: <SiEclipseide className="w-6 h-6" style={{ color: "#2C2255" }} /> },
+                { name: "Vim", icon: <SiVim className="w-6 h-6" style={{ color: "#019733" }} /> }
             ]
         }
     ];

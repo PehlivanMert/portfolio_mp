@@ -101,10 +101,6 @@ const Contact = () => {
                   <span>pehlivanmert@outlook.com.tr</span>
                 </div>
                 <div className="flex items-center gap-4 text-gray-300">
-                  <FaPhone className="text-2xl text-blue-400" />
-                  <span>+90 546 637 8100</span>
-                </div>
-                <div className="flex items-center gap-4 text-gray-300">
                   <FaMapMarkerAlt className="text-2xl text-blue-400" />
                   <span>Istanbul, Turkey</span>
                 </div>
