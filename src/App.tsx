@@ -1,4 +1,3 @@
-import "./App.css";
 import Contact from "./Sections/Contact";
 import Footer from "./Sections/Footer";
 import Hero from "./Sections/Hero";

@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
-import { useTranslation } from "react-i18next";
 
 function Navbar() {
   const [show, setShow] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,12 +21,12 @@ function Navbar() {
   }, []);
 
   const links = [
-    { id: "home", label: t("home") },
-    { id: "about", label: t("about-me") },
-    { id: "skills", label: t("skills") },
-    { id: "projects", label: t("projects") },
-    { id: "certificates", label: t("certificates") },
-    { id: "contact", label: t("contact") },
+    { id: "home", label: "Home" },
+    { id: "about", label: "About Me" },
+    { id: "skills", label: "Technical Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "certificates", label: "Certificates" },
+    { id: "contact", label: "Contact" },
   ];
 
   return (
