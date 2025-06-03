@@ -1,9 +1,9 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { FaCode, FaServer, FaDatabase, FaTools, FaCloud, FaJava, FaAws } from "react-icons/fa";
-import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVisualstudiocode, SiQuarkus, SiApachekafka, SiRabbitmq, SiVim, SiLinux, SiUbuntu } from "react-icons/si";
+import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVsco, SiQuarkus, SiApachekafka, SiRabbitmq, SiVim, SiLinux, SiUbuntu } from "react-icons/si";
 import { BsLightbulb, BsPeople, BsChatDots, BsLightningCharge, BsCheckCircle, BsBook, BsRocketTakeoff, BsGraphUp, BsClock, BsHeart } from "react-icons/bs";
 import { useState, useEffect } from "react";
-import React from "react";
 
 const softSkills = [
     { name: "Problem Solving", icon: BsLightbulb, color: "#FFD700", description: "Analytical thinking and creative solutions" },
@@ -109,7 +109,7 @@ const Skills = () => {
                 { name: "Postman", icon: <SiPostman className="w-6 h-6" style={{ color: "#FF6C37" }} /> },
                 { name: "Swagger", icon: <SiSwagger className="w-6 h-6" style={{ color: "#85EA2D" }} /> },
                 { name: "IntelliJ IDEA", icon: <SiIntellijidea className="w-6 h-6" style={{ color: "#000000" }} /> },
-                { name: "VS Code", icon: <SiVisualstudiocode className="w-6 h-6" style={{ color: "#007ACC" }} /> },
+                { name: "VS Code", icon: <SiVsco className="w-6 h-6" style={{ color: "#007ACC" }} /> },
                 { name: "Eclipse", icon: <SiEclipseide className="w-6 h-6" style={{ color: "#2C2255" }} /> },
                 { name: "Vim", icon: <SiVim className="w-6 h-6" style={{ color: "#019733" }} /> }
             ]

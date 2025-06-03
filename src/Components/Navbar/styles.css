@@ -1,0 +1,205 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: linear-gradient(to right, rgba(90, 94, 230, 0.8), rgba(35, 35, 74, 0.8), rgba(161, 164, 234, 0.8));
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.logo {
+    font-size: 1.875rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    background: linear-gradient(to right, #60A5FA, #A78BFA, #F472B6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    background: linear-gradient(to right, #F472B6, #60A5FA);
+    -webkit-background-clip: text;
+    background-clip: text;
+    transform: scale(1.12);
+}
+
+.desktop-menu {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin: 0 2rem;
+}
+
+.desktop-menu-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.desktop-menu-link {
+    position: relative;
+    padding: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.desktop-menu-link:hover {
+    color: #A78BFA;
+    transform: translateY(-2px) scale(1.05);
+}
+
+.desktop-menu-link.active {
+    color: #60A5FA;
+}
+
+.desktop-menu-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, #60A5FA, #A78BFA);
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.social-icons {
+    display: none;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.social-icon {
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #60A5FA;
+    transform: scale(1.25);
+    box-shadow: 0 0 16px #6C63FF;
+}
+
+.mobile-menu-button {
+    display: block;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-button:hover {
+    transform: scale(1.1);
+}
+
+.mobile-menu {
+    display: none;
+    background: linear-gradient(to bottom, rgba(90, 94, 230, 0.8), rgba(35, 35, 74, 0.8), rgba(161, 164, 234, 0.8));
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.mobile-menu-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1400px;
+    padding: 1.5rem 0;
+}
+
+.mobile-menu-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-link:hover {
+    color: #A78BFA;
+    transform: translateX(10px) scale(1.08);
+}
+
+.mobile-menu-link.active {
+    color: #60A5FA;
+}
+
+.mobile-social-icons {
+    display: flex;
+    gap: 1.25rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Media Queries */
+@media screen and (min-width: 1280px) {
+    .desktop-menu {
+        display: flex;
+    }
+
+    .social-icons {
+        display: flex;
+    }
+
+    .mobile-menu-button {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .social-icons {
+        display: none;
+    }
+
+    .mobile-menu-button {
+        display: block;
+    }
+}

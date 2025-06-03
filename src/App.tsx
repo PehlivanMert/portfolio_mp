@@ -3,6 +3,7 @@ import Footer from "./Sections/Footer";
 import Hero from "./Sections/Hero";
 import Navbar from "./Components/Navbar";
 import Projects from "./Sections/Projects";
+import Statistics from "./Sections/Statistics";
 import AboutMe from "./Sections/AboutMe";
 import Skills from "./Sections/Skills";
 import Education from "./Sections/Education";
@@ -16,6 +17,7 @@ function App() {
         <AboutMe />
         <Skills />
         <Projects />
+        <Statistics />
         <Education />
         <Contact />
       </main>
