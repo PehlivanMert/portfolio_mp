@@ -4,6 +4,7 @@ import { FaGraduationCap, FaCertificate, FaCode, FaUniversity, FaLaptopCode, FaA
 import { SiUdemy, SiLinkedin } from "react-icons/si";
 import { MdSchool } from "react-icons/md";
 import { useState } from "react";
+import circleScatterHaikeiCertificates from "../../Assets/wallpapers/circle-scatter-haikei-certificates.svg";
 
 const Education = () => {
     const [activeCategory, setActiveCategory] = useState("all");
@@ -318,6 +319,12 @@ const Education = () => {
                 {renderContent()}
             </div>
             <div className='border-t border-white/10 w-full my-0' />
+            <img
+                src={circleScatterHaikeiCertificates}
+                alt="circle scatter background"
+                className="absolute bottom-0 left-0 w-full pointer-events-none select-none z-0 opacity-20"
+                style={{ objectFit: 'cover', filter: 'blur(8px)', mixBlendMode: 'lighten' }}
+            />
         </section>
     );
 };

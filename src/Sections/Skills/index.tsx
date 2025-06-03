@@ -4,6 +4,7 @@ import { FaCode, FaServer, FaDatabase, FaTools, FaCloud, FaJava, FaAws } from "r
 import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVsco, SiQuarkus, SiApachekafka, SiRabbitmq, SiVim, SiLinux, SiUbuntu } from "react-icons/si";
 import { BsLightbulb, BsPeople, BsChatDots, BsLightningCharge, BsCheckCircle, BsBook, BsRocketTakeoff, BsGraphUp, BsClock, BsHeart } from "react-icons/bs";
 import { useState, useEffect } from "react";
+import circleScatterHaikeiCertificates from "../../Assets/wallpapers/circle-scatter-haikei-certificates.svg";
 
 const softSkills = [
     { name: "Problem Solving", icon: BsLightbulb, color: "#FFD700", description: "Analytical thinking and creative solutions" },
@@ -121,7 +122,7 @@ const Skills = () => {
         : skills.filter(skill => skill.category === activeCategory);
 
     return (
-        <section id="skills" className="py-24 bg-gradient-to-b from-[#23234a] via-[#18181b] to-[#23234a] relative overflow-hidden">
+        <section id="skills" className="min-h-screen py-20 bg-[#23234a] relative">
             {/* Animated background particles */}
             <div className="absolute inset-0 overflow-hidden z-0">
                 {[...Array(18)].map((_, i) => (
@@ -246,6 +247,12 @@ const Skills = () => {
                 </div>
             </div>
             <div className='border-t border-white/10 w-full my-0' />
+            <img
+                src={circleScatterHaikeiCertificates}
+                alt="circle scatter background"
+                className="absolute bottom-0 left-0 w-full pointer-events-none select-none z-0 opacity-20"
+                style={{ objectFit: 'cover', filter: 'blur(8px)', mixBlendMode: 'lighten' }}
+            />
         </section>
     );
 };

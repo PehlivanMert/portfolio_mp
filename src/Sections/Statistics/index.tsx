@@ -3,6 +3,7 @@ import CountUp from "react-countup";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
 import { FaCode, FaProjectDiagram, FaDatabase, FaServer } from "react-icons/fa";
+import layeredWavesHero from "../../Assets/wallpapers/layered-waves-haikei-hero.svg";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
 
@@ -128,7 +129,13 @@ const Statistics = () => {
     }
 
     return (
-        <section id="statistics" className="min-h-screen py-20 bg-gradient-to-b from-[#1a1a2e] to-[#16213e]">
+        <section id="statistics" className="min-h-screen py-20 bg-[#23234a] relative">
+            <img
+                src={layeredWavesHero}
+                alt="layered waves background"
+                className="absolute bottom-0 left-0 w-full pointer-events-none select-none z-0 opacity-20"
+                style={{ objectFit: 'cover', filter: 'blur(8px)', mixBlendMode: 'lighten' }}
+            />
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -145,7 +152,7 @@ const Statistics = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="bg-[#0f3460] p-6 rounded-lg shadow-lg"
+                        className="bg-[#23234a]/80 p-6 rounded-lg shadow-lg border border-[#5A5EE6]/30"
                     >
                         <div className="flex items-center justify-center mb-4">
                             <FaCode className="text-4xl text-blue-400" />
@@ -160,7 +167,7 @@ const Statistics = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="bg-[#0f3460] p-6 rounded-lg shadow-lg"
+                        className="bg-[#23234a]/80 p-6 rounded-lg shadow-lg border border-[#5A5EE6]/30"
                     >
                         <div className="flex items-center justify-center mb-4">
                             <FaProjectDiagram className="text-4xl text-green-400" />
@@ -175,7 +182,7 @@ const Statistics = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="bg-[#0f3460] p-6 rounded-lg shadow-lg"
+                        className="bg-[#23234a]/80 p-6 rounded-lg shadow-lg border border-[#5A5EE6]/30"
                     >
                         <div className="flex items-center justify-center mb-4">
                             <FaDatabase className="text-4xl text-purple-400" />
@@ -188,7 +195,7 @@ const Statistics = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
-                        className="bg-[#0f3460] p-6 rounded-lg shadow-lg"
+                        className="bg-[#23234a]/80 p-6 rounded-lg shadow-lg border border-[#5A5EE6]/30"
                     >
                         <div className="flex items-center justify-center mb-4">
                             <FaServer className="text-4xl text-red-400" />
@@ -202,7 +209,7 @@ const Statistics = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    className="bg-[#0f3460] p-8 rounded-lg shadow-lg"
+                    className="bg-[#23234a]/80 p-8 rounded-lg shadow-lg border border-[#5A5EE6]/30"
                 >
                     <h3 className="text-2xl font-bold text-white text-center mb-8">Language Distribution</h3>
                     <div className="h-[400px]">
