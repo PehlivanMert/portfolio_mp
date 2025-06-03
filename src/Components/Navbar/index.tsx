@@ -34,13 +34,11 @@ function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 80, damping: 12 }}
-      className="fixed top-0 left-0 right-0 z-[99] bg-gradient-to-r from-[#5A5EE6cc] via-[#23234acc] to-[#A1A4EAcc] backdrop-blur-xl shadow-2xl border-b border-white/10"
-      style={{
-        boxShadow: "0 8px 32px 0 rgba(90,94,230,0.15)",
-      }}
+      className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#5A5EE6cc] via-[#23234acc] to-[#A1A4EAcc] backdrop-blur-xl shadow-2xl border-b border-white/10"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8">
+          {/* Logo */}
           <motion.a
             href="#home"
             className="text-3xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 hover:from-pink-400 hover:to-blue-400 transition-colors drop-shadow-lg"
@@ -50,7 +48,7 @@ function Navbar() {
           </motion.a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center justify-center flex-1 mx-8 space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {links.map((item) => (
               <motion.a
                 key={item.id}
@@ -119,7 +117,7 @@ function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-gradient-to-b from-[#5A5EE6cc] via-[#23234acc] to-[#A1A4EAcc] backdrop-blur-xl shadow-2xl border-t border-white/10"
           >
-            <div className="container mx-auto px-4 py-6">
+            <div className="px-4 py-6">
               <div className="flex flex-col space-y-6">
                 {links.map((item) => (
                   <motion.a
