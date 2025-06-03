@@ -217,6 +217,7 @@ export const certificatesData = [
         organization: "Udemy",
         date: "May 2025",
         certificateId: "UC-ed61b734-9152-40d1-bd5c-1a183969f114",
+        certificate: "https://www.udemy.com/certificate/UC-ed61b734-9152-40d1-bd5c-1a183969f114/",
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
     {
@@ -224,7 +225,8 @@ export const certificatesData = [
         title: "Design Patterns",
         organization: "Udemy",
         date: "May 2025",
-        certificateId: "C-d65b7dca-96fd-44a5-815e-717c0c49cc0b",
+        certificateId: "UC-d65b7dca-96fd-44a5-815e-717c0c49cc0b",
+        certificate: "https://www.udemy.com/certificate/UC-d65b7dca-96fd-44a5-815e-717c0c49cc0b/",
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
     {
@@ -232,7 +234,8 @@ export const certificatesData = [
         title: "Java ile Nesne-Merkezli Programlamaya Giriş",
         organization: "Udemy",
         date: "Nis 2025",
-        certificateId: "UC-e59f4dd8-ea7b-4688-9ef0-e66b930fd672",
+        certificateId: "UC-d65b7dca-96fd-44a5-815e-717c0c49cc0b",
+        certificate: "https://www.udemy.com/certificate/UC-d65b7dca-96fd-44a5-815e-717c0c49cc0b/",
         skills: ["Java"],
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
@@ -242,6 +245,7 @@ export const certificatesData = [
         organization: "Udemy",
         date: "Nis 2025",
         certificateId: "UC-a8842728-f40d-49cb-96f6-0dc8c4d3c814",
+        certificate: "https://www.udemy.com/certificate/UC-a8842728-f40d-49cb-96f6-0dc8c4d3c814/",
         skills: ["Java"],
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
@@ -251,6 +255,7 @@ export const certificatesData = [
         organization: "Udemy",
         date: "Nis 2025",
         certificateId: "UC-ad3a3bc7-d811-4e92-a5ce-2ba12df6df45",
+        certificate: "https://www.udemy.com/certificate/UC-ad3a3bc7-d811-4e92-a5ce-2ba12df6df45/",
         skills: ["Java EE", "REST", "SOAP", "JaxRs"],
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
@@ -260,6 +265,7 @@ export const certificatesData = [
         organization: "Udemy",
         date: "Nis 2025",
         certificateId: "UC-042106ff-5685-46f1-86e1-e40066c6b261",
+        certificate: "https://www.udemy.com/certificate/UC-042106ff-5685-46f1-86e1-e40066c6b261/",
         skills: ["AOP", "Spring AOP"],
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
@@ -269,6 +275,7 @@ export const certificatesData = [
         organization: "Udemy",
         date: "Nis 2025",
         certificateId: "UC-74111b1e-2c43-4eeb-84ab-ab2621a2940d",
+        certificate: "https://www.udemy.com/certificate/UC-74111b1e-2c43-4eeb-84ab-ab2621a2940d/",
         skills: ["Spring Framework"],
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
@@ -278,6 +285,7 @@ export const certificatesData = [
         organization: "OSD - Otomotiv Sanayii Derneği",
         date: "Tem 2024",
         certificateId: "OSDA39CE2F0",
+        certificate: "https://dogrulama.ogrencikariyeri.com/images/documents/OSDA39CE2F0.jpg",
         logo: "https://www.osd.org.tr/assets/images/logo.png"
     },
     {
@@ -285,6 +293,7 @@ export const certificatesData = [
         title: "Certificate of Patika FullStack Web Development Bootcamp",
         organization: "Rise In",
         date: "Tem 2024",
+        certificate: "http://cohorts.patika.dev/certificates/1a325727",
         skills: ["Java", "Hibernate", "JDBC", "Spring Framework", "SQL", "PostgreSQL", "Postman", "Swagger", "REST", "Agile", "HTML", "CSS", "Bootstrap", "Material UI", "JavaScript", "React.js"],
         logo: "https://rise.in/assets/images/logo.png"
     },
@@ -293,6 +302,7 @@ export const certificatesData = [
         title: "Programlama Esasları: Nesne Odaklı Tasarım",
         organization: "LinkedIn",
         date: "Haz 2024",
+        certificate: "https://www.linkedin.com/learning/certificates/f5488e4794d1e1335cb839447286db54554a256b52e8f5c48a0b16f96023bc41",
         skills: ["OOP"],
         logo: "https://static.licdn.com/sc/h/akt4ae504epesldzj74dzred8"
     },
@@ -301,6 +311,7 @@ export const certificatesData = [
         title: "Çevik Yazılım Geliştirme",
         organization: "LinkedIn",
         date: "May 2024",
+        certificate: "https://www.linkedin.com/learning/certificates/32467992bad33802d5a9c60eb4282486d533dd86356319fde464d5b87951b5e9",
         skills: ["Çevik Yazılım Geliştirme"],
         logo: "https://static.licdn.com/sc/h/akt4ae504epesldzj74dzred8"
     },
@@ -310,6 +321,7 @@ export const certificatesData = [
         organization: "Kodluyoruz",
         date: "Ara 2023",
         certificateId: "51288303579928",
+        certificate: "https://verified.sertifier.com/tr/verify/51288303579928/",
         skills: ["Java"],
         logo: "https://www.kodluyoruz.org/assets/images/logo.png"
     },
@@ -318,6 +330,7 @@ export const certificatesData = [
         title: "Başlangıç Seviye Frontend Web Development Patikası",
         organization: "Patika.dev",
         date: "Eki 2023",
+        certificate: "https://academy.patika.dev/certificates/db1c0f51",
         skills: ["CSS", "JavaScript"],
         logo: "https://patika.dev/static/patika-logo.svg"
     }

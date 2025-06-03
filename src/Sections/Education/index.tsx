@@ -137,6 +137,16 @@ const Education = () => {
                                                 Certificate ID: {certificate.certificateId}
                                             </p>
                                         )}
+                                        {certificate.certificate && (
+                                            <a
+                                                href={certificate.certificate}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-block mt-3 text-blue-400 hover:text-blue-300 transition-colors"
+                                            >
+                                                View Certificate
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </motion.div>
@@ -250,6 +260,16 @@ const Education = () => {
                                                     <p className="text-gray-400 text-sm mt-3">
                                                         Certificate ID: {certificate.certificateId}
                                                     </p>
+                                                )}
+                                                {certificate.certificate && (
+                                                    <a
+                                                        href={certificate.certificate}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="inline-block mt-3 text-blue-400 hover:text-blue-300 transition-colors"
+                                                    >
+                                                        View Certificate
+                                                    </a>
                                                 )}
                                             </div>
                                         </div>
