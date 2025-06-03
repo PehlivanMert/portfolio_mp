@@ -5,10 +5,20 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from "react-icons/f
 function Navbar() {
   const [show, setShow] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "certificates", "contact"];
+      const sections = ["about", "skills", "projects", "education", "contact"];
       sections.forEach(section => {
         const element = document.getElementById(section);
         if (element && element.getBoundingClientRect().top <= 100) {
@@ -21,11 +31,10 @@ function Navbar() {
   }, []);
 
   const links = [
-    { id: "home", label: "Home" },
     { id: "about", label: "About Me" },
     { id: "skills", label: "Technical Skills" },
     { id: "projects", label: "Projects" },
-    { id: "certificates", label: "Certificates" },
+    { id: "education", label: "Education & Certifications" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -36,8 +45,8 @@ function Navbar() {
       transition={{ type: "spring", stiffness: 80, damping: 12 }}
       className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#5A5EE6cc] via-[#23234acc] to-[#A1A4EAcc] backdrop-blur-xl shadow-2xl border-b border-white/10"
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between h-20 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 w-full flex flex-col justify-center items-center px-4">
+        <div className="flex items-center justify-between h-20 w-full max-w-[1400px]">
           {/* Logo */}
           <motion.a
             href="#home"
@@ -48,77 +57,85 @@ function Navbar() {
           </motion.a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {links.map((item) => (
-              <motion.a
-                key={item.id}
-                href={`#${item.id}`}
-                className={`relative px-4 py-2 font-semibold text-lg transition-colors duration-200 ${activeSection === item.id ? "text-blue-400" : "text-white hover:text-purple-400"}`}
-                whileHover={{ y: -3, scale: 1.08 }}
-              >
-                {item.label}
-                {activeSection === item.id && (
-                  <motion.div
-                    layoutId="activeSection"
-                    className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full shadow-lg"
-                  />
-                )}
-              </motion.a>
-            ))}
-          </div>
+          {!isMobile && (
+            <div className="flex items-center justify-center flex-1 mx-8">
+              <div className="flex space-x-8">
+                {links.map((item) => (
+                  <motion.a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    className={`relative px-4 py-2 font-semibold text-lg transition-colors duration-200 ${activeSection === item.id ? "text-blue-400" : "text-white hover:text-purple-400"}`}
+                    whileHover={{ y: -3, scale: 1.08 }}
+                  >
+                    {item.label}
+                    {activeSection === item.id && (
+                      <motion.div
+                        layoutId="activeSection"
+                        className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full shadow-lg"
+                      />
+                    )}
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Social Icons */}
-          <div className="hidden md:flex items-center space-x-5">
-            <motion.a
-              href="https://github.com/PehlivanMert"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-blue-400 transition-colors"
-              whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
-            >
-              <FaGithub size={26} />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/smertpehlivan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-blue-400 transition-colors"
-              whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
-            >
-              <FaLinkedin size={26} />
-            </motion.a>
-            <motion.a
-              href="mailto:pehlivanmert@outlook.com.tr"
-              className="text-white hover:text-blue-400 transition-colors"
-              whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
-            >
-              <FaEnvelope size={26} />
-            </motion.a>
-          </div>
+          {!isMobile && (
+            <div className="flex items-center space-x-5">
+              <motion.a
+                href="https://github.com/PehlivanMert"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-blue-400 transition-colors"
+                whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
+              >
+                <FaGithub size={26} />
+              </motion.a>
+              <motion.a
+                href="https://linkedin.com/in/smertpehlivan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-blue-400 transition-colors"
+                whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
+              >
+                <FaLinkedin size={26} />
+              </motion.a>
+              <motion.a
+                href="mailto:pehlivanmert@outlook.com.tr"
+                className="text-white hover:text-blue-400 transition-colors"
+                whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
+              >
+                <FaEnvelope size={26} />
+              </motion.a>
+            </div>
+          )}
 
           {/* Mobile Menu Button */}
-          <motion.button
-            className="md:hidden text-white"
-            onClick={() => setShow(!show)}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            {show ? <FaTimes size={30} /> : <FaBars size={30} />}
-          </motion.button>
+          {isMobile && (
+            <motion.button
+              className="text-white"
+              onClick={() => setShow(!show)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {show ? <FaTimes size={30} /> : <FaBars size={30} />}
+            </motion.button>
+          )}
         </div>
       </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
-        {show && (
+        {show && isMobile && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-gradient-to-b from-[#5A5EE6cc] via-[#23234acc] to-[#A1A4EAcc] backdrop-blur-xl shadow-2xl border-t border-white/10"
+            className="bg-gradient-to-b from-[#5A5EE6cc] via-[#23234acc] to-[#A1A4EAcc] backdrop-blur-xl shadow-2xl border-t border-white/10"
           >
-            <div className="px-4 py-6">
-              <div className="flex flex-col space-y-6">
+            <div className="relative z-10 w-full flex flex-col justify-center items-center px-4">
+              <div className="flex flex-col space-y-6 w-full max-w-[1400px] py-6">
                 {links.map((item) => (
                   <motion.a
                     key={item.id}
