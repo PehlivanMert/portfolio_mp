@@ -6,8 +6,6 @@ import "./styles.css";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {

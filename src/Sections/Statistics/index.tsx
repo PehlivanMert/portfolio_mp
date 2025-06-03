@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CountUp from "react-countup";
-import GitHubCalendar from "react-github-calendar";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
 import { FaCode, FaProjectDiagram, FaDatabase, FaServer } from "react-icons/fa";
@@ -222,7 +221,7 @@ const Statistics = () => {
                                         return `${name} ${(percent * 100).toFixed(0)}%`;
                                     }}
                                 >
-                                    {stats?.languageBreakdown.map((entry, index) => (
+                                    {stats?.languageBreakdown.map((_, index) => (
                                         <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                     ))}
                                 </Pie>
