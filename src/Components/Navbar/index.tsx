@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes, FaFilePdf, FaMedium } from "react-icons/fa";
 
 function Navbar() {
   const [show, setShow] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState("about");
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
   useEffect(() => {
@@ -38,6 +38,18 @@ function Navbar() {
     { id: "contact", label: "Contact" },
   ];
 
+  // Scroll with offset for navbar
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
+    e.preventDefault();
+    setShow(false);
+    const yOffset = -80; // navbar yüksekliği kadar offset
+    const element = document.getElementById(id);
+    if (element) {
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
@@ -49,9 +61,10 @@ function Navbar() {
         <div className="flex items-center justify-between h-20 w-full max-w-[1400px]">
           {/* Logo */}
           <motion.a
-            href="#home"
-            className="text-3xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 hover:from-pink-400 hover:to-blue-400 transition-colors drop-shadow-lg"
+            href="#"
+            className="text-3xl font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 hover:from-pink-400 hover:to-blue-400 transition-colors drop-shadow-lg cursor-pointer"
             whileHover={{ scale: 1.12 }}
+            onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
           >
             MP
           </motion.a>
@@ -64,6 +77,7 @@ function Navbar() {
                   <motion.a
                     key={item.id}
                     href={`#${item.id}`}
+                    onClick={e => handleNavClick(e, item.id)}
                     className={`relative px-4 py-2 font-semibold text-lg transition-colors duration-200 ${activeSection === item.id ? "text-blue-400" : "text-white hover:text-purple-400"}`}
                     whileHover={{ y: -3, scale: 1.08 }}
                   >
@@ -80,7 +94,7 @@ function Navbar() {
             </div>
           )}
 
-          {/* Social Icons */}
+          {/* Social Icons + CV + Medium */}
           {!isMobile && (
             <div className="flex items-center space-x-5">
               <motion.a
@@ -107,6 +121,24 @@ function Navbar() {
                 whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
               >
                 <FaEnvelope size={26} />
+              </motion.a>
+              <motion.a
+                href="https://medium.com/@pehlivannmert"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-green-400 transition-colors"
+                whileHover={{ scale: 1.25, boxShadow: "0 0 16px #00ab6c" }}
+              >
+                <FaMedium size={26} />
+              </motion.a>
+              <motion.a
+                href="/Mert Pehlivan Cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-red-400 transition-colors"
+                whileHover={{ scale: 1.25, boxShadow: "0 0 16px #FF5252" }}
+              >
+                <FaFilePdf size={26} />
               </motion.a>
             </div>
           )}
@@ -140,9 +172,9 @@ function Navbar() {
                   <motion.a
                     key={item.id}
                     href={`#${item.id}`}
+                    onClick={e => handleNavClick(e, item.id)}
                     className={`text-xl font-semibold transition-colors ${activeSection === item.id ? "text-blue-400" : "text-white hover:text-purple-400"}`}
                     whileHover={{ x: 10, scale: 1.08 }}
-                    onClick={() => setShow(false)}
                   >
                     {item.label}
                   </motion.a>
@@ -172,6 +204,24 @@ function Navbar() {
                     whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
                   >
                     <FaEnvelope size={26} />
+                  </motion.a>
+                  <motion.a
+                    href="https://medium.com/@pehlivannmert"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-green-400 transition-colors"
+                    whileHover={{ scale: 1.25, boxShadow: "0 0 16px #00ab6c" }}
+                  >
+                    <FaMedium size={26} />
+                  </motion.a>
+                  <motion.a
+                    href="/Mert Pehlivan Cv.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-red-400 transition-colors"
+                    whileHover={{ scale: 1.25, boxShadow: "0 0 16px #FF5252" }}
+                  >
+                    <FaFilePdf size={26} />
                   </motion.a>
                 </div>
               </div>
