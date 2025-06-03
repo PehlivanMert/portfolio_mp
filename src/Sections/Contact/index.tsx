@@ -28,10 +28,10 @@ const Contact = () => {
       };
 
       await emailjs.send(
-        'service_spwrwuf',
-        'template_nr3ulu9',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_spwrwuf',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_nr3ulu9',
         templateParams,
-        'GjZMTqmpdDVpB8KJy'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'GjZMTqmpdDVpB8KJy'
       );
 
       setSubmitStatus({
