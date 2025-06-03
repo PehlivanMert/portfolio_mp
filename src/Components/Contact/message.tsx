@@ -1,13 +1,32 @@
-import { Fade } from "react-awesome-reveal";
+import { motion } from 'framer-motion';
+import { FaCheck, FaTimes } from 'react-icons/fa';
 
-function message() {
-  return (
-    <span
-      className={`px-10 py-6 bg-forth-400 absolute z-10 -bottom-36 left-1/2 text-white -translate-x-1/2  text-4xl rounded-2xl transition-all duration-300 `}
-    >
-      <Fade>Your Message Succesfully Sent</Fade>
-    </span>
-  );
+interface MessageProps {
+  type: 'success' | 'error';
+  message: string;
 }
 
-export default message;
+const Message = ({ type, message }: MessageProps) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className={`p-4 rounded-xl ${type === 'success'
+          ? 'bg-green-500/10 text-green-400 border border-green-500/30'
+          : 'bg-red-500/10 text-red-400 border border-red-500/30'
+        }`}
+    >
+      <div className="flex items-center gap-2">
+        {type === 'success' ? (
+          <FaCheck className="text-xl" />
+        ) : (
+          <FaTimes className="text-xl" />
+        )}
+        <span>{message}</span>
+      </div>
+    </motion.div>
+  );
+};
+
+export default Message;

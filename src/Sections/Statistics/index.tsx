@@ -152,7 +152,7 @@ const Statistics = () => {
                             <FaCode className="text-4xl text-blue-400" />
                         </div>
                         <h3 className="text-2xl font-bold text-white text-center mb-2">
-                            {stats?.totalLinesOfCode.toLocaleString()}
+                            <CountUp end={stats?.totalLinesOfCode || 0} duration={2.5} separator="," />
                         </h3>
                         <p className="text-gray-400 text-center">Lines of Code</p>
                     </motion.div>
@@ -167,7 +167,7 @@ const Statistics = () => {
                             <FaProjectDiagram className="text-4xl text-green-400" />
                         </div>
                         <h3 className="text-2xl font-bold text-white text-center mb-2">
-                            {stats?.totalProjects}
+                            <CountUp end={stats?.totalProjects || 0} duration={2.5} />
                         </h3>
                         <p className="text-gray-400 text-center">Total Projects</p>
                     </motion.div>

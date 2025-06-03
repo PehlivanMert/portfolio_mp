@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes, FaFilePdf, FaMedium } from "react-icons/fa";
 import "./styles.css";
 
-function Navbar() {
+const Navbar = () => {
   const [show, setShow] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
+  const [activeSection, setActiveSection] = useState('home');
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1280);
       if (window.innerWidth >= 1280) {
         setShow(false);
       }
@@ -43,7 +43,7 @@ function Navbar() {
     { id: "contact", label: "Contact" },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string, isMobile = false) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string, isMobile: boolean = false) => {
     e.preventDefault();
     if (isMobile) {
       setShow(false);
