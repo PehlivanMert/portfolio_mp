@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 function Navbar() {
   const [show, setShow] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const { } = useTranslation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,12 +23,12 @@ function Navbar() {
   }, []);
 
   const links = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About Me" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
-    { id: "certificates", label: "Certificates" },
-    { id: "contact", label: "Contact" },
+    { id: "home", label: t("home") },
+    { id: "about", label: t("about-me") },
+    { id: "skills", label: t("skills") },
+    { id: "projects", label: t("projects") },
+    { id: "certificates", label: t("certificates") },
+    { id: "contact", label: t("contact") },
   ];
 
   return (
@@ -36,12 +36,12 @@ function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 80, damping: 12 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#5A5EE6cc] via-[#23234acc] to-[#A1A4EAcc] backdrop-blur-xl shadow-2xl border-b border-white/10"
+      className="fixed top-0 left-0 right-0 z-[99] bg-gradient-to-r from-[#5A5EE6cc] via-[#23234acc] to-[#A1A4EAcc] backdrop-blur-xl shadow-2xl border-b border-white/10"
       style={{
         boxShadow: "0 8px 32px 0 rgba(90,94,230,0.15)",
       }}
     >
-      <div className="container mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <motion.a
             href="#home"
@@ -52,12 +52,12 @@ function Navbar() {
           </motion.a>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center justify-center flex-1 mx-8 space-x-8">
             {links.map((item) => (
               <motion.a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`relative px-3 py-2 font-semibold text-lg transition-colors duration-200 ${activeSection === item.id ? "text-blue-400" : "text-white hover:text-purple-400"}`}
+                className={`relative px-4 py-2 font-semibold text-lg transition-colors duration-200 ${activeSection === item.id ? "text-blue-400" : "text-white hover:text-purple-400"}`}
                 whileHover={{ y: -3, scale: 1.08 }}
               >
                 {item.label}
@@ -74,7 +74,7 @@ function Navbar() {
           {/* Social Icons */}
           <div className="hidden md:flex items-center space-x-5">
             <motion.a
-              href="https://github.com/mertpehlivan"
+              href="https://github.com/PehlivanMert"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-blue-400 transition-colors"
@@ -83,7 +83,7 @@ function Navbar() {
               <FaGithub size={26} />
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/mertpehlivan"
+              href="https://linkedin.com/in/smertpehlivan"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-blue-400 transition-colors"
@@ -92,7 +92,7 @@ function Navbar() {
               <FaLinkedin size={26} />
             </motion.a>
             <motion.a
-              href="mailto:mertpehlivan@example.com"
+              href="mailto:pehlivanmert@outlook.com.tr"
               className="text-white hover:text-blue-400 transition-colors"
               whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
             >
@@ -136,7 +136,7 @@ function Navbar() {
                 ))}
                 <div className="flex space-x-5 pt-6 border-t border-white/10">
                   <motion.a
-                    href="https://github.com/mertpehlivan"
+                    href="https://github.com/PehlivanMert"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white hover:text-blue-400 transition-colors"
@@ -145,7 +145,7 @@ function Navbar() {
                     <FaGithub size={26} />
                   </motion.a>
                   <motion.a
-                    href="https://linkedin.com/in/mertpehlivan"
+                    href="https://linkedin.com/in/smertpehlivan"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-white hover:text-blue-400 transition-colors"
@@ -154,7 +154,7 @@ function Navbar() {
                     <FaLinkedin size={26} />
                   </motion.a>
                   <motion.a
-                    href="mailto:mertpehlivan@example.com"
+                    href="mailto:pehlivanmert@outlook.com.tr"
                     className="text-white hover:text-blue-400 transition-colors"
                     whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
                   >

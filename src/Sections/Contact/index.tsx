@@ -1,6 +1,6 @@
 import "./styles.css";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane, FaGithub, FaLinkedin } from "react-icons/fa";
 import { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 

@@ -6,6 +6,7 @@ const resources = {
         translation: {
             "home": "Home",
             "about-me": "About Me",
+            "skills": "Technical Skills",
             "projects": "Projects",
             "certificates": "Certificates",
             "contact": "Contact",
@@ -21,6 +22,7 @@ const resources = {
         translation: {
             "home": "Ana Sayfa",
             "about-me": "Hakkımda",
+            "skills": "Teknik Yetenekler",
             "projects": "Projeler",
             "certificates": "Sertifikalar",
             "contact": "İletişim",
@@ -36,7 +38,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
     resources,
-    lng: "en",
+    lng: localStorage.getItem("language") || "en",
     fallbackLng: "en",
     interpolation: {
         escapeValue: false,
