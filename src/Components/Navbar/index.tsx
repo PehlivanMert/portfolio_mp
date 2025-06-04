@@ -127,7 +127,7 @@ const Navbar = () => {
               <FaEnvelope size={26} />
             </motion.a>
             <motion.a
-              href="https://medium.com/@pehlivannmert"
+              href="https://pehlivanmert.medium.com"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
@@ -208,7 +208,7 @@ const Navbar = () => {
                     <FaEnvelope size={26} />
                   </motion.a>
                   <motion.a
-                    href="https://medium.com/@pehlivannmert"
+                    href="https://pehlivanmert.medium.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon"

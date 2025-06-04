@@ -138,7 +138,7 @@ export const socialLinks = [
         id: 3,
         name: "Medium",
         icon: "medium",
-        url: "https://medium.com/@pehlivannmert",
+        url: "https://pehlivanmert.medium.com",
     },
     {
         id: 4,
