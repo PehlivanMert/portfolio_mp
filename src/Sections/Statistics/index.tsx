@@ -1,11 +1,20 @@
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { motion } from "framer-motion";
 import { FaCode, FaProjectDiagram, FaDatabase, FaServer } from "react-icons/fa";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
 import layeredWavesHero from "../../Assets/wallpapers/layered-waves-haikei-hero.svg";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884D8"];
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+const COLORS = [
+    'rgba(0, 136, 254, 0.8)',   // Mavi
+    'rgba(0, 196, 159, 0.8)',   // Yeşil
+    'rgba(255, 187, 40, 0.8)',  // Sarı
+    'rgba(255, 128, 66, 0.8)',  // Turuncu
+    'rgba(136, 132, 216, 0.8)', // Mor
+];
 
 const GITHUB_USERNAME = "PehlivanMert";
 
@@ -85,10 +94,10 @@ const Statistics = () => {
                 const totalLinesOfCode = Array.from(languageStats.values()).reduce((a, b) => a + b, 0);
                 const languageBreakdown = Array.from(languageStats.entries())
                     .map(([name, value]) => ({
-                        name,
+                        name: name.trim(),
                         value: Math.round((value / totalLinesOfCode) * 100),
                     }))
-                    .sort((a, b) => b.value - a.value); // En çok kullanılan dilleri başa al
+                    .sort((a, b) => b.value - a.value);
 
                 setStats({
                     totalProjects: repos.filter((repo: any) => !repo.fork).length,
@@ -105,6 +114,50 @@ const Statistics = () => {
 
         fetchGitHubStats();
     }, []);
+
+    const chartData = {
+        labels: stats?.languageBreakdown.map(lang => lang.name) || [],
+        datasets: [
+            {
+                data: stats?.languageBreakdown.map(lang => lang.value) || [],
+                backgroundColor: COLORS,
+                borderColor: COLORS.map(color => color.replace('0.8', '1')),
+                borderWidth: 2,
+                hoverOffset: 15,
+                borderRadius: 5,
+            },
+        ],
+    };
+
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '60%',
+        plugins: {
+            legend: {
+                display: false,
+            },
+            tooltip: {
+                backgroundColor: 'rgba(15, 52, 96, 0.95)',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: 'rgba(255, 255, 255, 0.1)',
+                borderWidth: 1,
+                padding: 10,
+                displayColors: true,
+                callbacks: {
+                    title: () => '',
+                    label: function (context: any) {
+                        return `${context.label} ${context.raw}%`;
+                    }
+                }
+            }
+        },
+        animation: {
+            animateScale: true,
+            animateRotate: true
+        }
+    };
 
     if (loading) {
         return (
@@ -212,46 +265,28 @@ const Statistics = () => {
                     className="bg-[#23234a]/80 p-8 rounded-lg shadow-lg border border-[#5A5EE6]/30"
                 >
                     <h3 className="text-2xl font-bold text-white text-center mb-8">Language Distribution</h3>
-                    <div className="h-[400px]">
-                        <ResponsiveContainer width="100%" height="100%">
-                            <PieChart>
-                                <Pie
-                                    data={stats?.languageBreakdown}
-                                    cx="50%"
-                                    cy="50%"
-                                    labelLine={true}
-                                    outerRadius={120}
-                                    fill="#8884d8"
-                                    dataKey="value"
-                                    label={({ name, percent }) => {
-                                        if (percent < 0.05) return ''; // %5'ten küçük değerleri gösterme
-                                        return `${name} ${(percent * 100).toFixed(0)}%`;
-                                    }}
-                                >
-                                    {stats?.languageBreakdown.map((_, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                    ))}
-                                </Pie>
-                                <Tooltip
-                                    formatter={(value: number) => [`${value}%`, 'Percentage']}
-                                    contentStyle={{
-                                        backgroundColor: 'rgba(15, 52, 96, 0.9)',
-                                        border: '1px solid rgba(255, 255, 255, 0.1)',
-                                        borderRadius: '8px',
-                                        color: '#fff'
-                                    }}
-                                />
-                            </PieChart>
-                        </ResponsiveContainer>
-                        <div className="flex flex-wrap justify-center gap-2 mt-4">
+                    <div className="h-[400px] relative">
+                        <Doughnut data={chartData} options={chartOptions} />
+                        <div className="flex flex-wrap justify-center gap-3 mt-8">
                             {stats?.languageBreakdown.map((entry, index) => (
-                                <div key={entry.name} className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#0f3460] border border-[#5A5EE6]/30">
+                                <motion.div
+                                    key={entry.name}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.1 * index }}
+                                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0f3460]/80 border border-[#5A5EE6]/30 hover:bg-[#0f3460] transition-all duration-300 cursor-pointer group"
+                                >
                                     <div
-                                        className="w-3 h-3 rounded-full"
+                                        className="w-4 h-4 rounded-full transition-transform duration-300 group-hover:scale-110"
                                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                                     />
-                                    <span className="text-sm text-white">{entry.name} ({entry.value}%)</span>
-                                </div>
+                                    <span className="text-sm font-medium text-white group-hover:text-purple-300 transition-colors duration-300">
+                                        {entry.name}
+                                    </span>
+                                    <span className="text-sm font-bold text-purple-400">
+                                        {entry.value}%
+                                    </span>
+                                </motion.div>
                             ))}
                         </div>
                     </div>
