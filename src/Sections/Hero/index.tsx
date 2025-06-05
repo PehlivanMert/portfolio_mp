@@ -32,7 +32,6 @@ const Hero = () => {
   };
 
   const name = "Mert Pehlivan";
-  const title = "Java Backend Developer";
 
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-b from-[#23234a] via-[#18181b] to-[#23234a] overflow-hidden">
