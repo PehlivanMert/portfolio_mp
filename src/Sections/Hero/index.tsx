@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { FaJava, FaDatabase, FaServer, FaCode, FaDocker, FaAws } from "react-icons/fa";
-import { SiSpringboot, SiKubernetes, SiElasticsearch, SiQuarkus } from "react-icons/si";
+import { FaJava, FaDatabase, FaServer, FaDocker, FaAws } from "react-icons/fa";
+import { SiSpringboot, SiKubernetes, SiElasticsearch, SiQuarkus, SiApachekafka } from "react-icons/si";
 import { BsBox } from "react-icons/bs";
 import layeredWavesHero from "../../Assets/wallpapers/layered-waves-haikei-hero.svg";
 
@@ -31,7 +31,35 @@ const Hero = () => {
     }),
   };
 
+  const skillVariants = {
+    hidden: { opacity: 0, y: 20, scale: 0.8 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: 1.4 + i * 0.1,
+        duration: 0.5,
+        ease: [0.6, -0.05, 0.01, 0.99],
+      },
+    }),
+  };
+
   const name = "Mert Pehlivan";
+
+  const skills = [
+    { icon: FaJava, name: "Java", color: "text-purple-400" },
+    { icon: SiSpringboot, name: "Spring Boot", color: "text-green-400" },
+    { icon: FaDatabase, name: "Database", color: "text-pink-400" },
+    { icon: FaServer, name: "Backend", color: "text-purple-400" },
+    { icon: FaDocker, name: "Docker", color: "text-pink-400" },
+    { icon: SiKubernetes, name: "Kubernetes", color: "text-purple-400" },
+    { icon: FaAws, name: "AWS", color: "text-pink-400" },
+    { icon: SiApachekafka, name: "Kafka", color: "text-purple-400" },
+    { icon: SiElasticsearch, name: "Elasticsearch", color: "text-purple-400" },
+    { icon: SiQuarkus, name: "Quarkus", color: "text-pink-400" },
+    { icon: BsBox, name: "Micronaut", color: "text-purple-400" },
+  ];
 
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-b from-[#23234a] via-[#18181b] to-[#23234a] overflow-hidden">
@@ -113,93 +141,27 @@ const Hero = () => {
           </motion.h2>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
+          initial="hidden"
+          animate="visible"
           className="flex flex-wrap justify-center gap-6 mt-8"
         >
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <FaJava className="text-5xl text-purple-400" />
-            <span className="text-gray-300">Java</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <SiSpringboot className="text-5xl text-green-400" />
-            <span className="text-gray-300">Spring Boot</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <FaDatabase className="text-5xl text-pink-400" />
-            <span className="text-gray-300">Database</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <FaServer className="text-5xl text-purple-400" />
-            <span className="text-gray-300">Backend</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <FaDocker className="text-5xl text-pink-400" />
-            <span className="text-gray-300">Docker</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <SiKubernetes className="text-5xl text-purple-400" />
-            <span className="text-gray-300">Kubernetes</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <FaAws className="text-5xl text-pink-400" />
-            <span className="text-gray-300">AWS</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <SiElasticsearch className="text-5xl text-purple-400" />
-            <span className="text-gray-300">Elasticsearch</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <SiQuarkus className="text-5xl text-pink-400" />
-            <span className="text-gray-300">Quarkus</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <BsBox className="text-5xl text-purple-400" />
-            <span className="text-gray-300">Micronaut</span>
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex flex-col items-center space-y-2"
-          >
-            <FaCode className="text-5xl text-pink-400" />
-            <span className="text-gray-300">Development</span>
-          </motion.div>
+          {skills.map((skill, index) => (
+            <motion.div
+              key={skill.name}
+              custom={index}
+              variants={skillVariants}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              className="flex flex-col items-center space-y-2"
+            >
+              <skill.icon className={`text-5xl ${skill.color}`} />
+              <span className="text-gray-300">{skill.name}</span>
+            </motion.div>
+          ))}
         </motion.div>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.6 }}
+          transition={{ duration: 0.8, delay: 2.5 }}
           className="text-gray-400 max-w-2xl mx-auto mt-8 text-center"
         >
           Passionate about building robust and scalable applications with Java. Specializing in backend development, database management, and system architecture.
