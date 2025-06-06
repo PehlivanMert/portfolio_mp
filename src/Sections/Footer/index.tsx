@@ -59,15 +59,68 @@ const Footer = () => {
               </motion.a>
             ))}
           </motion.div>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="text-gray-400 text-center"
+            className="flex flex-col items-center gap-4"
           >
-            © {currentYear} Mert Pehlivan. All rights reserved.
-          </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+              className="flex flex-col items-center gap-3"
+            >
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+                className="text-sm text-gray-400"
+              >
+                © {currentYear}
+              </motion.span>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
+                className="flex items-center gap-2 text-gray-500 bg-[#1a1a3a]/50 px-6 py-2.5 rounded-full border border-[#5A5EE6]/20 hover:border-[#5A5EE6]/40 transition-all duration-300 shadow-lg hover:shadow-[#5A5EE6]/10"
+              >
+                <span className="text-xs font-medium">Made with</span>
+                <motion.span
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 10, -10, 0]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                  className="text-red-500 text-base"
+                >
+                  ❤
+                </motion.span>
+                <span className="text-xs font-medium bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  by Mert Pehlivan
+                </span>
+              </motion.div>
+
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8 }}
+                className="text-sm text-gray-400"
+              >
+                All rights reserved
+              </motion.span>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </footer>

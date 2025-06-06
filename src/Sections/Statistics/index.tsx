@@ -375,28 +375,28 @@ const Statistics = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    className="bg-[#23234a]/80 p-8 rounded-lg shadow-lg border border-[#5A5EE6]/30 mb-16"
+                    className="bg-[#23234a]/80 p-8 rounded-lg shadow-lg border border-[#5A5EE6]/30 mb-48 sm:mb-64"
                 >
                     <h3 className="text-2xl font-bold text-white text-center mb-8">Language Distribution</h3>
                     <div className="h-[400px] relative">
                         <Doughnut data={chartData} options={chartOptions} />
-                        <div className="flex flex-wrap justify-center gap-3 mt-8">
+                        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8 mb-4">
                             {stats?.languageBreakdown.map((entry, index) => (
                                 <motion.div
                                     key={entry.name}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: 0.1 * index }}
-                                    className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#0f3460]/80 border border-[#5A5EE6]/30 hover:bg-[#0f3460] transition-all duration-300 cursor-pointer group"
+                                    className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[#0f3460]/80 border border-[#5A5EE6]/30 hover:bg-[#0f3460] transition-all duration-300 cursor-pointer group"
                                 >
                                     <div
-                                        className="w-4 h-4 rounded-full transition-transform duration-300 group-hover:scale-110"
+                                        className="w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-transform duration-300 group-hover:scale-110"
                                         style={{ backgroundColor: COLORS[index % COLORS.length] }}
                                     />
-                                    <span className="text-sm font-medium text-white group-hover:text-purple-300 transition-colors duration-300">
+                                    <span className="text-xs sm:text-sm font-medium text-white group-hover:text-purple-300 transition-colors duration-300">
                                         {entry.name}
                                     </span>
-                                    <span className="text-sm font-bold text-purple-400">
+                                    <span className="text-xs sm:text-sm font-bold text-purple-400">
                                         {entry.value}%
                                     </span>
                                 </motion.div>
@@ -409,18 +409,18 @@ const Statistics = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="bg-gradient-to-br from-[#23234a] to-[#1a1a3a] p-8 rounded-2xl shadow-2xl border border-[#5A5EE6]/30 mt-32"
+                    className="bg-gradient-to-br from-[#23234a] to-[#1a1a3a] p-4 sm:p-8 rounded-2xl shadow-2xl border border-[#5A5EE6]/30"
                 >
-                    <div className="flex items-center justify-between mb-8">
-                        <div>
-                            <h3 className="text-2xl font-bold text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-center sm:justify-between gap-4 mb-8">
+                        <div className="text-center sm:text-left">
+                            <h3 className="text-xl sm:text-2xl font-bold text-white bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                                 Contribution Graph
                             </h3>
-                            <p className="text-gray-400 text-sm mt-1">
+                            <p className="text-gray-400 text-xs sm:text-sm mt-1">
                                 {stats?.contributions.total} contributions in {selectedYear}
                             </p>
                         </div>
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center justify-center gap-4">
                             <button
                                 onClick={() => setSelectedYear(selectedYear - 1)}
                                 disabled={selectedYear <= 2020}
@@ -429,11 +429,11 @@ const Statistics = () => {
                                     : 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 hover:from-blue-500/30 hover:to-purple-500/30 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20'
                                     }`}
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                                 </svg>
                             </button>
-                            <span className="text-xl font-bold text-white bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-6 py-2 rounded-full border border-blue-500/20 shadow-lg">
+                            <span className="text-lg sm:text-xl font-bold text-white bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-4 sm:px-6 py-1.5 sm:py-2 rounded-full border border-blue-500/20 shadow-lg">
                                 {selectedYear}
                             </span>
                             <button
@@ -444,7 +444,7 @@ const Statistics = () => {
                                     : 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-400 hover:from-blue-500/30 hover:to-purple-500/30 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20'
                                     }`}
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                 </svg>
                             </button>
@@ -452,12 +452,12 @@ const Statistics = () => {
                     </div>
 
                     {/* Katkı grafiği */}
-                    <div className="w-full">
-                        <div className="grid grid-cols-[auto_1fr] gap-6">
+                    <div className="w-full overflow-x-auto">
+                        <div className="grid grid-cols-[auto_1fr] gap-2 sm:gap-4 md:gap-6" style={{ minWidth: '800px' }}>
                             {/* Gün isimleri - Dikey */}
-                            <div className="grid grid-rows-7 gap-2 pt-8">
+                            <div className="grid grid-rows-7 gap-1 sm:gap-2 pt-8">
                                 {DAYS_OF_WEEK.map(day => (
-                                    <div key={day} className="text-xs text-gray-400 h-3 font-medium flex items-center justify-end pr-2">
+                                    <div key={day} className="text-[10px] sm:text-xs text-gray-400 h-3 font-medium flex items-center justify-end pr-1 sm:pr-2">
                                         {day}
                                     </div>
                                 ))}
@@ -466,7 +466,7 @@ const Statistics = () => {
                             {/* Ana içerik alanı */}
                             <div className="w-full">
                                 {/* Aylar - Yatay */}
-                                <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-2 mb-3">
+                                <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-1 sm:gap-2 mb-2 sm:mb-3">
                                     {MONTHS.map((month, index) => {
                                         const startDate = new Date(selectedYear, index, 1);
                                         const startOfYear = new Date(selectedYear, 0, 1);
@@ -477,7 +477,7 @@ const Statistics = () => {
                                         return (
                                             <div
                                                 key={month}
-                                                className="text-xs text-gray-400 text-center font-medium"
+                                                className="text-[10px] sm:text-xs text-gray-400 text-center font-medium"
                                                 style={{
                                                     gridColumn: `${firstWeekOfMonth + 1} / span 4`
                                                 }}
@@ -489,7 +489,7 @@ const Statistics = () => {
                                 </div>
 
                                 {/* Katkı kutuları - Grid */}
-                                <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-2">
+                                <div className="grid grid-cols-[repeat(53,minmax(0,1fr))] gap-1 sm:gap-2">
                                     {(() => {
                                         const days: { date: Date; contribution?: Contribution }[] = [];
 
@@ -541,11 +541,10 @@ const Statistics = () => {
                                         }
 
                                         return weeks.map((week, weekIndex) => (
-                                            <div key={weekIndex} className="grid grid-rows-7 gap-2">
+                                            <div key={weekIndex} className="grid grid-rows-7 gap-1 sm:gap-2">
                                                 {week.map((day, dayIndex) => {
-                                                    // Tarihi düzelt (UTC offset'i düzeltmek için)
                                                     const localDate = new Date(day.date);
-                                                    localDate.setHours(12, 0, 0, 0); // Saati 12:00:00 yap
+                                                    localDate.setHours(12, 0, 0, 0);
 
                                                     return (
                                                         <div
@@ -583,7 +582,7 @@ const Statistics = () => {
                                                                             day: 'numeric'
                                                                         })}
                                                                 </div>
-                                                                <div className="text-blue-400">
+                                                                <div className="text-blue-400 text-xs">
                                                                     {day.contribution
                                                                         ? `${day.contribution.count} contribution${day.contribution.count !== 1 ? 's' : ''}`
                                                                         : 'No contributions'}
@@ -601,12 +600,12 @@ const Statistics = () => {
                     </div>
 
                     {/* Katkı seviyeleri açıklaması */}
-                    <div className="flex justify-end items-center gap-2 mt-6">
-                        <span className="text-xs text-gray-400 font-medium">Less</span>
+                    <div className="flex justify-end items-center gap-1 sm:gap-2 mt-4 sm:mt-6">
+                        <span className="text-[10px] sm:text-xs text-gray-400 font-medium">Less</span>
                         {Object.entries(CONTRIBUTION_COLORS).map(([level, color], index) => (
-                            <div key={level} className="flex items-center gap-1">
+                            <div key={level} className="flex items-center gap-0.5 sm:gap-1">
                                 <div
-                                    className="w-3 h-3 rounded-sm transition-transform duration-300 hover:scale-110"
+                                    className="w-2 h-2 sm:w-3 sm:h-3 rounded-sm transition-transform duration-300 hover:scale-110"
                                     style={{ backgroundColor: color }}
                                 />
                                 {index < Object.keys(CONTRIBUTION_COLORS).length - 1 && (
@@ -614,7 +613,7 @@ const Statistics = () => {
                                 )}
                             </div>
                         ))}
-                        <span className="text-xs text-gray-400 font-medium">More</span>
+                        <span className="text-[10px] sm:text-xs text-gray-400 font-medium">More</span>
                     </div>
                 </motion.div>
             </div>
