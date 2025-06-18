@@ -7,6 +7,7 @@ import Statistics from "./Sections/Statistics";
 import AboutMe from "./Sections/AboutMe";
 import Skills from "./Sections/Skills";
 import Education from "./Sections/Education";
+import { Blog } from "./Sections/Blog";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Projects />
         <Statistics />
         <Education />
+        <Blog />
         <Contact />
       </main>
       <Footer />

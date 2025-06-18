@@ -38,6 +38,7 @@ const Navbar = () => {
     { id: "projects", label: "Projects" },
     { id: "statistics", label: "Statistics & Highlights" },
     { id: "education", label: "Education & Certifications" },
+    { id: "blog", label: "Blog" },
     { id: "contact", label: "Contact" },
   ];
 
