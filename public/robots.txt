@@ -6,5 +6,5 @@ Allow: /
 # Sitemap location
 Sitemap: https://mertpehlivan.tech/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 10
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
