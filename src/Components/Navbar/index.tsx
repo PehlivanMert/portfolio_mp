@@ -20,7 +20,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "skills", "projects", "statistics", "education", "contact"];
+      const sections = ["about", "skills", "projects", "statistics", "education", "blog", "contact"];
       sections.forEach(section => {
         const element = document.getElementById(section);
         if (element && element.getBoundingClientRect().top <= 100) {
