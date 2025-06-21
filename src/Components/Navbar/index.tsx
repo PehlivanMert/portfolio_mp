@@ -137,7 +137,7 @@ const Navbar = () => {
               <FaMedium size={26} />
             </motion.a>
             <motion.a
-              href="/Mert Pehlivan Cv.pdf"
+              href="/Mert_Pehlivan_Java_Backend_Developer.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="social-icon"
@@ -218,7 +218,7 @@ const Navbar = () => {
                     <FaMedium size={26} />
                   </motion.a>
                   <motion.a
-                    href="/Mert Pehlivan Cv.pdf"
+                    href="/Mert_Pehlivan_Java_Backend_Developer.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-icon"
