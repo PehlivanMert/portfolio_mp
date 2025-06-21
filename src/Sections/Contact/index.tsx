@@ -1,6 +1,6 @@
 import "./styles.css";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt, FaPaperPlane, FaTelegramPlane } from "react-icons/fa";
 import { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
 
@@ -95,16 +95,51 @@ const Contact = () => {
           >
             <div className="bg-[#23234a]/80 rounded-2xl p-8 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300">
               <h3 className="text-2xl font-bold text-white mb-6 tracking-wide">Contact Information</h3>
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 text-gray-300">
-                  <FaEnvelope className="text-2xl text-blue-400" />
-                  <span>pehlivanmert@outlook.com.tr</span>
+              
+              <div className="space-y-8">
+
+                {/* QR Codes Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                    
+                    {/* Email Card */}
+                    <motion.a 
+                        href="mailto:s.mertpehlivan@proton.me"
+                        className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-300 h-full"
+                        whileHover={{ y: -5 }}
+                    >
+                        <FaEnvelope className="text-3xl text-blue-400" />
+                        <img 
+                            src="/email-qr.png" 
+                            alt="Email QR" 
+                            className="w-full max-w-[140px] aspect-square rounded-lg border-2 border-white/20" 
+                        />
+                    </motion.a>
+    
+                    {/* Telegram Card */}
+                    <motion.a
+                        href="https://t.me/PEHLIVANMERT"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-300 h-full"
+                        whileHover={{ y: -5 }}
+                    >
+                        <FaTelegramPlane className="text-3xl text-sky-400" />
+                        <img 
+                            src="/tg.jpeg" 
+                            alt="Telegram QR" 
+                            className="w-full max-w-[200px] aspect-square rounded-lg border-2 border-white/20" 
+                        />
+                    </motion.a>
                 </div>
-                <div className="flex items-center gap-4 text-gray-300">
-                  <FaMapMarkerAlt className="text-2xl text-blue-400" />
-                  <span>Istanbul, Turkey</span>
+
+                {/* Location */}
+                <div className="flex items-center justify-center gap-4 text-gray-300 pt-8 border-t border-white/10">
+                    <FaMapMarkerAlt className="text-2xl text-blue-400" />
+                    <span>Istanbul, Turkey</span>
                 </div>
+
               </div>
+
             </div>
           </motion.div>
           <motion.div

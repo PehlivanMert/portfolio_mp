@@ -121,7 +121,7 @@ const Navbar = () => {
               <FaLinkedin size={26} />
             </motion.a>
             <motion.a
-              href="mailto:pehlivanmert@outlook.com.tr"
+              href="mailto:s.mertpehlivan@proton.me"
               className="social-icon"
               whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
             >
@@ -202,7 +202,7 @@ const Navbar = () => {
                     <FaLinkedin size={26} />
                   </motion.a>
                   <motion.a
-                    href="mailto:pehlivanmert@outlook.com.tr"
+                    href="mailto:s.mertpehlivan@proton.me"
                     className="social-icon"
                     whileHover={{ scale: 1.25, boxShadow: "0 0 16px #6C63FF" }}
                   >

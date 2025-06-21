@@ -144,7 +144,7 @@ export const socialLinks = [
         id: 4,
         name: "Mail",
         icon: "mail",
-        url: "mailto:pehlivanmert@outlook.com.tr",
+        url: "mailto:s.mertpehlivan@proton.me",
     },
     {
         id: 5,

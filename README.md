@@ -68,4 +68,4 @@ src/
 
 ## 📞 İletişim
 
-Mert Pehlivan - [pehlivanmert@outlook.com.tr](mailto:pehlivanmert@outlook.com.tr)
+Mert Pehlivan - [s.mertpehlivan@proton.me](mailto:s.mertpehlivan@proton.me)
