@@ -9,6 +9,7 @@ interface BlogPost {
   link: string;
   pubDate: string;
   description: string;
+  excerpt: string;
   image?: string;
 }
 
@@ -37,15 +38,22 @@ export const Blog = () => {
           const link = item.getElementsByTagName("link")[0]?.textContent || "";
           const pubDate = item.getElementsByTagName("pubDate")[0]?.textContent || "";
           const description = item.getElementsByTagName("description")[0]?.textContent || "";
-          
-          // İçerikten ilk resmi çıkar
-          const imgMatch = description.match(/<img[^>]+src="([^">]+)"/);
-          const image = imgMatch ? imgMatch[1] : undefined;
-
-          // Kapak görselini çıkar
           const content = item.getElementsByTagName("content:encoded")[0]?.textContent || "";
-          const coverMatch = content.match(/<img[^>]+src="([^">]+)"/);
-          const coverImage = coverMatch ? coverMatch[1] : image;
+
+          // İçerikten ilk resmi çıkar (önce content:encoded, yoksa description)
+          let image;
+          const imgMatch = content.match(/<img[^>]+src=["']([^"'>]+)["']/);
+          if (imgMatch) {
+            image = imgMatch[1];
+          } else {
+            const descImgMatch = description.match(/<img[^>]+src=["']([^"'>]+)["']/);
+            image = descImgMatch ? descImgMatch[1] : undefined;
+          }
+
+          // Temiz metin (önce content:encoded, yoksa description)
+          const rawText = content
+            ? content.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim()
+            : description.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
 
           return {
             title: title.replace(/<[^>]*>/g, ""),
@@ -55,8 +63,9 @@ export const Blog = () => {
               month: "long",
               day: "numeric",
             }),
-            description: description.replace(/<[^>]*>/g, "").substring(0, 150),
-            image: coverImage || image
+            description: rawText.substring(0, 150) + (rawText.length > 150 ? "..." : ""),
+            excerpt: rawText.substring(0, 40) + (rawText.length > 40 ? "..." : ""),
+            image
           };
         });
 
@@ -160,15 +169,17 @@ export const Blog = () => {
                     {post.description}
                     <span className="absolute bottom-0 right-0 bg-gradient-to-l from-[#23234a]/80 to-transparent w-12 h-full"></span>
                   </p>
-                  <a
-                    href={post.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors group"
-                  >
-                    <span>Read More</span>
-                    <FaArrowRight className="transform group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  <div className="mt-2">
+                    <a
+                      href={post.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors group font-medium"
+                    >
+                      <span>Read More</span>
+                      <FaArrowRight className="transform group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             ))
