@@ -8,6 +8,10 @@ export const projectsData = [
         category: "web app",
         github: "https://github.com/PehlivanMert/my-health-tracker-app",
         webapp: "https://www.stayhealthywith.me/",
+        details: `A modern PWA for personal health and fitness tracking. Features smart water tracking, AI-powered health dashboard, multi-language and offline support.
+
+Technologies: React, Firebase, Qwen AI, PWA
+Highlights: Routine and water tracking, exercise library, AI suggestions, responsive design.`,
     },
     {
         id: 2,
@@ -18,6 +22,10 @@ export const projectsData = [
         category: "web app",
         github: "https://github.com/PehlivanMert/VetApp-FrontEnd",
         webapp: "https://veterinarymanagementapp.netlify.app/",
+        details: `Comprehensive management system for veterinary clinics. Includes customer, animal, appointment, and report management with a user-friendly interface.
+
+Technologies: Spring Boot, React, PostgreSQL/MySQL
+Highlights: Full CRUD, live demo, easy to use.`,
     },
     {
         id: 3,
@@ -27,7 +35,11 @@ export const projectsData = [
         tags: ["AWS", "Lambda", "SQS", "DynamoDB", "S3"],
         category: "microservices",
         github: "https://github.com/PehlivanMert/aws-lambda-sqs-dynamodb-demo",
-        webapp: "https://github.com/PehlivanMert/aws-file-service-demo",
+        webapp: "",
+        details: `Order management app simulating AWS services (DynamoDB, SQS, Lambda, S3) on LocalStack. Asynchronous order processing and status updates via Lambda.
+
+Technologies: Spring Boot, PostgreSQL, LocalStack, Docker
+Highlights: SQS queue, Lambda function, REST API, easy Docker setup.`,
     },
     {
         id: 4,
@@ -38,6 +50,10 @@ export const projectsData = [
         category: "microservices",
         github: "https://github.com/PehlivanMert/library-microservices",
         webapp: "https://github.com/PehlivanMert/library-microservices",
+        details: `Library management system with microservice architecture. Book and library operations are handled in separate services, with centralized configuration and monitoring.
+
+Technologies: Java 21, Spring Boot, Spring Cloud, Docker
+Highlights: Eureka, Config Server, Zipkin monitoring.`,
     },
     {
         id: 5,
@@ -48,6 +64,10 @@ export const projectsData = [
         category: "monolithic",
         github: "https://github.com/PehlivanMert/library-management-system",
         webapp: "https://github.com/PehlivanMert/library-management-system",
+        details: `Robust library management system with book, user, borrowing, and notification modules. Complete solution for modern libraries.
+
+Technologies: Java 21, Spring Boot, PostgreSQL, Redis, Kafka
+Highlights: Role-based access, email notifications, real-time monitoring.`,
     },
     {
         id: 6,
@@ -58,6 +78,10 @@ export const projectsData = [
         category: "microservices",
         github: "https://github.com/PehlivanMert/ecommerce-microservices",
         webapp: "https://github.com/PehlivanMert/ecommerce-microservices",
+        details: `Microservices-based e-commerce project with Spring Boot and Docker. Product and order management, centralized configuration, and monitoring support.
+
+Technologies: Java 21, Spring Boot, Spring Cloud, Docker
+Highlights: API Gateway, Prometheus & Grafana monitoring.`,
     },
     {
         id: 7,
@@ -68,6 +92,10 @@ export const projectsData = [
         category: "monolithic",
         github: "https://github.com/PehlivanMert/quarkus-todo-service",
         webapp: "https://github.com/PehlivanMert/quarkus-todo-service",
+        details: `A fast and lightweight Todo app built with Quarkus and PostgreSQL. RESTful API and Docker support for easy deployment.
+
+Technologies: Quarkus, Java 17, Docker
+Highlights: Fast startup, hot reload, Swagger/OpenAPI.`,
     },
     {
         id: 8,
@@ -78,6 +106,10 @@ export const projectsData = [
         category: "microservices",
         github: "https://github.com/PehlivanMert/kafka-produce-consume-example",
         webapp: "https://github.com/PehlivanMert/kafka-produce-consume-example",
+        details: `Event-driven architecture example with Kafka. Real-time data flow with user, notification, and address services.
+
+Technologies: Java 11, Spring Boot, PostgreSQL, Couchbase, Docker
+Highlights: 3 microservices, event processing, easy testing.`,
     },
     {
         id: 9,
@@ -88,6 +120,10 @@ export const projectsData = [
         category: "monolithic",
         github: "https://github.com/PehlivanMert/redis-cache",
         webapp: "https://github.com/PehlivanMert/redis-cache",
+        details: `Spring Boot app integrating Redis Cache and PostgreSQL for fast data access and soft-delete support in user management.
+
+Technologies: Spring Boot, PostgreSQL, Redis, Docker
+Highlights: Soft-delete, fast cache, easy setup.`,
     },
     {
         id: 10,
@@ -98,6 +134,10 @@ export const projectsData = [
         category: "monolithic",
         github: "https://github.com/PehlivanMert/Airport-Reservation-System",
         webapp: "https://github.com/PehlivanMert/Airport-Reservation-System",
+        details: `Spring Boot-based airport reservation system. Complete management of airports, flights, routes, and tickets.
+
+Technologies: Java 21, Spring Boot, PostgreSQL, Kafka, Docker
+Highlights: CRUD operations, Kafka event handling, easy Docker setup.`,
     },
     {
         id: 11,
@@ -108,6 +148,10 @@ export const projectsData = [
         category: "monolithic",
         github: "https://github.com/PehlivanMert/FinanceAndInvesmentManagementApplication",
         webapp: "https://github.com/PehlivanMert/FinanceAndInvesmentManagementApplication",
+        details: `Modern app for financial portfolio management, market tracking, and investment analysis. Real-time data and notification support.
+
+Technologies: Java 22, Spring Boot, PostgreSQL, Prometheus, Grafana, Zipkin, Docker
+Highlights: Portfolio management, analytics, live data.`,
     },
     {
         id: 12,
@@ -118,6 +162,10 @@ export const projectsData = [
         category: "web app",
         github: "https://github.com/PehlivanMert/netflix-clone",
         webapp: "https://github.com/PehlivanMert/netflix-clone",
+        details: `A modern, responsive Netflix clone built with React and TMDB API. Features category-based movie display and a custom trailer player.
+
+Technologies: React, Axios, TMDB API, CSS, Netlify
+Highlights: Category-based movie list, modern UI.`,
     },
 ];
 

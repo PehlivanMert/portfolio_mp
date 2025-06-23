@@ -134,8 +134,8 @@ const Contact = () => {
 
                 {/* Location */}
                 <div className="flex items-center justify-center gap-4 text-gray-300 pt-8 border-t border-white/10">
-                    <FaMapMarkerAlt className="text-2xl text-blue-400" />
-                    <span>Istanbul, Turkey</span>
+                  <FaMapMarkerAlt className="text-2xl text-blue-400" />
+                  <span>Istanbul, Turkey</span>
                 </div>
 
               </div>
