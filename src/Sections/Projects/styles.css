@@ -8,29 +8,32 @@
 }
 
 .github-readme-btn {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+  position: relative !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
 }
 .github-readme-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 9999px;
-  pointer-events: none;
-  z-index: 0;
-  transition: box-shadow 0.3s;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: 9999px !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+  border: 2px solid rgba(90,94,230,0.5) !important;
+  opacity: 0.7 !important;
+  transition: box-shadow 0.3s, opacity 0.3s !important;
 }
 .github-readme-btn:hover .github-readme-glow {
-  box-shadow: 0 0 0 4px #5A5EE6, 0 0 16px 8px #7c3aed, 0 0 32px 16px #38bdf8;
+  box-shadow: 0 0 0 6px #5A5EE6, 0 0 32px 12px #7c3aed, 0 0 64px 24px #38bdf8;
+  opacity: 1 !important;
   animation: github-glow-anim 1.2s linear infinite;
 }
 @keyframes github-glow-anim {
   0% {
-    box-shadow: 0 0 0 4px #5A5EE6, 0 0 16px 8px #7c3aed, 0 0 32px 16px #38bdf8;
+    box-shadow: 0 0 0 6px #5A5EE6, 0 0 32px 12px #7c3aed, 0 0 64px 24px #38bdf8;
     filter: hue-rotate(0deg);
   }
   100% {
-    box-shadow: 0 0 0 4px #38bdf8, 0 0 16px 8px #5A5EE6, 0 0 32px 16px #7c3aed;
+    box-shadow: 0 0 0 6px #38bdf8, 0 0 32px 12px #5A5EE6, 0 0 64px 24px #7c3aed;
     filter: hue-rotate(360deg);
   }
 }
