@@ -189,30 +189,32 @@ const Projects = () => {
                   </a>
                 )}
               </div>
-              {/* GitHub README butonu sadece Redis Cache için sağ alt köşede sabit */}
               {selectedProject.title === "Redis Cache Example" ? (
-                <div className="absolute right-8 bottom-8">
+                <div className="flex justify-end mt-8">
                   <a
                     href="https://github.com/PehlivanMert/redis-cache/blob/main/Readme.md"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all duration-300 text-base font-medium shadow-lg"
+                    className="github-readme-btn flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-full text-base font-medium shadow-lg transition-all duration-300 relative overflow-hidden"
                   >
                     <FaBookOpen />
                     <span>GitHub README</span>
+                    <span className="github-readme-glow" />
                   </a>
                 </div>
               ) : (
-                <a
-                  href={selectedProject.github.replace(/(\.git)?$/, '/blob/main/README.md')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all duration-300 text-base font-medium"
-                  style={{ position: 'absolute', right: 32, bottom: 32, display: 'inline-flex' }}
-                >
-                  <FaBookOpen />
-                  <span>GitHub README</span>
-                </a>
+                <div className="flex justify-end mt-8">
+                  <a
+                    href={selectedProject.github.replace(/(\.git)?$/, '/blob/main/README.md')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="github-readme-btn flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-full text-base font-medium shadow-lg transition-all duration-300 relative overflow-hidden"
+                  >
+                    <FaBookOpen />
+                    <span>GitHub README</span>
+                    <span className="github-readme-glow" />
+                  </a>
+                </div>
               )}
             </div>
           </div>
