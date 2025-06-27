@@ -19,6 +19,8 @@ const Education = () => {
         switch (organization.toLowerCase()) {
             case "patika.dev":
                 return <FaCode className="w-6 h-6 text-blue-400" />;
+            case "patika.dev - getir":
+                return <FaCode className="w-6 h-6 text-blue-400" />;
             case "rise in":
                 return <FaLaptopCode className="w-6 h-6 text-purple-400" />;
             case "anadolu üniversitesi":
@@ -43,6 +45,8 @@ const Education = () => {
             case "rise in":
                 return <FaLaptopCode className="w-6 h-6 text-purple-400" />;
             case "patika.dev":
+                return <FaCode className="w-6 h-6 text-blue-400" />;
+            case "patika.dev - getir":
                 return <FaCode className="w-6 h-6 text-blue-400" />;
             default:
                 return <FaCertificate className="w-6 h-6 text-blue-400" />;
@@ -77,7 +81,7 @@ const Education = () => {
                                                 {education.skills.map((skill, index) => (
                                                     <span
                                                         key={index}
-                                                        className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm"
+                                                        className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
                                                     >
                                                         {skill}
                                                     </span>
@@ -125,7 +129,7 @@ const Education = () => {
                                                 {certificate.skills.map((skill, index) => (
                                                     <span
                                                         key={index}
-                                                        className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm"
+                                                        className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
                                                     >
                                                         {skill}
                                                     </span>
@@ -191,7 +195,7 @@ const Education = () => {
                                                         {education.skills.map((skill, index) => (
                                                             <span
                                                                 key={index}
-                                                                className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm"
+                                                                className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
                                                             >
                                                                 {skill}
                                                             </span>
@@ -249,7 +253,7 @@ const Education = () => {
                                                         {certificate.skills.map((skill, index) => (
                                                             <span
                                                                 key={index}
-                                                                className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-sm"
+                                                                className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
                                                             >
                                                                 {skill}
                                                             </span>

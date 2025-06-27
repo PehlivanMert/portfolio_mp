@@ -206,11 +206,12 @@ export const educationData = [
     {
         id: 1,
         title: "Patika - Getir Java Spring Boot Bootcamp",
-        organization: "Patika.dev",
+        organization: "Patika.dev - Getir",
         date: "Mar 2025 - May 2025",
         description: "I participated in the Java Spring Boot Bootcamp organized by Patika.dev and Getir, where I had the opportunity to learn the Java and Spring Boot ecosystem in depth. I gained knowledge about microservice architecture, API development, Spring Security, data management, and many other important topics.",
-        skills: ["Kafka", "RabbitMQ", "Redis", "AWS"],
-        logo: "https://patika.dev/static/patika-logo.svg"
+        skills: ["Java 21", "Spring Boot 3.2.3", "Spring Security", "Spring Data JPA", "Spring WebFlux", "Spring Mail", "PostgreSQL", "Redis", "Flyway", "Apache Kafka", "Spring Actuator", "Prometheus", "Grafana", "JavaMailSender", "Bucket4j", "JUnit 5", "Mockito", "JaCoCo", "OpenAPI/Swagger", "SpringDoc", "Maven", "Docker", "Docker Compose"],
+        logo: "https://patika.dev/static/patika-logo.svg",
+        certificate: "http://cohorts.patika.dev/certificates/MMtegv0Z"
     },
     {
         id: 2,
@@ -261,6 +262,15 @@ export const educationData = [
 export const certificatesData = [
     {
         id: 1,
+        title: "Certificate of Getir Java Spring Boot Bootcamp",
+        organization: "Patika.dev - Getir",
+        date: "May 2025",
+        certificate: "http://cohorts.patika.dev/certificates/MMtegv0Z",
+        skills: ["Java 21", "Spring Boot 3.2.3", "Spring Security", "Spring Data JPA", "Spring WebFlux", "Spring Mail", "PostgreSQL", "Redis", "Flyway", "Apache Kafka", "Spring Actuator", "Prometheus", "Grafana", "JavaMailSender", "Bucket4j", "JUnit 5", "Mockito", "JaCoCo", "OpenAPI/Swagger", "SpringDoc", "Maven", "Docker", "Docker Compose"],
+        logo: "https://patika.dev/static/patika-logo.svg"
+    },
+    {
+        id: 2,
         title: "Clean Code",
         organization: "Udemy",
         date: "May 2025",
@@ -269,7 +279,7 @@ export const certificatesData = [
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
     {
-        id: 2,
+        id: 3,
         title: "Design Patterns",
         organization: "Udemy",
         date: "May 2025",
@@ -278,7 +288,7 @@ export const certificatesData = [
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
     {
-        id: 3,
+        id: 4,
         title: "Introduction to Object-Oriented Programming with Java",
         organization: "Udemy",
         date: "Apr 2025",
@@ -288,7 +298,7 @@ export const certificatesData = [
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
     {
-        id: 4,
+        id: 5,
         title: "Object-Oriented and Functional Programming with Java",
         organization: "Udemy",
         date: "Apr 2025",
@@ -298,7 +308,7 @@ export const certificatesData = [
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
     {
-        id: 5,
+        id: 6,
         title: "RESTful Web Service Development with Java",
         organization: "Udemy",
         date: "Apr 2025",
@@ -308,7 +318,7 @@ export const certificatesData = [
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
     {
-        id: 6,
+        id: 7,
         title: "Enterprise Application Development with Spring: AOP",
         organization: "Udemy",
         date: "Apr 2025",
@@ -318,7 +328,7 @@ export const certificatesData = [
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
     {
-        id: 7,
+        id: 8,
         title: "Enterprise Application Development with Spring: Fundamentals",
         organization: "Udemy",
         date: "Apr 2025",
@@ -328,7 +338,7 @@ export const certificatesData = [
         logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
     },
     {
-        id: 8,
+        id: 9,
         title: "Automotive Summer Camp",
         organization: "OSD - Automotive Industry Association",
         date: "Jul 2024",
@@ -337,7 +347,7 @@ export const certificatesData = [
         logo: "https://www.osd.org.tr/assets/images/logo.png"
     },
     {
-        id: 9,
+        id: 10,
         title: "Certificate of Patika FullStack Web Development Bootcamp",
         organization: "Rise In",
         date: "Jul 2024",
@@ -346,7 +356,7 @@ export const certificatesData = [
         logo: "https://rise.in/assets/images/logo.png"
     },
     {
-        id: 10,
+        id: 11,
         title: "Programming Fundamentals: Object-Oriented Design",
         organization: "LinkedIn",
         date: "Jun 2024",
@@ -355,7 +365,7 @@ export const certificatesData = [
         logo: "https://static.licdn.com/sc/h/akt4ae504epesldzj74dzred8"
     },
     {
-        id: 11,
+        id: 12,
         title: "Agile Software Development",
         organization: "LinkedIn",
         date: "May 2024",
@@ -364,7 +374,7 @@ export const certificatesData = [
         logo: "https://static.licdn.com/sc/h/akt4ae504epesldzj74dzred8"
     },
     {
-        id: 12,
+        id: 13,
         title: "Back-End Web Development Beginner Program",
         organization: "Kodluyoruz",
         date: "Dec 2023",
@@ -374,7 +384,7 @@ export const certificatesData = [
         logo: "https://www.kodluyoruz.org/assets/images/logo.png"
     },
     {
-        id: 13,
+        id: 14,
         title: "Beginner Level Frontend Web Development Path",
         organization: "Patika.dev",
         date: "Oct 2023",
