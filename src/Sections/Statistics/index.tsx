@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import { FaCode, FaProjectDiagram, FaDatabase, FaServer } from "react-icons/fa";
@@ -7,6 +7,70 @@ import { Doughnut } from 'react-chartjs-2';
 import layeredWavesHero from "../../Assets/wallpapers/layered-waves-haikei-hero.svg";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+// Skeleton Loading Component
+const StatisticsSkeleton = () => (
+    <section id="statistics" className="min-h-screen py-20 bg-[#23234a] relative">
+        <img
+            src={layeredWavesHero}
+            alt="layered waves background"
+            className="absolute bottom-0 left-0 w-full pointer-events-none select-none z-0 opacity-20"
+            style={{ objectFit: 'cover', filter: 'blur(8px)', mixBlendMode: 'lighten' }}
+        />
+        <div className="container mx-auto px-4">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-16"
+            >
+                <h2 className="text-4xl font-bold text-white mb-4">Statistics & Highlights</h2>
+                <p className="text-gray-400">A glimpse into my coding journey and achievements</p>
+            </motion.div>
+
+            {/* Skeleton Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                {[1, 2, 3, 4].map((i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 * i }}
+                        className="bg-[#23234a]/80 p-6 rounded-lg shadow-lg border border-[#5A5EE6]/30"
+                    >
+                        <div className="flex items-center justify-center mb-4">
+                            <div className="w-12 h-12 bg-gray-600 rounded-full animate-pulse"></div>
+                        </div>
+                        <div className="h-8 bg-gray-600 rounded mb-2 animate-pulse"></div>
+                        <div className="h-4 bg-gray-700 rounded animate-pulse"></div>
+                    </motion.div>
+                ))}
+            </div>
+
+            {/* Skeleton Chart */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="bg-[#23234a]/80 p-8 rounded-lg shadow-lg border border-[#5A5EE6]/30 mb-48 sm:mb-64"
+            >
+                <div className="h-8 bg-gray-600 rounded mb-8 animate-pulse"></div>
+                <div className="h-[400px] bg-gray-700 rounded animate-pulse"></div>
+            </motion.div>
+
+            {/* Skeleton Contribution Graph */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+                className="bg-gradient-to-br from-[#23234a] to-[#1a1a3a] p-4 sm:p-8 rounded-2xl shadow-2xl border border-[#5A5EE6]/30"
+            >
+                <div className="h-8 bg-gray-600 rounded mb-8 animate-pulse"></div>
+                <div className="h-[200px] bg-gray-700 rounded animate-pulse"></div>
+            </motion.div>
+        </div>
+    </section>
+);
 
 const COLORS = [
     'rgba(0, 136, 254, 0.8)',   // Mavi
@@ -76,156 +140,211 @@ const Statistics = () => {
     const [allContributions, setAllContributions] = useState<GitHubContributionResponse | null>(null);
 
     // Tüm katkıları bir kere al ve sakla
-    useEffect(() => {
-        const fetchAllContributions = async () => {
-            try {
-                const contributionResponse = await fetch(
-                    `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}`,
-                    {
-                        headers: {
-                            'Accept': 'application/json',
-                            'User-Agent': 'portfolio-mp'
-                        }
+    const fetchAllContributions = useCallback(async () => {
+        try {
+            const contributionResponse = await fetch(
+                `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}`,
+                {
+                    headers: {
+                        'Accept': 'application/json',
+                        'User-Agent': 'portfolio-mp'
                     }
-                );
-
-                if (!contributionResponse.ok) {
-                    throw new Error(`Failed to fetch contributions: ${await contributionResponse.text()}`);
                 }
+            );
 
-                const data = await contributionResponse.json();
-                setAllContributions(data);
-            } catch (error) {
-                setError(error instanceof Error ? error.message : "An error occurred while fetching contributions");
+            if (!contributionResponse.ok) {
+                throw new Error(`Failed to fetch contributions: ${await contributionResponse.text()}`);
             }
-        };
 
-        fetchAllContributions();
+            const data = await contributionResponse.json();
+            setAllContributions(data);
+        } catch (error) {
+            console.error('Error fetching contributions:', error);
+            setError(error instanceof Error ? error.message : "An error occurred while fetching contributions");
+        }
     }, []);
 
     // Seçilen yıla göre katkıları filtrele
-    useEffect(() => {
-        const fetchGitHubStats = async () => {
-            try {
-                const token = import.meta.env.VITE_GITHUB_TOKEN;
-                if (!token) {
-                    throw new Error("GitHub token not found in environment variables");
-                }
+    const fetchGitHubStats = useCallback(async (contributions?: GitHubContributionResponse) => {
+        setLoading(true);
+        setError(null);
 
-                // Kullanıcı bilgilerini al
-                const userResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'User-Agent': 'portfolio-mp'
-                    }
-                });
-
-                if (!userResponse.ok) {
-                    throw new Error(`GitHub API Error: ${await userResponse.text()}`);
-                }
-
-                // Repoları al
-                const reposResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'User-Agent': 'portfolio-mp'
-                    }
-                });
-
-                if (!reposResponse.ok) {
-                    throw new Error(`GitHub API Error: ${await reposResponse.text()}`);
-                }
-
-                const repos = await reposResponse.json();
-                const languageStats = new Map<string, number>();
-
-                // Her repo için dil bilgilerini al
-                for (const repo of repos) {
-                    if (repo.fork) continue;
-
-                    const langResponse = await fetch(repo.languages_url, {
-                        headers: {
-                            'Authorization': `Bearer ${token}`,
-                            'Accept': 'application/vnd.github.v3+json',
-                            'User-Agent': 'portfolio-mp'
-                        }
-                    });
-
-                    if (!langResponse.ok) continue;
-
-                    const languages = await langResponse.json();
-                    Object.entries(languages).forEach(([lang, bytes]: [string, any]) => {
-                        languageStats.set(lang, (languageStats.get(lang) || 0) + bytes);
-                    });
-                }
-
-                const totalLinesOfCode = Array.from(languageStats.values()).reduce((a, b) => a + b, 0);
-                const languageBreakdown = Array.from(languageStats.entries())
-                    .map(([name, value]) => ({
-                        name: name.trim(),
-                        value: Math.round((value / totalLinesOfCode) * 100),
-                    }))
-                    .sort((a, b) => b.value - a.value);
-
-                // Seçilen yıl için katkıları filtrele
-                if (allContributions) {
-                    const yearContributions = allContributions.contributions.filter(contribution => {
-                        const contributionDate = new Date(contribution.date);
-                        return contributionDate.getFullYear() === selectedYear;
-                    });
-
-                    // Tüm günleri oluştur ve katkıları eşleştir
-                    const allDays = new Map<string, { count: number; level: ContributionLevel }>();
-                    const startDate = new Date(selectedYear, 0, 1);
-                    const endDate = new Date(selectedYear, 11, 31);
-
-                    // Önce tüm günleri oluştur
-                    for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-                        const dateStr = d.toISOString().split('T')[0];
-                        allDays.set(dateStr, { count: 0, level: 'NONE' });
-                    }
-
-                    // Sonra katkıları ekle
-                    yearContributions.forEach(contribution => {
-                        allDays.set(contribution.date, {
-                            count: contribution.count,
-                            level: (contribution.count === 0 ? 'NONE' :
-                                contribution.count <= 3 ? 'LOW' :
-                                    contribution.count <= 6 ? 'MEDIUM_LOW' :
-                                        contribution.count <= 9 ? 'MEDIUM_HIGH' : 'HIGH') as ContributionLevel
-                        });
-                    });
-
-                    // Map'i array'e çevir ve sırala
-                    const sortedContributions = Array.from(allDays.entries())
-                        .map(([date, data]) => ({
-                            date,
-                            count: data.count,
-                            level: data.level
-                        }))
-                        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
-
-                    setStats({
-                        totalProjects: repos.filter((repo: any) => !repo.fork).length,
-                        totalLinesOfCode,
-                        languageBreakdown,
-                        contributions: {
-                            total: sortedContributions.reduce((sum, c) => sum + c.count, 0),
-                            data: sortedContributions
-                        }
-                    });
-                }
-
-            } catch (err) {
-                setError(err instanceof Error ? err.message : "An error occurred while fetching GitHub data");
-            } finally {
-                setLoading(false);
+        try {
+            const token = import.meta.env.VITE_GITHUB_TOKEN;
+            if (!token) {
+                throw new Error("GitHub token not found in environment variables");
             }
-        };
 
-        fetchGitHubStats();
+            // Kullanıcı bilgilerini al
+            const userResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'User-Agent': 'portfolio-mp'
+                }
+            });
+
+            if (!userResponse.ok) {
+                throw new Error(`GitHub API Error: ${await userResponse.text()}`);
+            }
+
+            // Repoları al
+            const reposResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'User-Agent': 'portfolio-mp'
+                }
+            });
+
+            if (!reposResponse.ok) {
+                throw new Error(`GitHub API Error: ${await reposResponse.text()}`);
+            }
+
+            const repos = await reposResponse.json();
+            const languageStats = new Map<string, number>();
+
+            // Her repo için dil bilgilerini al
+            for (const repo of repos) {
+                if (repo.fork) continue;
+
+                const langResponse = await fetch(repo.languages_url, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'User-Agent': 'portfolio-mp'
+                    }
+                });
+
+                if (!langResponse.ok) continue;
+
+                const languages = await langResponse.json();
+                Object.entries(languages).forEach(([lang, bytes]: [string, any]) => {
+                    languageStats.set(lang, (languageStats.get(lang) || 0) + bytes);
+                });
+            }
+
+            const totalLinesOfCode = Array.from(languageStats.values()).reduce((a, b) => a + b, 0);
+            const languageBreakdown = Array.from(languageStats.entries())
+                .map(([name, value]) => ({
+                    name: name.trim(),
+                    value: Math.round((value / totalLinesOfCode) * 100),
+                }))
+                .sort((a, b) => b.value - a.value);
+
+            // Seçilen yıl için katkıları filtrele
+            const contributionsToUse = contributions || allContributions;
+            if (contributionsToUse) {
+                const yearContributions = contributionsToUse.contributions.filter(contribution => {
+                    const contributionDate = new Date(contribution.date);
+                    return contributionDate.getFullYear() === selectedYear;
+                });
+
+                // Tüm günleri oluştur ve katkıları eşleştir
+                const allDays = new Map<string, { count: number; level: ContributionLevel }>();
+                const startDate = new Date(selectedYear, 0, 1);
+                const endDate = new Date(selectedYear, 11, 31);
+
+                // Önce tüm günleri oluştur
+                for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                    const dateStr = d.toISOString().split('T')[0];
+                    allDays.set(dateStr, { count: 0, level: 'NONE' });
+                }
+
+                // Sonra katkıları ekle
+                yearContributions.forEach(contribution => {
+                    allDays.set(contribution.date, {
+                        count: contribution.count,
+                        level: (contribution.count === 0 ? 'NONE' :
+                            contribution.count <= 3 ? 'LOW' :
+                                contribution.count <= 6 ? 'MEDIUM_LOW' :
+                                    contribution.count <= 9 ? 'MEDIUM_HIGH' : 'HIGH') as ContributionLevel
+                    });
+                });
+
+                // Map'i array'e çevir ve sırala
+                const sortedContributions = Array.from(allDays.entries())
+                    .map(([date, data]) => ({
+                        date,
+                        count: data.count,
+                        level: data.level
+                    }))
+                    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+                setStats({
+                    totalProjects: repos.filter((repo: any) => !repo.fork).length,
+                    totalLinesOfCode,
+                    languageBreakdown,
+                    contributions: {
+                        total: sortedContributions.reduce((sum, c) => sum + c.count, 0),
+                        data: sortedContributions
+                    }
+                });
+            }
+
+        } catch (err) {
+            console.error('Error fetching GitHub stats:', err);
+            setError(err instanceof Error ? err.message : "An error occurred while fetching GitHub data");
+        } finally {
+            setLoading(false);
+        }
+    }, [selectedYear]);
+
+    // Sayfa yüklendiğinde veri çek
+    useEffect(() => {
+        fetchAllContributions();
+    }, []);
+
+    // Katkılar yüklendiğinde stats'ı çek
+    useEffect(() => {
+        if (allContributions) {
+            fetchGitHubStats(allContributions);
+        }
+    }, [allContributions]);
+
+    // Yıl değiştiğinde stats'ı güncelle
+    useEffect(() => {
+        if (allContributions && stats) {
+            const yearContributions = allContributions.contributions.filter(contribution => {
+                const contributionDate = new Date(contribution.date);
+                return contributionDate.getFullYear() === selectedYear;
+            });
+
+            const allDays = new Map<string, { count: number; level: ContributionLevel }>();
+            const startDate = new Date(selectedYear, 0, 1);
+            const endDate = new Date(selectedYear, 11, 31);
+
+            for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                const dateStr = d.toISOString().split('T')[0];
+                allDays.set(dateStr, { count: 0, level: 'NONE' });
+            }
+
+            yearContributions.forEach(contribution => {
+                allDays.set(contribution.date, {
+                    count: contribution.count,
+                    level: (contribution.count === 0 ? 'NONE' :
+                        contribution.count <= 3 ? 'LOW' :
+                            contribution.count <= 6 ? 'MEDIUM_LOW' :
+                                contribution.count <= 9 ? 'MEDIUM_HIGH' : 'HIGH') as ContributionLevel
+                });
+            });
+
+            const sortedContributions = Array.from(allDays.entries())
+                .map(([date, data]) => ({
+                    date,
+                    count: data.count,
+                    level: data.level
+                }))
+                .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+            setStats(prev => prev ? {
+                ...prev,
+                contributions: {
+                    total: sortedContributions.reduce((sum, c) => sum + c.count, 0),
+                    data: sortedContributions
+                }
+            } : null);
+        }
     }, [selectedYear, allContributions]);
 
     const chartData = {
@@ -272,25 +391,43 @@ const Statistics = () => {
         }
     };
 
+    // Eğer henüz görünür değilse skeleton göster
     if (loading) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
-            </div>
-        );
+        return <StatisticsSkeleton />;
     }
 
+    // Error durumunda
     if (error) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="text-red-500 text-xl max-w-2xl text-center p-4">
-                    <p className="mb-4">Error: {error}</p>
-                    <p className="text-sm text-gray-400">
-                        Please check your GitHub token and make sure it has the necessary permissions.
-                        Required permissions: repo, read:user
-                    </p>
+            <section id="statistics" className="min-h-screen py-20 bg-[#23234a] relative">
+                <img
+                    src={layeredWavesHero}
+                    alt="layered waves background"
+                    className="absolute bottom-0 left-0 w-full pointer-events-none select-none z-0 opacity-20"
+                    style={{ objectFit: 'cover', filter: 'blur(8px)', mixBlendMode: 'lighten' }}
+                />
+                <div className="container mx-auto px-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="text-4xl font-bold text-white mb-4">Statistics & Highlights</h2>
+                        <p className="text-gray-400">A glimpse into my coding journey and achievements</p>
+                    </motion.div>
+                    
+                    <div className="flex items-center justify-center min-h-[400px]">
+                        <div className="text-red-500 text-xl max-w-2xl text-center p-4">
+                            <p className="mb-4">Error: {error}</p>
+                            <p className="text-sm text-gray-400">
+                                Please check your GitHub token and make sure it has the necessary permissions.
+                                Required permissions: repo, read:user
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
         );
     }
 
