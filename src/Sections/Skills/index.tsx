@@ -4,6 +4,7 @@ import { FaCode, FaServer, FaDatabase, FaTools, FaCloud, FaJava, FaAws } from "r
 import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVsco, SiQuarkus, SiApachekafka, SiRabbitmq, SiVim, SiLinux, SiUbuntu } from "react-icons/si";
 import { BsLightbulb, BsPeople, BsChatDots, BsLightningCharge, BsCheckCircle, BsBook, BsRocketTakeoff, BsGraphUp, BsClock, BsHeart } from "react-icons/bs";
 import { useState, useEffect } from "react";
+import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
 import circleScatterHaikeiCertificates from "../../Assets/wallpapers/circle-scatter-haikei-certificates.svg";
 
 const softSkills = [
@@ -152,8 +153,14 @@ const Skills = () => {
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+                    viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                    transition={{ 
+                        delay: 0.2, 
+                        type: "spring", 
+                        stiffness: 120,
+                        damping: 20,
+                        ease: "easeOut"
+                    }}
                     className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-10 tracking-wide"
                 >
                     Technical Skills
@@ -214,8 +221,14 @@ const Skills = () => {
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+                    viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                    transition={{ 
+                        delay: 0.2, 
+                        type: "spring", 
+                        stiffness: 120,
+                        damping: 20,
+                        ease: "easeOut"
+                    }}
                     className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-10 mt-20 tracking-wide"
                 >
                     Soft Skills

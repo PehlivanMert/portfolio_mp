@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt, FaBookOpen } from "react-icons/fa";
 import "./styles.css";
+import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
 import waveHaikeiProjects from "../../Assets/wallpapers/wave-haikei-projects.svg";
 import { projectsData } from "../../Data/index";
 import { useState } from "react";
@@ -14,6 +15,13 @@ const Projects = () => {
   const filteredProjects = activeCategory === "all"
     ? projectsData
     : projectsData.filter(project => project.category === activeCategory);
+
+  const { ref: projectsRef, isVisible, getItemVariants } = useStaggerAnimation(filteredProjects.length, {
+    direction: 'up',
+    distance: 30,
+    duration: 0.7,
+    baseDelay: 0.1
+  });
 
   const categories = [
     { id: "all", name: "All Projects" },
@@ -62,8 +70,14 @@ const Projects = () => {
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+          transition={{ 
+            delay: 0.2, 
+            type: "spring", 
+            stiffness: 120,
+            damping: 20,
+            ease: "easeOut"
+          }}
           className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-10 tracking-wide"
         >
           Projects
@@ -85,15 +99,18 @@ const Projects = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
+        <div ref={projectsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="bg-[#23234a]/80 rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 flex flex-col h-full"
+              variants={getItemVariants(index)}
+              initial="hidden"
+              animate={isVisible ? "visible" : "hidden"}
+              whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+              className="bg-[#23234a]/80 rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 flex flex-col h-full hover-lift"
             >
               <div className="relative h-48 overflow-hidden">
                 <img

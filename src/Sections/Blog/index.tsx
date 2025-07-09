@@ -111,8 +111,14 @@ export const Blog = () => {
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
+          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+          transition={{ 
+            delay: 0.2, 
+            type: "spring", 
+            stiffness: 120,
+            damping: 20,
+            ease: "easeOut"
+          }}
           className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-10 tracking-wide"
         >
           My Blog Posts
@@ -121,8 +127,14 @@ export const Blog = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+          viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+          transition={{ 
+            delay: 0.3,
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+            ease: "easeOut"
+          }}
           className="text-gray-400 text-center max-w-2xl mx-auto mb-16"
         >
           Here you can find my blog posts where I share my experiences and thoughts in the software world.
@@ -145,9 +157,19 @@ export const Blog = () => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 + index * 0.1 }}
-                className="bg-[#23234a]/80 rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
+                viewport={{ once: true, margin: "0px 0px -30px 0px" }}
+                transition={{ 
+                  delay: 0.4 + index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20,
+                  ease: "easeOut"
+                }}
+                whileHover={{ 
+                  scale: 1.02,
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-[#23234a]/80 rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 hover-lift"
               >
                 {post.image && (
                   <div className="relative h-48 overflow-hidden">
