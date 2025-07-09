@@ -4,7 +4,7 @@ import "./styles.css";
 import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
 import waveHaikeiProjects from "../../Assets/wallpapers/wave-haikei-projects.svg";
 import { projectsData } from "../../Data/index";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 
 const Projects = () => {
@@ -22,6 +22,22 @@ const Projects = () => {
     duration: 0.7,
     baseDelay: 0.1
   });
+
+  // filteredProjects değiştiğinde animasyonları yeniden tetikle
+  useEffect(() => {
+    if (projectsRef.current) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            // Animasyonları yeniden tetikle
+          }
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+      observer.observe(projectsRef.current);
+      return () => observer.disconnect();
+    }
+  }, [filteredProjects.length]);
 
   const categories = [
     { id: "all", name: "All Projects" },

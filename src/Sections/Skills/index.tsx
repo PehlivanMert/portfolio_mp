@@ -4,6 +4,7 @@ import { FaCode, FaServer, FaDatabase, FaTools, FaCloud, FaJava, FaAws } from "r
 import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVsco, SiQuarkus, SiApachekafka, SiRabbitmq, SiVim, SiLinux, SiUbuntu } from "react-icons/si";
 import { BsLightbulb, BsPeople, BsChatDots, BsLightningCharge, BsCheckCircle, BsBook, BsRocketTakeoff, BsGraphUp, BsClock, BsHeart } from "react-icons/bs";
 import { useState, useEffect } from "react";
+import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
 import circleScatterHaikeiCertificates from "../../Assets/wallpapers/circle-scatter-haikei-certificates.svg";
 
 const softSkills = [
@@ -121,6 +122,22 @@ const Skills = () => {
         ? skills
         : skills.filter(skill => skill.category === activeCategory);
 
+    // Technical Skills için stagger animation
+    const { ref: technicalSkillsRef, isVisible: technicalSkillsVisible, getItemVariants: getTechnicalSkillsVariants } = useStaggerAnimation(filteredSkills.length, {
+        direction: 'up',
+        distance: 30,
+        duration: 0.6,
+        baseDelay: 0.1
+    });
+
+    // Soft Skills için stagger animation
+    const { ref: softSkillsRef, isVisible: softSkillsVisible, getItemVariants: getSoftSkillsVariants } = useStaggerAnimation(softSkills.length, {
+        direction: 'up',
+        distance: 25,
+        duration: 0.5,
+        baseDelay: 0.08
+    });
+
     return (
         <section id="skills" className="min-h-screen py-20 bg-[#23234a] relative">
             {/* Animated background particles */}
@@ -167,12 +184,11 @@ const Skills = () => {
 
                 {/* Category Filter */}
                 <div className="flex flex-wrap justify-center gap-4 mb-12">
-
                     {categories.map((category) => (
                         <button
                             key={category.id}
                             onClick={() => setActiveCategory(category.id)}
-                            className={`px-6 py-2 rounded-full text-sm f    ont-medium transition-all duration-300 ${activeCategory === category.id
+                            className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category.id
                                 ? "bg-blue-500 text-white"
                                 : "bg-blue-500/10 text-blue-400 hover:bg-blue-500/20"
                                 }`}
@@ -182,14 +198,14 @@ const Skills = () => {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredSkills.map((skillGroup) => (
+                <div ref={technicalSkillsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {filteredSkills.map((skillGroup, index) => (
                         <motion.div
                             key={skillGroup.name}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
+                            variants={getTechnicalSkillsVariants(index)}
+                            initial="hidden"
+                            animate={technicalSkillsVisible ? "visible" : "hidden"}
+                            whileHover={{ scale: 1.02 }}
                             className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 group"
                         >
                             <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#5A5EE6]/30">
@@ -233,14 +249,13 @@ const Skills = () => {
                     Soft Skills
                 </motion.h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                <div ref={softSkillsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                     {softSkills.map((skill, index) => (
                         <motion.div
                             key={skill.name}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 + index * 0.1 }}
+                            variants={getSoftSkillsVariants(index)}
+                            initial="hidden"
+                            animate={softSkillsVisible ? "visible" : "hidden"}
                             whileHover={{ scale: 1.05 }}
                             className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 group"
                         >

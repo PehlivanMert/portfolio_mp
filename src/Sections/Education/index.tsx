@@ -5,6 +5,7 @@ import { SiUdemy, SiLinkedin } from "react-icons/si";
 import { MdSchool } from "react-icons/md";
 import { useState } from "react";
 import circleScatterHaikeiCertificates from "../../Assets/wallpapers/circle-scatter-haikei-certificates.svg";
+import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
 
 const Education = () => {
     const [activeCategory, setActiveCategory] = useState("all");
@@ -53,18 +54,32 @@ const Education = () => {
         }
     };
 
+    // Education için stagger
+    const { ref: educationRef, isVisible: educationVisible, getItemVariants: getEducationVariants } = useStaggerAnimation(educationData.length, {
+        direction: 'up',
+        distance: 30,
+        duration: 0.6,
+        baseDelay: 0.1
+    });
+    // Certificates için stagger
+    const { ref: certificatesRef, isVisible: certificatesVisible, getItemVariants: getCertificatesVariants } = useStaggerAnimation(certificatesData.length, {
+        direction: 'up',
+        distance: 25,
+        duration: 0.5,
+        baseDelay: 0.08
+    });
+
     const renderContent = () => {
         switch (activeCategory) {
             case "education":
                 return (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {educationData.map((education) => (
+                    <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {educationData.map((education, index) => (
                             <motion.div
                                 key={education.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.4 }}
+                                variants={getEducationVariants(index)}
+                                initial="hidden"
+                                animate={educationVisible ? "visible" : "hidden"}
                                 className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                             >
                                 <div className="flex items-start gap-4">
@@ -106,14 +121,13 @@ const Education = () => {
                 );
             case "certificates":
                 return (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {certificatesData.map((certificate) => (
+                    <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {certificatesData.map((certificate, index) => (
                             <motion.div
                                 key={certificate.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.4 }}
+                                variants={getCertificatesVariants(index)}
+                                initial="hidden"
+                                animate={certificatesVisible ? "visible" : "hidden"}
                                 className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                             >
                                 <div className="flex items-start gap-4">
@@ -171,14 +185,13 @@ const Education = () => {
                                 <FaGraduationCap className="text-blue-400" />
                                 Education
                             </motion.h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {educationData.map((education) => (
+                            <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {educationData.map((education, index) => (
                                     <motion.div
                                         key={education.id}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.4 }}
+                                        variants={getEducationVariants(index)}
+                                        initial="hidden"
+                                        animate={educationVisible ? "visible" : "hidden"}
                                         className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                                     >
                                         <div className="flex items-start gap-4">
@@ -230,14 +243,13 @@ const Education = () => {
                                 <FaCertificate className="text-blue-400" />
                                 Certifications
                             </motion.h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {certificatesData.map((certificate) => (
+                            <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {certificatesData.map((certificate, index) => (
                                     <motion.div
                                         key={certificate.id}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.4 }}
+                                        variants={getCertificatesVariants(index)}
+                                        initial="hidden"
+                                        animate={certificatesVisible ? "visible" : "hidden"}
                                         className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                                     >
                                         <div className="flex items-start gap-4">
