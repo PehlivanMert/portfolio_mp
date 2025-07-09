@@ -91,7 +91,7 @@ function AboutMe() {
         >
           I am a passionate Java Developer with a proven track record in designing, developing, and deploying scalable and efficient software solutions. My expertise spans the entire software development lifecycle, from requirements analysis and architectural design to implementation, testing, and deployment. I have a strong foundation in Spring Boot, microservices architecture, and cloud technologies such as AWS, which enables me to build robust, maintainable, and high-performance applications. I am committed to following best practices in clean code, test-driven development, and continuous integration/continuous deployment (CI/CD). My goal is to deliver innovative solutions that not only meet business needs but also provide a seamless and reliable user experience. I thrive in collaborative environments and enjoy tackling complex challenges that drive real-world impact.
         </motion.p>
-        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div ref={containerRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}

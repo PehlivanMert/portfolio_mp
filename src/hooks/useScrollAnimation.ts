@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
 interface UseScrollAnimationOptions {
-  threshold?: number;
   rootMargin?: string;
   triggerOnce?: boolean;
   delay?: number;
   direction?: 'up' | 'down' | 'left' | 'right' | 'scale' | 'fade';
   distance?: number;
   duration?: number;
-  easing?: string;
   baseDelay?: number;
 }
 
@@ -34,19 +32,17 @@ interface AnimationVariants {
 
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   const {
-    threshold = 0.1,
     rootMargin = '0px 0px -50px 0px',
     triggerOnce = true,
     delay = 0,
     direction = 'up',
     distance = 50,
-    duration = 0.8,
-    easing = 'cubic-bezier(0.4, 0, 0.2, 1)'
+    duration = 0.8
   } = options;
 
   const [isVisible, setIsVisible] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   const getAnimationVariants = (): AnimationVariants => {
     const baseHidden = { opacity: 0 };
@@ -55,7 +51,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
       transition: {
         duration,
         delay,
-        ease: [0.4, 0, 0.2, 1] // Framer Motion array format
+        ease: [0.4, 0, 0.2, 1]
       }
     };
 
@@ -110,7 +106,6 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
         }
       },
       {
-        threshold,
         rootMargin
       }
     );
@@ -120,7 +115,7 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
     return () => {
       observer.unobserve(element);
     };
-  }, [threshold, rootMargin, triggerOnce]);
+  }, [rootMargin, triggerOnce]);
 
   return {
     ref: elementRef,
@@ -132,23 +127,21 @@ export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
 
 // Stagger animation hook for multiple elements
 export const useStaggerAnimation = (
-  count: number,
+  _count: number,
   options: UseScrollAnimationOptions = {}
 ) => {
   const {
-    threshold = 0.1,
     rootMargin = '0px 0px -50px 0px',
     triggerOnce = true,
     baseDelay = 0.1,
     direction = 'up',
     distance = 30,
-    duration = 0.6,
-    easing = 'cubic-bezier(0.4, 0, 0.2, 1)'
+    duration = 0.6
   } = options;
 
   const [isVisible, setIsVisible] = useState(false);
   const [hasTriggered, setHasTriggered] = useState(false);
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const getStaggerVariants = (index: number) => {
     const baseHidden = { opacity: 0 };
@@ -157,7 +150,7 @@ export const useStaggerAnimation = (
       transition: {
         duration,
         delay: baseDelay * index,
-        ease: [0.4, 0, 0.2, 1] // Framer Motion array format
+        ease: [0.4, 0, 0.2, 1]
       }
     };
 
@@ -211,7 +204,6 @@ export const useStaggerAnimation = (
         }
       },
       {
-        threshold,
         rootMargin
       }
     );
@@ -221,7 +213,7 @@ export const useStaggerAnimation = (
     return () => {
       observer.unobserve(element);
     };
-  }, [threshold, rootMargin, triggerOnce]);
+  }, [rootMargin, triggerOnce]);
 
   const getItemVariants = (index: number) => getStaggerVariants(index);
 

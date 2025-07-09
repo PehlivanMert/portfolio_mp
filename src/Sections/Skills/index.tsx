@@ -4,7 +4,6 @@ import { FaCode, FaServer, FaDatabase, FaTools, FaCloud, FaJava, FaAws } from "r
 import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVsco, SiQuarkus, SiApachekafka, SiRabbitmq, SiVim, SiLinux, SiUbuntu } from "react-icons/si";
 import { BsLightbulb, BsPeople, BsChatDots, BsLightningCharge, BsCheckCircle, BsBook, BsRocketTakeoff, BsGraphUp, BsClock, BsHeart } from "react-icons/bs";
 import { useState, useEffect } from "react";
-import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
 import circleScatterHaikeiCertificates from "../../Assets/wallpapers/circle-scatter-haikei-certificates.svg";
 
 const softSkills = [

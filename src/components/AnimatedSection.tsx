@@ -8,10 +8,8 @@ interface AnimatedSectionProps {
   distance?: number;
   delay?: number;
   duration?: number;
-  threshold?: number;
   rootMargin?: string;
   triggerOnce?: boolean;
-  as?: keyof JSX.IntrinsicElements;
 }
 
 const AnimatedSection: React.FC<AnimatedSectionProps> = ({
@@ -21,10 +19,8 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   distance = 50,
   delay = 0,
   duration = 0.8,
-  threshold = 0.1,
   rootMargin = '0px 0px -50px 0px',
-  triggerOnce = true,
-  as: Component = 'div'
+  triggerOnce = true
 }) => {
   const getVariants = () => {
     const baseHidden = { opacity: 0 };
@@ -72,10 +68,8 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     }
   };
 
-  const MotionComponent = motion[Component as keyof typeof motion] || motion.div;
-  
   return (
-    <MotionComponent
+    <motion.div
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -86,7 +80,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       variants={getVariants()}
     >
       {children}
-    </MotionComponent>
+    </motion.div>
   );
 };
 
@@ -98,7 +92,6 @@ interface StaggerContainerProps {
   direction?: 'up' | 'down' | 'left' | 'right' | 'scale' | 'fade';
   distance?: number;
   duration?: number;
-  threshold?: number;
   rootMargin?: string;
   triggerOnce?: boolean;
 }
@@ -110,7 +103,6 @@ const StaggerContainer: React.FC<StaggerContainerProps> = ({
   direction = 'up',
   distance = 30,
   duration = 0.6,
-  threshold = 0.1,
   rootMargin = '0px 0px -50px 0px',
   triggerOnce = true
 }) => {
@@ -146,7 +138,6 @@ const StaggerContainer: React.FC<StaggerContainerProps> = ({
       whileInView="visible"
       viewport={{ 
         once: triggerOnce, 
-        threshold,
         margin: rootMargin
       }}
       variants={containerVariants}
