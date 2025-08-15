@@ -164,7 +164,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 2.5 }}
           className="text-gray-400 max-w-2xl mx-auto mt-8 text-center"
         >
-          Passionate about building robust and scalable applications with Java. Specializing in backend development, database management, and system architecture.
+          As a dedicated professional committed to developing robust and scalable applications with Java, I specialize in backend development, database management, and system architecture. In each domain, I strive to deliver high-quality, impactful solutions that meet business needs and contribute to technological excellence.
         </motion.p>
       </div>
       {/* Alt arka plan SVG */}

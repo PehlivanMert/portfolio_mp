@@ -1,6 +1,27 @@
 export const projectsData = [
     {
         id: 1,
+        title: "Library Management System (Monolithic)",
+        description: "Modern and robust library management system built with Spring Boot 3.x. Complete solution for book management, user management, borrowing operations, and more.",
+        image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1590&q=80",
+        tags: ["Java 21", "Spring Boot 3.2.3", "PostgreSQL", "Redis", "Kafka", "Docker", "JWT", "Prometheus", "Grafana"],
+        category: "monolithic",
+        github: "https://github.com/PehlivanMert/library-management-system",
+        webapp: "https://github.com/PehlivanMert/library-management-system",
+        details: `A comprehensive Library Management System built with Spring Boot 3.x and Java 21. This project demonstrates modern backend development practices with a focus on security, performance, and scalability.
+
+The system provides complete book management functionality including adding, updating, and deleting books, along with advanced search and filtering capabilities. User management is handled through role-based access control, supporting both Librarian and Reader roles with secure JWT authentication and refresh token system.
+
+Key technical features include PostgreSQL for data persistence, Redis for caching, Apache Kafka for event-driven messaging, and comprehensive monitoring with Prometheus and Grafana. The application follows clean architecture principles with layered design including presentation, business, data, and security layers.
+
+Performance optimizations include EntityGraph for N+1 problem resolution, pagination for large datasets, and custom queries for optimal database performance. The system also includes email notifications, real-time metrics, security logging, and health checks.
+
+The project includes Docker support for easy deployment, comprehensive test coverage with JUnit 5 and Mockito, and detailed API documentation with OpenAPI/Swagger. Default credentials are provided for testing: Librarian (librarian@library.com/librarian123) and Reader (reader@reader.com/reader123).
+
+Service ports include Application (8080), PostgreSQL (5432), Redis (6379), Kafka (9092), Kafka UI (8090), Prometheus (9090), and Grafana (3000). The system is production-ready with monitoring dashboards, rate limiting, and comprehensive error handling.`,
+    },
+    {
+        id: 2,
         title: "Stay Healthy With Me",
         description: "Health tracking application. Developed with Firebase, Qwen AI, PWA, and multi-language support.",
         image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -14,7 +35,7 @@ Technologies: React, Firebase, Qwen AI, PWA
 Highlights: Routine and water tracking, exercise library, AI suggestions, responsive design.`,
     },
     {
-        id: 2,
+        id: 3,
         title: "Veterinary Management System",
         description: "Veterinary management system. Frontend and Backend developed separately.",
         image: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
@@ -28,7 +49,7 @@ Technologies: Spring Boot, React, PostgreSQL/MySQL
 Highlights: Full CRUD, live demo, easy to use.`,
     },
     {
-        id: 3,
+        id: 4,
         title: "AWS Microservices Projects",
         description: "Microservice projects developed using AWS Lambda, SQS, DynamoDB, and S3.",
         image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -42,32 +63,18 @@ Technologies: Spring Boot, PostgreSQL, LocalStack, Docker
 Highlights: SQS queue, Lambda function, REST API, easy Docker setup.`,
     },
     {
-        id: 4,
+        id: 5,
         title: "Library Management System (Microservices)",
         description: "Library management system. Developed with microservice architecture. Book, member, borrowing, and notification services developed separately.",
         image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1590&q=80",
         tags: ["Spring Boot", "Microservices", "Docker", "Kubernetes", "RabbitMQ", "PostgreSQL"],
         category: "microservices",
         github: "https://github.com/PehlivanMert/library-microservices",
-        webapp: "https://github.com/PehlivanMert/library-microservices",
+        webapp: "https://github.com/PehlivanMert/library-management-system",
         details: `Library management system with microservice architecture. Book and library operations are handled in separate services, with centralized configuration and monitoring.
 
 Technologies: Java 21, Spring Boot, Spring Cloud, Docker
 Highlights: Eureka, Config Server, Zipkin monitoring.`,
-    },
-    {
-        id: 5,
-        title: "Library Management System (Monolithic)",
-        description: "Library management system. Developed with monolithic architecture. Book, member, and borrowing operations in a single application.",
-        image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1590&q=80",
-        tags: ["Spring Boot", "MySQL", "Thymeleaf", "Bootstrap"],
-        category: "monolithic",
-        github: "https://github.com/PehlivanMert/library-management-system",
-        webapp: "https://github.com/PehlivanMert/library-management-system",
-        details: `Robust library management system with book, user, borrowing, and notification modules. Complete solution for modern libraries.
-
-Technologies: Java 21, Spring Boot, PostgreSQL, Redis, Kafka
-Highlights: Role-based access, email notifications, real-time monitoring.`,
     },
     {
         id: 6,
