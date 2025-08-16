@@ -73,21 +73,21 @@ const Education = () => {
         switch (activeCategory) {
             case "education":
                 return (
-                    <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         {educationData.map((education, index) => (
                             <motion.div
                                 key={education.id}
                                 variants={getEducationVariants(index)}
                                 initial="hidden"
                                 animate={educationVisible ? "visible" : "hidden"}
-                                className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
+                                className="bg-[#23234a]/80 rounded-2xl p-4 sm:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
                                         {getEducationIcon(education.organization)}
                                     </div>
                                     <div className="flex-1">
-                                        <h4 className="text-xl font-bold text-white mb-2">{education.title}</h4>
+                                        <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{education.title}</h4>
                                         <p className="text-gray-300 mb-2">{education.organization}</p>
                                         <p className="text-gray-400 text-sm mb-3">{education.date}</p>
                                         <p className="text-gray-300 text-sm mb-3">{education.description}</p>

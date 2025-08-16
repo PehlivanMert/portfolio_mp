@@ -198,7 +198,7 @@ const Skills = () => {
                     ))}
                 </div>
 
-                <div ref={technicalSkillsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div ref={technicalSkillsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {filteredSkills.map((skillGroup, index) => (
                         <motion.div
                             key={skillGroup.name}
@@ -206,25 +206,25 @@ const Skills = () => {
                             initial="hidden"
                             animate={technicalSkillsVisible ? "visible" : "hidden"}
                             whileHover={{ scale: 1.02 }}
-                            className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 group"
+                            className="bg-[#23234a]/80 rounded-2xl p-4 sm:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 group"
                         >
-                            <div className="flex items-center gap-3 mb-6 pb-4 border-b border-[#5A5EE6]/30">
-                                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-300">
+                            <div className="flex items-center gap-3 mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-[#5A5EE6]/30">
+                                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-300">
                                     {skillGroup.icon}
                                 </div>
-                                <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">{skillGroup.name}</h3>
+                                <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">{skillGroup.name}</h3>
                             </div>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-2 gap-3 sm:gap-4">
                                 {skillGroup.items.map((item) => (
                                     <motion.div
                                         key={item.name}
                                         whileHover={{ scale: 1.05 }}
-                                        className="flex items-center gap-3 p-3 rounded-xl bg-[#1a1a2e]/50 hover:bg-[#1a1a2e] transition-all duration-300 group/item"
+                                        className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl bg-[#1a1a2e]/50 hover:bg-[#1a1a2e] transition-all duration-300 group/item"
                                     >
-                                        <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover/item:bg-blue-500/20 transition-all duration-300">
+                                        <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-blue-500/10 flex items-center justify-center group-hover/item:bg-blue-500/20 transition-all duration-300">
                                             {item.icon}
                                         </div>
-                                        <span className="text-gray-300 group-hover/item:text-white transition-colors duration-300">{item.name}</span>
+                                        <span className="text-gray-300 text-sm sm:text-base group-hover/item:text-white transition-colors duration-300">{item.name}</span>
                                     </motion.div>
                                 ))}
                             </div>
@@ -244,12 +244,12 @@ const Skills = () => {
                         damping: 20,
                         ease: "easeOut"
                     }}
-                    className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-10 mt-20 tracking-wide"
+                    className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-8 sm:mb-10 mt-16 sm:mt-20 tracking-wide"
                 >
                     Soft Skills
                 </motion.h2>
 
-                <div ref={softSkillsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                <div ref={softSkillsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
                     {softSkills.map((skill, index) => (
                         <motion.div
                             key={skill.name}
@@ -257,17 +257,17 @@ const Skills = () => {
                             initial="hidden"
                             animate={softSkillsVisible ? "visible" : "hidden"}
                             whileHover={{ scale: 1.05 }}
-                            className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 group"
+                            className="bg-[#23234a]/80 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 group"
                         >
-                            <div className="flex flex-col items-center text-center gap-3">
-                                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-300">
+                            <div className="flex flex-col items-center text-center gap-1 sm:gap-2 md:gap-3">
+                                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-300">
                                     {React.createElement(skill.icon, {
-                                        className: "w-6 h-6 text-white group-hover:text-blue-400 transition-colors duration-300",
+                                        className: "w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white group-hover:text-blue-400 transition-colors duration-300",
                                         style: { color: skill.color }
                                     })}
                                 </div>
-                                <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300">{skill.name}</h3>
-                                <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">{skill.description}</p>
+                                <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300">{skill.name}</h3>
+                                <p className="text-gray-400 text-xs group-hover:text-gray-300 transition-colors duration-300 hidden sm:block">{skill.description}</p>
                             </div>
                         </motion.div>
                     ))}

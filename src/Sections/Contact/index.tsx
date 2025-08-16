@@ -87,11 +87,11 @@ const Contact = () => {
             damping: 20,
             ease: "easeOut"
           }}
-          className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-10 tracking-wide"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-8 sm:mb-10 tracking-wide"
         >
           Get In Touch
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -99,13 +99,13 @@ const Contact = () => {
             transition={{ delay: 0.3, type: "spring", stiffness: 120 }}
             className="space-y-8"
           >
-            <div className="bg-[#23234a]/80 rounded-2xl p-8 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300">
-              <h3 className="text-2xl font-bold text-white mb-6 tracking-wide">Contact Information</h3>
+            <div className="bg-[#23234a]/80 rounded-2xl p-6 sm:p-8 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 tracking-wide">Contact Information</h3>
               
               <div className="space-y-8">
 
                 {/* QR Codes Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 text-center">
                     
                     {/* Email Card */}
                     <motion.a 
@@ -113,11 +113,11 @@ const Contact = () => {
                         className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-300 h-full"
                         whileHover={{ y: -5 }}
                     >
-                        <FaEnvelope className="text-3xl text-blue-400" />
+                        <FaEnvelope className="text-2xl sm:text-3xl text-blue-400" />
                         <img 
                             src="/email-qr.png" 
                             alt="Email QR" 
-                            className="w-full max-w-[140px] aspect-square rounded-lg border-2 border-white/20" 
+                            className="w-full max-w-[120px] sm:max-w-[140px] aspect-square rounded-lg border-2 border-white/20" 
                         />
                     </motion.a>
     
@@ -129,19 +129,19 @@ const Contact = () => {
                         className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-300 h-full"
                         whileHover={{ y: -5 }}
                     >
-                        <FaTelegramPlane className="text-3xl text-sky-400" />
+                        <FaTelegramPlane className="text-2xl sm:text-3xl text-sky-400" />
                         <img 
                             src="/tg.jpeg" 
                             alt="Telegram QR" 
-                            className="w-full max-w-[200px] aspect-square rounded-lg border-2 border-white/20" 
+                            className="w-full max-w-[120px] sm:max-w-[200px] aspect-square rounded-lg border-2 border-white/20" 
                         />
                     </motion.a>
                 </div>
 
                 {/* Location */}
-                <div className="flex items-center justify-center gap-4 text-gray-300 pt-8 border-t border-white/10">
-                  <FaMapMarkerAlt className="text-2xl text-blue-400" />
-                  <span>Istanbul, Turkey</span>
+                <div className="flex items-center justify-center gap-3 sm:gap-4 text-gray-300 pt-6 sm:pt-8 border-t border-white/10">
+                  <FaMapMarkerAlt className="text-xl sm:text-2xl text-blue-400" />
+                  <span className="text-sm sm:text-base">Istanbul, Turkey</span>
                 </div>
 
               </div>
@@ -154,38 +154,38 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.4, type: "spring", stiffness: 120 }}
           >
-            <form ref={form} onSubmit={handleSubmit} className="bg-[#23234a]/80 rounded-2xl p-8 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300">
-              <div className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-gray-300 mb-2">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="user_name"
-                    className="w-full px-4 py-3 bg-[#18181b] border border-[#5A5EE6]/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-gray-300 mb-2">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="user_email"
-                    className="w-full px-4 py-3 bg-[#18181b] border border-[#5A5EE6]/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-gray-300 mb-2">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    className="w-full px-4 py-3 bg-[#18181b] border border-[#5A5EE6]/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300"
-                    required
-                  ></textarea>
-                </div>
+            <form ref={form} onSubmit={handleSubmit} className="bg-[#23234a]/80 rounded-2xl p-6 sm:p-8 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300">
+                              <div className="space-y-4 sm:space-y-6">
+                  <div>
+                    <label htmlFor="name" className="block text-gray-300 mb-2 text-sm sm:text-base">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="user_name"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-[#18181b] border border-[#5A5EE6]/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                      required
+                    />
+                  </div>
+                                  <div>
+                    <label htmlFor="email" className="block text-gray-300 mb-2 text-sm sm:text-base">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="user_email"
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-[#18181b] border border-[#5A5EE6]/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                      required
+                    />
+                  </div>
+                                  <div>
+                    <label htmlFor="message" className="block text-gray-300 mb-2 text-sm sm:text-base">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      className="w-full px-3 sm:px-4 py-2.5 sm:py-3 bg-[#18181b] border border-[#5A5EE6]/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+                      required
+                    ></textarea>
+                  </div>
                 {submitStatus.type && (
                   <div className={`p-4 rounded-xl ${submitStatus.type === 'success'
                     ? 'bg-green-500/10 text-green-400 border border-green-500/30'
@@ -197,7 +197,7 @@ const Contact = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                   type="submit"
                   disabled={isSubmitting}
                 >
@@ -208,7 +208,7 @@ const Contact = () => {
                     </>
                   ) : (
                     <>
-                      <FaPaperPlane className="text-xl" />
+                      <FaPaperPlane className="text-lg sm:text-xl" />
                       <span>Send Message</span>
                     </>
                   )}

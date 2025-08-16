@@ -24,22 +24,22 @@ const StatisticsSkeleton = () => (
                 transition={{ duration: 0.5 }}
                 className="text-center mb-16"
             >
-                <h2 className="text-4xl font-bold text-white mb-4">Statistics & Highlights</h2>
-                <p className="text-gray-400">A glimpse into my coding journey and achievements</p>
+                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4">Statistics & Highlights</h2>
+                <p className="text-gray-400 text-sm sm:text-base">A glimpse into my coding journey and achievements</p>
             </motion.div>
 
             {/* Skeleton Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16">
                 {[1, 2, 3, 4].map((i) => (
                     <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 * i }}
-                        className="bg-[#23234a]/80 p-6 rounded-lg shadow-lg border border-[#5A5EE6]/30"
+                        className="bg-[#23234a]/80 p-4 sm:p-6 rounded-lg shadow-lg border border-[#5A5EE6]/30"
                     >
-                        <div className="flex items-center justify-center mb-4">
-                            <div className="w-12 h-12 bg-gray-600 rounded-full animate-pulse"></div>
+                        <div className="flex items-center justify-center mb-3 sm:mb-4">
+                            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-600 rounded-full animate-pulse"></div>
                         </div>
                         <div className="h-8 bg-gray-600 rounded mb-2 animate-pulse"></div>
                         <div className="h-4 bg-gray-700 rounded animate-pulse"></div>
@@ -52,7 +52,7 @@ const StatisticsSkeleton = () => (
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="bg-[#23234a]/80 p-8 rounded-lg shadow-lg border border-[#5A5EE6]/30 mb-48 sm:mb-64"
+                className="bg-[#23234a]/80 p-6 sm:p-8 rounded-lg shadow-lg border border-[#5A5EE6]/30 mb-32 sm:mb-48 md:mb-64"
             >
                 <div className="h-8 bg-gray-600 rounded mb-8 animate-pulse"></div>
                 <div className="h-[400px] bg-gray-700 rounded animate-pulse"></div>
@@ -413,8 +413,8 @@ const Statistics = () => {
                         transition={{ duration: 0.5 }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-4xl font-bold text-white mb-4">Statistics & Highlights</h2>
-                        <p className="text-gray-400">A glimpse into my coding journey and achievements</p>
+                        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4">Statistics & Highlights</h2>
+                        <p className="text-gray-400 text-sm sm:text-base">A glimpse into my coding journey and achievements</p>
                     </motion.div>
                     
                     <div className="flex items-center justify-center min-h-[400px]">
@@ -446,24 +446,24 @@ const Statistics = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl font-bold text-white mb-4">Statistics & Highlights</h2>
-                    <p className="text-gray-400">A glimpse into my coding journey and achievements</p>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3 sm:mb-4">Statistics & Highlights</h2>
+                    <p className="text-gray-400 text-sm sm:text-base">A glimpse into my coding journey and achievements</p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="bg-[#23234a]/80 p-6 rounded-lg shadow-lg border border-[#5A5EE6]/30"
+                        className="bg-[#23234a]/80 p-4 sm:p-6 rounded-lg shadow-lg border border-[#5A5EE6]/30"
                     >
-                        <div className="flex items-center justify-center mb-4">
-                            <FaCode className="text-4xl text-blue-400" />
+                        <div className="flex items-center justify-center mb-3 sm:mb-4">
+                            <FaCode className="text-3xl sm:text-4xl text-blue-400" />
                         </div>
-                        <h3 className="text-2xl font-bold text-white text-center mb-2">
+                        <h3 className="text-xl sm:text-2xl font-bold text-white text-center mb-2">
                             <CountUp end={stats?.totalLinesOfCode || 0} duration={2.5} separator="," />
                         </h3>
-                        <p className="text-gray-400 text-center">Lines of Code</p>
+                        <p className="text-gray-400 text-center text-sm sm:text-base">Lines of Code</p>
                     </motion.div>
 
                     <motion.div

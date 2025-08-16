@@ -143,7 +143,7 @@ const Hero = () => {
         <motion.div
           initial="hidden"
           animate="visible"
-          className="flex flex-wrap justify-center gap-6 mt-8"
+          className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mt-6 sm:mt-8"
         >
           {skills.map((skill, index) => (
             <motion.div
@@ -153,8 +153,8 @@ const Hero = () => {
               whileHover={{ scale: 1.1, rotate: 5 }}
               className="flex flex-col items-center space-y-2"
             >
-              <skill.icon className={`text-5xl ${skill.color}`} />
-              <span className="text-gray-300">{skill.name}</span>
+              <skill.icon className={`text-4xl sm:text-5xl ${skill.color}`} />
+              <span className="text-gray-300 text-sm sm:text-base">{skill.name}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -162,7 +162,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 2.5 }}
-          className="text-gray-400 max-w-2xl mx-auto mt-8 text-center"
+          className="text-gray-400 max-w-2xl mx-auto mt-6 sm:mt-8 text-center px-4"
         >
           As a dedicated professional committed to developing robust and scalable applications with Java, I specialize in backend development, database management, and system architecture. In each domain, I strive to deliver high-quality, impactful solutions that meet business needs and contribute to technological excellence.
         </motion.p>

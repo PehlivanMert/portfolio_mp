@@ -136,7 +136,7 @@ function AboutMe() {
             damping: 20,
             ease: "easeOut"
           }}
-          className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-10 tracking-wide"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-8 sm:mb-10 tracking-wide"
         >
           About Me
         </motion.h2>
@@ -184,10 +184,10 @@ function AboutMe() {
             damping: 20,
             ease: "easeOut"
           }}
-          className="text-gray-200 text-lg mb-16 max-w-2xl mx-auto text-center"
+          className="text-gray-200 text-base sm:text-lg mb-12 sm:mb-16 max-w-2xl mx-auto text-center px-4"
         >
    As a dedicated Java Developer who thrives on creating software, I build scalable, high-performance solutions that make a real difference. I’m at home in every stage of the development process—from analyzing requirements and designing architecture to coding, testing, and deployment. With deep expertise in Spring Boot, microservices, and cloud platforms like AWS, I develop robust, innovative applications that stand the test of time. I’m all in on writing clean code, embracing test-driven development, and leveraging CI/CD to deliver seamless user experiences. My goal? To craft solutions that not only meet business needs but also bring value and delight to users. I love collaborating with teams, tackling tough challenges, and turning ideas into reality. With a genuine enthusiasm for technology and a drive to always do better, I bring energy and impact to every project.     </motion.p>
-        <div ref={containerRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div ref={containerRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
@@ -199,11 +199,11 @@ function AboutMe() {
                 rotate: [0, 2, -2, 0],
                 transition: { duration: 0.3 }
               }}
-              className="bg-[#23234a]/80 rounded-2xl p-10 shadow-2xl hover:shadow-3xl transition-all duration-300 border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 flex flex-col items-center text-center gap-2 hover-lift"
+              className="bg-[#23234a]/80 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl hover:shadow-3xl transition-all duration-300 border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 flex flex-col items-center text-center gap-2 hover-lift"
             >
-              <feature.icon className="text-blue-400 text-5xl mb-4 drop-shadow-lg" />
-              <h3 className="text-2xl font-bold text-white mb-2 tracking-wide">{feature.title}</h3>
-              <p className="text-gray-300 text-base">{feature.description}</p>
+              <feature.icon className="text-blue-400 text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 drop-shadow-lg" />
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 tracking-wide">{feature.title}</h3>
+              <p className="text-gray-300 text-sm sm:text-base">{feature.description}</p>
             </motion.div>
           ))}
         </div>

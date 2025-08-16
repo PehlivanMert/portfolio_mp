@@ -119,7 +119,7 @@ export const Blog = () => {
             damping: 20,
             ease: "easeOut"
           }}
-          className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-10 tracking-wide"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-center mb-8 sm:mb-10 tracking-wide"
         >
           My Blog Posts
         </motion.h2>
@@ -135,12 +135,12 @@ export const Blog = () => {
             damping: 20,
             ease: "easeOut"
           }}
-          className="text-gray-400 text-center max-w-2xl mx-auto mb-16"
+          className="text-gray-400 text-center max-w-2xl mx-auto mb-12 sm:mb-16 px-4"
         >
           Here you can find my blog posts where I share my experiences and thoughts in the software world.
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {loading ? (
             <div className="col-span-full flex justify-center items-center py-20">
               <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
@@ -172,7 +172,7 @@ export const Blog = () => {
                 className="bg-[#23234a]/80 rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 hover-lift"
               >
                 {post.image && (
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-40 sm:h-48 overflow-hidden">
                     <img
                       src={post.image}
                       alt={post.title}
@@ -181,13 +181,13 @@ export const Blog = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                   </div>
                 )}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">{post.title}</h3>
-                  <div className="flex items-center gap-2 text-gray-400 text-sm mb-4">
-                    <FaCalendarAlt className="text-blue-400" />
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 line-clamp-2">{post.title}</h3>
+                  <div className="flex items-center gap-2 text-gray-400 text-sm mb-3 sm:mb-4">
+                    <FaCalendarAlt className="text-blue-400 text-sm" />
                     <span>{post.pubDate}</span>
                   </div>
-                  <p className="text-gray-300 text-sm mb-6 line-clamp-3 relative">
+                  <p className="text-gray-300 text-sm mb-4 sm:mb-6 line-clamp-3 relative">
                     {post.description}
                     <span className="absolute bottom-0 right-0 bg-gradient-to-l from-[#23234a]/80 to-transparent w-12 h-full"></span>
                   </p>
