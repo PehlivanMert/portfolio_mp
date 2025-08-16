@@ -147,10 +147,10 @@ function AboutMe() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isVideoInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto mb-8 sm:mb-12 px-4"
+          className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto mb-8 sm:mb-12 px-4"
         >
           {/* Video Container with responsive design */}
-          <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 backdrop-blur-sm" style={{ aspectRatio: '16/9' }}>
+          <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 backdrop-blur-sm min-h-[200px] sm:min-h-[250px]" style={{ aspectRatio: '16/9' }}>
             {/* Modern gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 pointer-events-none z-10" />
             {/* Animated border glow */}
@@ -163,6 +163,9 @@ function AboutMe() {
               muted
               playsInline
               controls={false}
+              onError={(e) => console.error('Video error:', e)}
+              onLoadStart={() => console.log('Video loading started')}
+              onLoadedData={() => console.log('Video loaded successfully')}
             >
               <source src="/PortfolyoVideo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
