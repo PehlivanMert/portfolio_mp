@@ -219,11 +219,7 @@ function AboutMe() {
                   controls={false}
                   preload="metadata"
                   crossOrigin="anonymous"
-                  style={{ 
-                    WebkitUserSelect: 'none',
-                    WebkitTouchCallout: 'none',
-                    WebkitTapHighlightColor: 'transparent'
-                  }}
+                  className="safari-video-fixes"
                 >
                   {/* WebM format (better compression, modern browsers) */}
                   <source src="/PortfolyoVideo.webm" type="video/webm; codecs=vp9,opus" />

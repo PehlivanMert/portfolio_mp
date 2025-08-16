@@ -1,4 +1,5 @@
 // Video Utilities for Safari Compatibility
+import './videoUtils.css';
 
 export interface VideoConfig {
   src: string;
@@ -53,10 +54,8 @@ export const applySafariVideoFixes = (videoElement: HTMLVideoElement): void => {
   videoElement.setAttribute('muted', 'true');
   videoElement.setAttribute('autoplay', 'true');
   
-  // Safari-specific styles
-  videoElement.style.webkitUserSelect = 'none';
-  videoElement.style.webkitTouchCallout = 'none';
-  videoElement.style.webkitTapHighlightColor = 'transparent';
+  // Add Safari-specific CSS class
+  videoElement.classList.add('safari-video-fixes');
   
   // Force video to load in Safari
   if (videoElement.readyState === 0) {

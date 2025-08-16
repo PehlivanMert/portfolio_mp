@@ -1,0 +1,9 @@
+/* Safari-specific video styles */
+.safari-video-fixes {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-callout: none;
+  tap-highlight-color: transparent;
+}
