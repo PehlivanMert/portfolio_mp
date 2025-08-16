@@ -249,7 +249,7 @@ const Skills = () => {
                     Soft Skills
                 </motion.h2>
 
-                <div ref={softSkillsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+                <div ref={softSkillsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-6">
                     {softSkills.map((skill, index) => (
                         <motion.div
                             key={skill.name}
@@ -257,12 +257,12 @@ const Skills = () => {
                             initial="hidden"
                             animate={softSkillsVisible ? "visible" : "hidden"}
                             whileHover={{ scale: 1.05 }}
-                            className="bg-[#23234a]/80 rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 group"
+                            className="bg-[#23234a]/80 rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 group"
                         >
                             <div className="flex flex-col items-center text-center gap-1 sm:gap-2 md:gap-3">
-                                <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-300">
+                                <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 rounded-md sm:rounded-lg md:rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-300">
                                     {React.createElement(skill.icon, {
-                                        className: "w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white group-hover:text-blue-400 transition-colors duration-300",
+                                        className: "w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white group-hover:text-blue-400 transition-colors duration-300",
                                         style: { color: skill.color }
                                     })}
                                 </div>

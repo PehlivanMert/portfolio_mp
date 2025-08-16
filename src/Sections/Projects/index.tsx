@@ -115,7 +115,7 @@ const Projects = () => {
           ))}
         </div>
 
-        <div ref={projectsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div ref={projectsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -128,7 +128,7 @@ const Projects = () => {
               }}
               className="bg-[#23234a]/80 rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300 flex flex-col h-full hover-lift"
             >
-              <div className="relative h-40 sm:h-48 overflow-hidden">
+              <div className="relative h-32 sm:h-40 md:h-48 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -136,9 +136,9 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               </div>
-              <div className="p-4 sm:p-6 flex flex-col flex-1">
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 text-sm mb-3 sm:mb-4">{project.description}</p>
+              <div className="p-3 sm:p-4 md:p-6 flex flex-col flex-1">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2">{project.title}</h3>
+                <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
                   {project.tags.map((tag, index) => (
                     <span

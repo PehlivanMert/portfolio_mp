@@ -9,6 +9,7 @@ import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
 
 const Education = () => {
     const [activeCategory, setActiveCategory] = useState("all");
+    const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
 
     const categories = [
         { id: "all", name: "All" },
@@ -31,6 +32,18 @@ const Education = () => {
             default:
                 return <FaGraduationCap className="w-6 h-6 text-blue-400" />;
         }
+    };
+
+    const toggleExpanded = (itemId: string) => {
+        setExpandedItems(prev => {
+            const newSet = new Set(prev);
+            if (newSet.has(itemId)) {
+                newSet.delete(itemId);
+            } else {
+                newSet.add(itemId);
+            }
+            return newSet;
+        });
     };
 
     const getCertificateIcon = (organization: string) => {
@@ -73,7 +86,7 @@ const Education = () => {
         switch (activeCategory) {
             case "education":
                 return (
-                    <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                    <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                         {educationData.map((education, index) => (
                             <motion.div
                                 key={education.id}
@@ -90,119 +103,20 @@ const Education = () => {
                                         <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{education.title}</h4>
                                         <p className="text-gray-300 mb-2">{education.organization}</p>
                                         <p className="text-gray-400 text-sm mb-3">{education.date}</p>
-                                        <p className="text-gray-300 text-sm mb-3">{education.description}</p>
-                                        {education.skills && (
-                                            <div className="flex flex-wrap gap-2">
-                                                {education.skills.map((skill, index) => (
-                                                    <span
-                                                        key={index}
-                                                        className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
-                                                    >
-                                                        {skill}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        )}
-                                        {education.certificate && (
-                                            <a
-                                                href={education.certificate}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-block mt-3 text-blue-400 hover:text-blue-300 transition-colors"
-                                            >
-                                                View Certificate
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                );
-            case "certificates":
-                return (
-                    <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {certificatesData.map((certificate, index) => (
-                            <motion.div
-                                key={certificate.id}
-                                variants={getCertificatesVariants(index)}
-                                initial="hidden"
-                                animate={certificatesVisible ? "visible" : "hidden"}
-                                className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
-                            >
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                                        {getCertificateIcon(certificate.organization)}
-                                    </div>
-                                    <div className="flex-1">
-                                        <h4 className="text-xl font-bold text-white mb-2">{certificate.title}</h4>
-                                        <p className="text-gray-300 mb-2">{certificate.organization}</p>
-                                        <p className="text-gray-400 text-sm mb-3">{certificate.date}</p>
-                                        {certificate.skills && (
-                                            <div className="flex flex-wrap gap-2">
-                                                {certificate.skills.map((skill, index) => (
-                                                    <span
-                                                        key={index}
-                                                        className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
-                                                    >
-                                                        {skill}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        )}
-                                        {certificate.certificateId && (
-                                            <p className="text-gray-400 text-sm mt-3">
-                                                Certificate ID: {certificate.certificateId}
-                                            </p>
-                                        )}
-                                        {certificate.certificate && (
-                                            <a
-                                                href={certificate.certificate}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-block mt-3 text-blue-400 hover:text-blue-300 transition-colors"
-                                            >
-                                                View Certificate
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                );
-            default:
-                return (
-                    <>
-                        <div className="mb-16">
-                            <motion.h3
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.3 }}
-                                className="text-2xl font-bold text-white mb-8 flex items-center gap-2"
-                            >
-                                <FaGraduationCap className="text-blue-400" />
-                                Education
-                            </motion.h3>
-                            <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                {educationData.map((education, index) => (
-                                    <motion.div
-                                        key={education.id}
-                                        variants={getEducationVariants(index)}
-                                        initial="hidden"
-                                        animate={educationVisible ? "visible" : "hidden"}
-                                        className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
-                                    >
-                                        <div className="flex items-start gap-4">
-                                            <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                                                {getEducationIcon(education.organization)}
-                                            </div>
-                                            <div className="flex-1">
-                                                <h4 className="text-xl font-bold text-white mb-2">{education.title}</h4>
-                                                <p className="text-gray-300 mb-2">{education.organization}</p>
-                                                <p className="text-gray-400 text-sm mb-3">{education.date}</p>
-                                                <p className="text-gray-300 text-sm mb-3">{education.description}</p>
+                                        
+                                        {/* Kısa açıklama - her zaman görünür */}
+                                        <p className="text-gray-300 text-sm mb-3">
+                                            {expandedItems.has(education.id) 
+                                                ? education.description 
+                                                : education.description.length > 100 
+                                                    ? `${education.description.substring(0, 100)}...` 
+                                                    : education.description
+                                            }
+                                        </p>
+                                        
+                                        {/* Skills ve Certificate - sadece genişletildiğinde görünür */}
+                                        {(expandedItems.has(education.id) || education.description.length <= 100) && (
+                                            <>
                                                 {education.skills && (
                                                     <div className="flex flex-wrap gap-2">
                                                         {education.skills.map((skill, index) => (
@@ -225,41 +139,49 @@ const Education = () => {
                                                         View Certificate
                                                     </a>
                                                 )}
+                                            </>
+                                        )}
+                                        
+                                        {/* Toggle butonu - sadece uzun açıklamalar için */}
+                                        {education.description.length > 100 && (
+                                            <div className="flex justify-end mt-2">
+                                                <button
+                                                    onClick={() => toggleExpanded(education.id)}
+                                                    className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                                                >
+                                                    {expandedItems.has(education.id) ? 'Show Less' : 'Show More'}
+                                                </button>
                                             </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div>
-                            <motion.h3
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.3 }}
-                                className="text-2xl font-bold text-white mb-8 flex items-center gap-2"
+                                        )}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                );
+            case "certificates":
+                return (
+                    <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                        {certificatesData.map((certificate, index) => (
+                            <motion.div
+                                key={certificate.id}
+                                variants={getCertificatesVariants(index)}
+                                initial="hidden"
+                                animate={certificatesVisible ? "visible" : "hidden"}
+                                className="bg-[#23234a]/80 rounded-2xl p-4 sm:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                             >
-                                <FaCertificate className="text-blue-400" />
-                                Certifications
-                            </motion.h3>
-                            <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {certificatesData.map((certificate, index) => (
-                                    <motion.div
-                                        key={certificate.id}
-                                        variants={getCertificatesVariants(index)}
-                                        initial="hidden"
-                                        animate={certificatesVisible ? "visible" : "hidden"}
-                                        className="bg-[#23234a]/80 rounded-2xl p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
-                                    >
-                                        <div className="flex items-start gap-4">
-                                            <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                                                {getCertificateIcon(certificate.organization)}
-                                            </div>
-                                            <div className="flex-1">
-                                                <h4 className="text-xl font-bold text-white mb-2">{certificate.title}</h4>
-                                                <p className="text-gray-300 mb-2">{certificate.organization}</p>
-                                                <p className="text-gray-400 text-sm mb-3">{certificate.date}</p>
+                                <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                        {getCertificateIcon(certificate.organization)}
+                                    </div>
+                                    <div className="flex-1">
+                                        <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{certificate.title}</h4>
+                                        <p className="text-gray-300 mb-2">{certificate.organization}</p>
+                                        <p className="text-gray-400 text-sm mb-3">{certificate.date}</p>
+                                        
+                                        {/* Skills, Certificate ID ve Certificate Link - sadece genişletildiğinde görünür */}
+                                        {expandedItems.has(certificate.id) && (
+                                            <>
                                                 {certificate.skills && (
                                                     <div className="flex flex-wrap gap-2">
                                                         {certificate.skills.map((skill, index) => (
@@ -287,6 +209,183 @@ const Education = () => {
                                                         View Certificate
                                                     </a>
                                                 )}
+                                            </>
+                                        )}
+                                        
+                                        {/* Toggle butonu - her zaman görünür */}
+                                        <div className="flex justify-end mt-2">
+                                            <button
+                                                onClick={() => toggleExpanded(certificate.id)}
+                                                className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                                            >
+                                                {expandedItems.has(certificate.id) ? 'Show Less' : 'Show More'}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                );
+            default:
+                return (
+                    <>
+                        <div className="mb-16">
+                            <motion.h3
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.3 }}
+                                className="text-2xl font-bold text-white mb-8 flex items-center gap-2"
+                            >
+                                <FaGraduationCap className="text-blue-400" />
+                                Education
+                            </motion.h3>
+                            <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                {educationData.map((education, index) => (
+                                    <motion.div
+                                        key={education.id}
+                                        variants={getEducationVariants(index)}
+                                        initial="hidden"
+                                        animate={educationVisible ? "visible" : "hidden"}
+                                        className="bg-[#23234a]/80 rounded-2xl p-4 sm:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
+                                    >
+                                        <div className="flex items-start gap-4">
+                                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                                {getEducationIcon(education.organization)}
+                                            </div>
+                                            <div className="flex-1">
+                                                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{education.title}</h4>
+                                                <p className="text-gray-300 mb-2">{education.organization}</p>
+                                                <p className="text-gray-400 text-sm mb-3">{education.date}</p>
+                                                
+                                                {/* Kısa açıklama - her zaman görünür */}
+                                                <p className="text-gray-300 text-sm mb-3">
+                                                    {expandedItems.has(education.id) 
+                                                        ? education.description 
+                                                        : education.description.length > 100 
+                                                            ? `${education.description.substring(0, 100)}...` 
+                                                            : education.description
+                                                    }
+                                                </p>
+                                                
+                                                {/* Skills ve Certificate - sadece genişletildiğinde görünür */}
+                                                {(expandedItems.has(education.id) || education.description.length <= 100) && (
+                                                    <>
+                                                        {education.skills && (
+                                                            <div className="flex flex-wrap gap-2">
+                                                                {education.skills.map((skill, index) => (
+                                                                    <span
+                                                                        key={index}
+                                                                        className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
+                                                                    >
+                                                                        {skill}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                        {education.certificate && (
+                                                            <a
+                                                                href={education.certificate}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="inline-block mt-3 text-blue-400 hover:text-blue-300 transition-colors"
+                                                            >
+                                                                View Certificate
+                                                            </a>
+                                                        )}
+                                                    </>
+                                                )}
+                                                
+                                                {/* Toggle butonu - sadece uzun açıklamalar için */}
+                                                {education.description.length > 100 && (
+                                                    <div className="flex justify-end mt-2">
+                                                        <button
+                                                            onClick={() => toggleExpanded(education.id)}
+                                                            className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                                                        >
+                                                            {expandedItems.has(education.id) ? 'Show Less' : 'Show More'}
+                                                        </button>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div>
+                            <motion.h3
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.3 }}
+                                className="text-2xl font-bold text-white mb-8 flex items-center gap-2"
+                            >
+                                <FaCertificate className="text-blue-400" />
+                                Certifications
+                            </motion.h3>
+                            <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                                {certificatesData.map((certificate, index) => (
+                                    <motion.div
+                                        key={certificate.id}
+                                        variants={getCertificatesVariants(index)}
+                                        initial="hidden"
+                                        animate={certificatesVisible ? "visible" : "hidden"}
+                                        className="bg-[#23234a]/80 rounded-2xl p-4 sm:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
+                                    >
+                                        <div className="flex items-start gap-4">
+                                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                                {getCertificateIcon(certificate.organization)}
+                                            </div>
+                                            <div className="flex-1">
+                                                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{certificate.title}</h4>
+                                                <p className="text-gray-300 mb-2">{certificate.organization}</p>
+                                                <p className="text-gray-400 text-sm mb-3">{certificate.date}</p>
+                                                
+                                                {/* Skills, Certificate ID ve Certificate Link - sadece genişletildiğinde görünür */}
+                                                {expandedItems.has(certificate.id) && (
+                                                    <>
+                                                        {certificate.skills && (
+                                                            <div className="flex flex-wrap gap-2">
+                                                                {certificate.skills.map((skill, index) => (
+                                                                    <span
+                                                                        key={index}
+                                                                        className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
+                                                                    >
+                                                                        {skill}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                        {certificate.certificateId && (
+                                                            <p className="text-gray-400 text-sm mt-3">
+                                                                Certificate ID: {certificate.certificateId}
+                                                            </p>
+                                                        )}
+                                                        {certificate.certificate && (
+                                                            <a
+                                                                href={certificate.certificate}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="inline-block mt-3 text-blue-400 hover:text-blue-300 transition-colors"
+                                                            >
+                                                                View Certificate
+                                                            </a>
+                                                        )}
+                                                    </>
+                                                )}
+                                                
+                                                {/* Toggle butonu - her zaman görünür */}
+                                                <div className="flex justify-end mt-2">
+                                                    <button
+                                                        onClick={() => toggleExpanded(certificate.id)}
+                                                        className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                                                    >
+                                                        {expandedItems.has(certificate.id) ? 'Show Less' : 'Show More'}
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </motion.div>

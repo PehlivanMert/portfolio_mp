@@ -140,7 +140,7 @@ export const Blog = () => {
           Here you can find my blog posts where I share my experiences and thoughts in the software world.
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {loading ? (
             <div className="col-span-full flex justify-center items-center py-20">
               <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
