@@ -187,68 +187,70 @@ const Projects = () => {
         </div>
         {/* Modal */}
         {showModal && selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-            <div className="bg-[#23234a] rounded-2xl shadow-2xl max-w-2xl w-full p-8 relative border border-[#5A5EE6]/30 animate-fade-in">
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold"
-                aria-label="Close"
-              >
-                ×
-              </button>
-              <h2 className="text-2xl font-bold text-white mb-4">{selectedProject.title}</h2>
-              <div className="prose prose-invert max-w-none text-gray-200 mb-6" style={{ whiteSpace: 'pre-line' }}>
-                <ReactMarkdown>{selectedProject.details}</ReactMarkdown>
-              </div>
-              <div className="flex gap-4 mt-4">
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-lg"
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+            <div className="bg-[#23234a] rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative border border-[#5A5EE6]/30 animate-fade-in">
+              <div className="p-4 sm:p-6 lg:p-8">
+                <button
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold z-10"
+                  aria-label="Close"
                 >
-                  <FaGithub />
-                  <span>GitHub</span>
-                </a>
-                {selectedProject.webapp && selectedProject.webapp !== selectedProject.github && (
+                  ×
+                </button>
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 pr-8">{selectedProject.title}</h2>
+                <div className="prose prose-invert max-w-none text-gray-200 mb-6 text-sm sm:text-base leading-relaxed" style={{ whiteSpace: 'pre-line' }}>
+                  <ReactMarkdown>{selectedProject.details}</ReactMarkdown>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4 mt-4">
                   <a
-                    href={selectedProject.webapp}
+                    href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-lg"
+                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-base sm:text-lg"
                   >
-                    <FaExternalLinkAlt />
-                    <span>Live Demo</span>
+                    <FaGithub />
+                    <span>GitHub</span>
                   </a>
+                  {selectedProject.webapp && selectedProject.webapp !== selectedProject.github && (
+                    <a
+                      href={selectedProject.webapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-base sm:text-lg"
+                    >
+                      <FaExternalLinkAlt />
+                      <span>Live Demo</span>
+                    </a>
+                  )}
+                </div>
+                {selectedProject.title === "Redis Cache Example" ? (
+                  <div className="flex justify-end mt-6 sm:mt-8">
+                    <a
+                      href="https://github.com/PehlivanMert/redis-cache/blob/main/Readme.md"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="github-readme-btn flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-500 text-white rounded-full text-sm sm:text-base font-medium shadow-lg transition-all duration-300 relative overflow-hidden"
+                    >
+                      <FaBookOpen />
+                      <span>GitHub README</span>
+                      <span className="github-readme-glow" />
+                    </a>
+                  </div>
+                ) : (
+                  <div className="flex justify-end mt-6 sm:mt-8">
+                    <a
+                      href={selectedProject.github.replace(/(\.git)?$/, '/blob/main/README.md')}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="github-readme-btn flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-500 text-white rounded-full text-sm sm:text-base font-medium shadow-lg transition-all duration-300 relative overflow-hidden"
+                    >
+                      <FaBookOpen />
+                      <span>GitHub README</span>
+                      <span className="github-readme-glow" />
+                    </a>
+                  </div>
                 )}
               </div>
-              {selectedProject.title === "Redis Cache Example" ? (
-                <div className="flex justify-end mt-8">
-                  <a
-                    href="https://github.com/PehlivanMert/redis-cache/blob/main/Readme.md"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="github-readme-btn flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-full text-base font-medium shadow-lg transition-all duration-300 relative overflow-hidden"
-                  >
-                    <FaBookOpen />
-                    <span>GitHub README</span>
-                    <span className="github-readme-glow" />
-                  </a>
-                </div>
-              ) : (
-                <div className="flex justify-end mt-8">
-                  <a
-                    href={selectedProject.github.replace(/(\.git)?$/, '/blob/main/README.md')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="github-readme-btn flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-full text-base font-medium shadow-lg transition-all duration-300 relative overflow-hidden"
-                  >
-                    <FaBookOpen />
-                    <span>GitHub README</span>
-                    <span className="github-readme-glow" />
-                  </a>
-                </div>
-              )}
             </div>
           </div>
         )}
