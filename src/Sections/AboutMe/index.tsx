@@ -213,13 +213,12 @@ function AboutMe() {
               {!videoError ? (
                 <video
                   ref={videoElementRef}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover safari-video-fixes"
                   muted
                   playsInline
                   controls={false}
                   preload="metadata"
                   crossOrigin="anonymous"
-                  className="safari-video-fixes"
                 >
                   {/* WebM format (better compression, modern browsers) */}
                   <source src="/PortfolyoVideo.webm" type="video/webm; codecs=vp9,opus" />

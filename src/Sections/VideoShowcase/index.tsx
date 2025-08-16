@@ -100,7 +100,7 @@ const VideoShowcase = () => {
             {!videoError ? (
               <video
                 ref={videoRef}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover safari-video-fixes"
                 autoPlay
                 loop
                 muted
@@ -108,7 +108,6 @@ const VideoShowcase = () => {
                 controls={false}
                 preload="metadata"
                 crossOrigin="anonymous"
-                className="safari-video-fixes"
               >
                 {/* WebM format (better compression, modern browsers) */}
                 <source src="/PortfolyoVideo.webm" type="video/webm; codecs=vp9,opus" />
