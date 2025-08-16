@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { cacheManager } from "./utils/cacheManager";
 
 // App version - increment this when deploying updates
-const APP_VERSION = '2.0.0';
+const APP_VERSION = '2.0.2';
 
 function App() {
   useEffect(() => {
