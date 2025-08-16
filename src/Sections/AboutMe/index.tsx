@@ -1,9 +1,73 @@
 import { motion } from "framer-motion";
 import { FaCode, FaServer, FaDatabase, FaCloud } from "react-icons/fa";
 import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
+import { useInView } from "framer-motion";
+import { useRef, useEffect } from "react";
 import "./styles.css";
 
 function AboutMe() {
+  const videoRef = useRef(null);
+  const videoElementRef = useRef(null);
+  const isVideoInView = useInView(videoRef, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    const video = videoElementRef.current;
+    if (!video) return;
+
+    let isForward = true;
+    let animationId: number;
+    const speed = 0.033; // Original video speed (1/30 for 30fps equivalent)
+    let lastTime = 0;
+
+    const animate = (currentTime: number) => {
+      if (!video.duration) {
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
+
+      // Limit to 60 FPS for smoother performance
+      if (currentTime - lastTime < 16.67) { // 16.67ms = ~60 FPS
+        animationId = requestAnimationFrame(animate);
+        return;
+      }
+      lastTime = currentTime;
+
+      if (isForward) {
+        video.currentTime += speed;
+        if (video.currentTime >= video.duration) {
+          isForward = false;
+        }
+      } else {
+        video.currentTime -= speed;
+        if (video.currentTime <= 0) {
+          isForward = true;
+        }
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    const startAnimation = () => {
+      // Reset to beginning
+      video.currentTime = 0;
+      isForward = true;
+      
+      // Start animation
+      animate();
+    };
+
+    video.addEventListener('loadedmetadata', startAnimation);
+    
+    // Also restart when video becomes visible
+    if (isVideoInView) {
+      startAnimation();
+    }
+
+    return () => {
+      if (animationId) cancelAnimationFrame(animationId);
+    };
+  }, [isVideoInView]); // Add isVideoInView as dependency
+
   const features = [
     {
       icon: FaCode,
@@ -76,6 +140,33 @@ function AboutMe() {
         >
           About Me
         </motion.h2>
+
+        {/* Video Section */}
+        <motion.div
+          ref={videoRef}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isVideoInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto mb-12"
+        >
+          {/* Video Container with responsive design */}
+          <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30" style={{ aspectRatio: '16/9' }}>
+            <video
+              ref={videoElementRef}
+              className="w-full h-full object-cover"
+              muted
+              playsInline
+              controls={false}
+            >
+              <source src="/PortfolyoVideo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            
+            {/* Overlay gradient for better text visibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+          </div>
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
