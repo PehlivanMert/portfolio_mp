@@ -512,12 +512,12 @@ const Statistics = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    className="bg-[#23234a]/80 p-6 sm:p-8 rounded-lg shadow-lg border border-[#5A5EE6]/30 mb-48 sm:mb-56 md:mb-64"
+                    className="bg-[#23234a]/80 p-6 sm:p-8 rounded-lg shadow-lg border border-[#5A5EE6]/30 mb-56 sm:mb-64 md:mb-72"
                 >
                     <h3 className="text-2xl font-bold text-white text-center mb-8">Language Distribution</h3>
                     <div className="h-[400px] relative">
                         <Doughnut data={chartData} options={chartOptions} />
-                        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-8 mb-8 sm:mb-12">
+                        <div className={`flex flex-wrap justify-center gap-2 sm:gap-3 mt-8 ${stats?.languageBreakdown.length > 8 ? 'mb-20 sm:mb-24' : 'mb-16 sm:mb-20'}`}>
                             {stats?.languageBreakdown.map((entry, index) => (
                                 <motion.div
                                     key={entry.name}
