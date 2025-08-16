@@ -11,7 +11,7 @@ function AboutMe() {
   const isVideoInView = useInView(videoRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
-    const video = videoElementRef.current;
+    const video = videoElementRef.current as HTMLVideoElement | null;
     if (!video) return;
 
     let isForward = true;
@@ -53,7 +53,7 @@ function AboutMe() {
       isForward = true;
       
       // Start animation
-      animate();
+      animate(0);
     };
 
     video.addEventListener('loadedmetadata', startAnimation);
