@@ -150,7 +150,13 @@ function AboutMe() {
           className="relative max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto mb-12"
         >
           {/* Video Container with responsive design */}
-          <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30" style={{ aspectRatio: '16/9' }}>
+          <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 backdrop-blur-sm" style={{ aspectRatio: '16/9' }}>
+            {/* Modern gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 pointer-events-none z-10" />
+            {/* Animated border glow */}
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/50 via-purple-500/50 to-pink-500/50 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
+            {/* Inner glow effect */}
+            <div className="absolute inset-1 rounded-xl bg-gradient-to-br from-blue-400/5 via-purple-400/5 to-pink-400/5 pointer-events-none z-5" />
             <video
               ref={videoElementRef}
               className="w-full h-full object-cover"
