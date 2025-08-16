@@ -106,7 +106,7 @@ const Education = () => {
                                         
                                         {/* Kısa açıklama - her zaman görünür */}
                                         <p className="text-gray-300 text-sm mb-3">
-                                            {expandedItems.has(education.id) 
+                                            {expandedItems.has(education.id.toString()) 
                                                 ? education.description 
                                                 : education.description.length > 100 
                                                     ? `${education.description.substring(0, 100)}...` 
@@ -115,7 +115,7 @@ const Education = () => {
                                         </p>
                                         
                                         {/* Skills ve Certificate - sadece genişletildiğinde görünür */}
-                                        {(expandedItems.has(education.id) || education.description.length <= 100) && (
+                                        {(expandedItems.has(education.id.toString()) || education.description.length <= 100) && (
                                             <>
                                                 {education.skills && (
                                                     <div className="flex flex-wrap gap-2">
@@ -146,10 +146,10 @@ const Education = () => {
                                         {education.description.length > 100 && (
                                             <div className="flex justify-end mt-2">
                                                 <button
-                                                    onClick={() => toggleExpanded(education.id)}
+                                                    onClick={() => toggleExpanded(education.id.toString())}
                                                     className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
                                                 >
-                                                    {expandedItems.has(education.id) ? 'Show Less' : 'Show More'}
+                                                    {expandedItems.has(education.id.toString()) ? 'Show Less' : 'Show More'}
                                                 </button>
                                             </div>
                                         )}
@@ -180,7 +180,7 @@ const Education = () => {
                                         <p className="text-gray-400 text-sm mb-3">{certificate.date}</p>
                                         
                                         {/* Skills, Certificate ID ve Certificate Link - sadece genişletildiğinde görünür */}
-                                        {expandedItems.has(certificate.id) && (
+                                        {expandedItems.has(certificate.id.toString()) && (
                                             <>
                                                 {certificate.skills && (
                                                     <div className="flex flex-wrap gap-2">
@@ -215,10 +215,10 @@ const Education = () => {
                                         {/* Toggle butonu - her zaman görünür */}
                                         <div className="flex justify-end mt-2">
                                             <button
-                                                onClick={() => toggleExpanded(certificate.id)}
+                                                onClick={() => toggleExpanded(certificate.id.toString())}
                                                 className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
                                             >
-                                                {expandedItems.has(certificate.id) ? 'Show Less' : 'Show More'}
+                                                {expandedItems.has(certificate.id.toString()) ? 'Show Less' : 'Show More'}
                                             </button>
                                         </div>
                                     </div>
@@ -261,7 +261,7 @@ const Education = () => {
                                                 
                                                 {/* Kısa açıklama - her zaman görünür */}
                                                 <p className="text-gray-300 text-sm mb-3">
-                                                    {expandedItems.has(education.id) 
+                                                    {expandedItems.has(education.id.toString()) 
                                                         ? education.description 
                                                         : education.description.length > 100 
                                                             ? `${education.description.substring(0, 100)}...` 
@@ -270,7 +270,7 @@ const Education = () => {
                                                 </p>
                                                 
                                                 {/* Skills ve Certificate - sadece genişletildiğinde görünür */}
-                                                {(expandedItems.has(education.id) || education.description.length <= 100) && (
+                                                {(expandedItems.has(education.id.toString()) || education.description.length <= 100) && (
                                                     <>
                                                         {education.skills && (
                                                             <div className="flex flex-wrap gap-2">
@@ -301,10 +301,10 @@ const Education = () => {
                                                 {education.description.length > 100 && (
                                                     <div className="flex justify-end mt-2">
                                                         <button
-                                                            onClick={() => toggleExpanded(education.id)}
+                                                            onClick={() => toggleExpanded(education.id.toString())}
                                                             className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
                                                         >
-                                                            {expandedItems.has(education.id) ? 'Show Less' : 'Show More'}
+                                                            {expandedItems.has(education.id.toString()) ? 'Show Less' : 'Show More'}
                                                         </button>
                                                     </div>
                                                 )}
@@ -345,7 +345,7 @@ const Education = () => {
                                                 <p className="text-gray-400 text-sm mb-3">{certificate.date}</p>
                                                 
                                                 {/* Skills, Certificate ID ve Certificate Link - sadece genişletildiğinde görünür */}
-                                                {expandedItems.has(certificate.id) && (
+                                                {expandedItems.has(certificate.id.toString()) && (
                                                     <>
                                                         {certificate.skills && (
                                                             <div className="flex flex-wrap gap-2">
@@ -380,10 +380,10 @@ const Education = () => {
                                                 {/* Toggle butonu - her zaman görünür */}
                                                 <div className="flex justify-end mt-2">
                                                     <button
-                                                        onClick={() => toggleExpanded(certificate.id)}
+                                                        onClick={() => toggleExpanded(certificate.id.toString())}
                                                         className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
                                                     >
-                                                        {expandedItems.has(certificate.id) ? 'Show Less' : 'Show More'}
+                                                        {expandedItems.has(certificate.id.toString()) ? 'Show Less' : 'Show More'}
                                                     </button>
                                                 </div>
                                             </div>

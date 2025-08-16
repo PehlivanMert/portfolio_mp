@@ -517,7 +517,7 @@ const Statistics = () => {
                     <h3 className="text-2xl font-bold text-white text-center mb-8">Language Distribution</h3>
                     <div className="h-[400px] relative">
                         <Doughnut data={chartData} options={chartOptions} />
-                        <div className={`flex flex-wrap justify-center gap-2 sm:gap-3 mt-8 ${stats?.languageBreakdown.length > 8 ? 'mb-20 sm:mb-24' : 'mb-16 sm:mb-20'}`}>
+                        <div className={`flex flex-wrap justify-center gap-2 sm:gap-3 mt-8 ${(stats?.languageBreakdown?.length || 0) > 8 ? 'mb-20 sm:mb-24' : 'mb-16 sm:mb-20'}`}>
                             {stats?.languageBreakdown.map((entry, index) => (
                                 <motion.div
                                     key={entry.name}
