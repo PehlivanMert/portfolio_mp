@@ -147,7 +147,7 @@ function AboutMe() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isVideoInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto mb-12"
+          className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl mx-auto mb-8 sm:mb-12 px-4"
         >
           {/* Video Container with responsive design */}
           <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#5A5EE6]/30 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 backdrop-blur-sm" style={{ aspectRatio: '16/9' }}>

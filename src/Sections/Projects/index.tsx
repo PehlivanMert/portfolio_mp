@@ -187,26 +187,26 @@ const Projects = () => {
         </div>
         {/* Modal */}
         {showModal && selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-            <div className="bg-[#23234a] rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative border border-[#5A5EE6]/30 animate-fade-in">
-              <div className="p-4 sm:p-6 lg:p-8">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-2 sm:p-4">
+            <div className="bg-[#23234a] rounded-2xl shadow-2xl w-full max-w-4xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto relative border border-[#5A5EE6]/30 animate-fade-in">
+              <div className="p-3 sm:p-6 lg:p-8">
                 <button
                   onClick={closeModal}
-                  className="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold z-10"
+                  className="absolute top-2 right-2 sm:top-4 sm:right-4 text-gray-400 hover:text-white text-xl sm:text-2xl font-bold z-10 bg-[#23234a]/80 rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center"
                   aria-label="Close"
                 >
                   ×
                 </button>
-                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 pr-8">{selectedProject.title}</h2>
-                <div className="prose prose-invert max-w-none text-gray-200 mb-6 text-sm sm:text-base leading-relaxed" style={{ whiteSpace: 'pre-line' }}>
+                <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4 pr-8 sm:pr-12">{selectedProject.title}</h2>
+                <div className="prose prose-invert max-w-none text-gray-200 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed" style={{ whiteSpace: 'pre-line' }}>
                   <ReactMarkdown>{selectedProject.details}</ReactMarkdown>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-3 sm:mt-4">
                   <a
                     href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-base sm:text-lg"
+                    className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-sm sm:text-base"
                   >
                     <FaGithub />
                     <span>GitHub</span>
@@ -216,7 +216,7 @@ const Projects = () => {
                       href={selectedProject.webapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-base sm:text-lg"
+                      className="flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors text-sm sm:text-base"
                     >
                       <FaExternalLinkAlt />
                       <span>Live Demo</span>
@@ -224,7 +224,7 @@ const Projects = () => {
                   )}
                 </div>
                 {selectedProject.title === "Redis Cache Example" ? (
-                  <div className="flex justify-end mt-6 sm:mt-8">
+                  <div className="flex justify-end mt-4 sm:mt-8">
                     <a
                       href="https://github.com/PehlivanMert/redis-cache/blob/main/Readme.md"
                       target="_blank"
@@ -237,7 +237,7 @@ const Projects = () => {
                     </a>
                   </div>
                 ) : (
-                  <div className="flex justify-end mt-6 sm:mt-8">
+                  <div className="flex justify-end mt-4 sm:mt-8">
                     <a
                       href={selectedProject.github.replace(/(\.git)?$/, '/blob/main/README.md')}
                       target="_blank"
