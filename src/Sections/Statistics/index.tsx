@@ -29,7 +29,7 @@ const StatisticsSkeleton = () => (
             </motion.div>
 
             {/* Skeleton Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8 mb-12 sm:mb-16">
                 {[1, 2, 3, 4].map((i) => (
                     <motion.div
                         key={i}
@@ -450,7 +450,7 @@ const Statistics = () => {
                     <p className="text-gray-400 text-sm sm:text-base">A glimpse into my coding journey and achievements</p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16">
+                <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8 mb-12 sm:mb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}

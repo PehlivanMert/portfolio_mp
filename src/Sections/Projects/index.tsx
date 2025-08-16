@@ -115,7 +115,7 @@ const Projects = () => {
           ))}
         </div>
 
-        <div ref={projectsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div ref={projectsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -136,27 +136,27 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               </div>
-              <div className="p-3 sm:p-4 md:p-6 flex flex-col flex-1">
-                <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
+              <div className="p-2 sm:p-3 md:p-4 lg:p-6 flex flex-col flex-1">
+                <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white mb-1 sm:mb-2">{project.title}</h3>
+                <p className="text-gray-300 text-xs sm:text-sm mb-2 sm:mb-3 md:mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
                   {project.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-2 sm:px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs sm:text-sm"
+                      className="px-1 sm:px-2 md:px-3 py-0.5 sm:py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs sm:text-sm"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="flex gap-3 sm:gap-4 mb-3 sm:mb-4">
+                <div className="flex gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3 md:mb-4">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 sm:gap-2 text-blue-400 hover:text-blue-300 transition-colors text-sm sm:text-base"
+                    className="flex items-center gap-1 sm:gap-2 text-blue-400 hover:text-blue-300 transition-colors text-xs sm:text-sm md:text-base"
                   >
-                    <FaGithub className="text-sm sm:text-base" />
+                    <FaGithub className="text-xs sm:text-sm md:text-base" />
                     <span>GitHub</span>
                   </a>
                   {project.webapp && project.webapp !== project.github && (
@@ -164,20 +164,20 @@ const Projects = () => {
                       href={project.webapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1 sm:gap-2 text-blue-400 hover:text-blue-300 transition-colors text-sm sm:text-base"
+                      className="flex items-center gap-1 sm:gap-2 text-blue-400 hover:text-blue-300 transition-colors text-xs sm:text-sm md:text-base"
                     >
-                      <FaExternalLinkAlt className="text-sm sm:text-base" />
+                      <FaExternalLinkAlt className="text-xs sm:text-sm md:text-base" />
                       <span>Live Demo</span>
                     </a>
                   )}
                 </div>
                 <div className="flex-1" />
-                <div className="flex justify-end items-end mt-4 sm:mt-6">
+                <div className="flex justify-end items-end mt-3 sm:mt-4 md:mt-6">
                   <button
                     onClick={() => openModal(project)}
-                    className="group flex items-center gap-1 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 text-sm sm:text-base font-semibold tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+                    className="group flex items-center gap-1 sm:gap-2 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full shadow-lg hover:from-purple-500 hover:to-blue-500 transition-all duration-300 text-xs sm:text-sm md:text-base font-semibold tracking-wide focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
                   >
-                    <FaBookOpen className="text-sm sm:text-lg group-hover:scale-110 transition-transform duration-200" />
+                    <FaBookOpen className="text-xs sm:text-sm md:text-lg group-hover:scale-110 transition-transform duration-200" />
                     <span>Detail</span>
                   </button>
                 </div>

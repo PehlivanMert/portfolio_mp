@@ -86,14 +86,14 @@ const Education = () => {
         switch (activeCategory) {
             case "education":
                 return (
-                    <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                         {educationData.map((education, index) => (
                             <motion.div
                                 key={education.id}
                                 variants={getEducationVariants(index)}
                                 initial="hidden"
                                 animate={educationVisible ? "visible" : "hidden"}
-                                className="bg-[#23234a]/80 rounded-2xl p-4 sm:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
+                                className="bg-[#23234a]/80 rounded-2xl p-3 sm:p-4 md:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                             >
                                 <div className="flex items-start gap-4">
                                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
@@ -105,7 +105,7 @@ const Education = () => {
                                         <p className="text-gray-400 text-sm mb-3">{education.date}</p>
                                         
                                         {/* Kısa açıklama - her zaman görünür */}
-                                        <p className="text-gray-300 text-sm mb-3">
+                                        <p className="text-gray-300 text-xs sm:text-sm mb-2 sm:mb-3">
                                             {expandedItems.has(education.id.toString()) 
                                                 ? education.description 
                                                 : education.description.length > 100 
@@ -161,33 +161,33 @@ const Education = () => {
                 );
             case "certificates":
                 return (
-                    <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                         {certificatesData.map((certificate, index) => (
                             <motion.div
                                 key={certificate.id}
                                 variants={getCertificatesVariants(index)}
                                 initial="hidden"
                                 animate={certificatesVisible ? "visible" : "hidden"}
-                                className="bg-[#23234a]/80 rounded-2xl p-4 sm:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
+                                className="bg-[#23234a]/80 rounded-2xl p-3 sm:p-4 md:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                             >
-                                <div className="flex items-start gap-4">
-                                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                <div className="flex items-start gap-3 sm:gap-4">
+                                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
                                         {getCertificateIcon(certificate.organization)}
                                     </div>
                                     <div className="flex-1">
-                                        <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{certificate.title}</h4>
-                                        <p className="text-gray-300 mb-2">{certificate.organization}</p>
-                                        <p className="text-gray-400 text-sm mb-3">{certificate.date}</p>
+                                        <h4 className="text-sm sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-2">{certificate.title}</h4>
+                                        <p className="text-gray-300 text-sm sm:text-base mb-1 sm:mb-2">{certificate.organization}</p>
+                                        <p className="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3">{certificate.date}</p>
                                         
                                         {/* Skills, Certificate ID ve Certificate Link - sadece genişletildiğinde görünür */}
                                         {expandedItems.has(certificate.id.toString()) && (
                                             <>
                                                 {certificate.skills && (
-                                                    <div className="flex flex-wrap gap-2">
+                                                    <div className="flex flex-wrap gap-1 sm:gap-2">
                                                         {certificate.skills.map((skill, index) => (
                                                             <span
                                                                 key={index}
-                                                                className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
+                                                                className="px-1 sm:px-2 py-0.5 sm:py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
                                                             >
                                                                 {skill}
                                                             </span>
@@ -195,7 +195,7 @@ const Education = () => {
                                                     </div>
                                                 )}
                                                 {certificate.certificateId && (
-                                                    <p className="text-gray-400 text-sm mt-3">
+                                                    <p className="text-gray-400 text-xs sm:text-sm mt-2 sm:mt-3">
                                                         Certificate ID: {certificate.certificateId}
                                                     </p>
                                                 )}
@@ -204,7 +204,7 @@ const Education = () => {
                                                         href={certificate.certificate}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="inline-block mt-3 text-blue-400 hover:text-blue-300 transition-colors"
+                                                        className="inline-block mt-2 sm:mt-3 text-blue-400 hover:text-blue-300 transition-colors text-xs sm:text-sm"
                                                     >
                                                         View Certificate
                                                     </a>
@@ -216,7 +216,7 @@ const Education = () => {
                                         <div className="flex justify-end mt-2">
                                             <button
                                                 onClick={() => toggleExpanded(certificate.id.toString())}
-                                                className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                                                className="text-blue-400 hover:text-blue-300 transition-colors text-xs sm:text-sm"
                                             >
                                                 {expandedItems.has(certificate.id.toString()) ? 'Show Less' : 'Show More'}
                                             </button>
@@ -241,23 +241,23 @@ const Education = () => {
                                 <FaGraduationCap className="text-blue-400" />
                                 Education
                             </motion.h3>
-                            <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                            <div ref={educationRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                                 {educationData.map((education, index) => (
                                     <motion.div
                                         key={education.id}
                                         variants={getEducationVariants(index)}
                                         initial="hidden"
                                         animate={educationVisible ? "visible" : "hidden"}
-                                        className="bg-[#23234a]/80 rounded-2xl p-4 sm:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
+                                        className="bg-[#23234a]/80 rounded-2xl p-3 sm:p-4 md:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                                     >
-                                        <div className="flex items-start gap-4">
-                                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                        <div className="flex items-start gap-3 sm:gap-4">
+                                            <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
                                                 {getEducationIcon(education.organization)}
                                             </div>
                                             <div className="flex-1">
-                                                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{education.title}</h4>
-                                                <p className="text-gray-300 mb-2">{education.organization}</p>
-                                                <p className="text-gray-400 text-sm mb-3">{education.date}</p>
+                                                <h4 className="text-sm sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-2">{education.title}</h4>
+                                                <p className="text-gray-300 text-sm sm:text-base mb-1 sm:mb-2">{education.organization}</p>
+                                                <p className="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3">{education.date}</p>
                                                 
                                                 {/* Kısa açıklama - her zaman görünür */}
                                                 <p className="text-gray-300 text-sm mb-3">
@@ -326,33 +326,33 @@ const Education = () => {
                                 <FaCertificate className="text-blue-400" />
                                 Certifications
                             </motion.h3>
-                            <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                            <div ref={certificatesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-2 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                                 {certificatesData.map((certificate, index) => (
                                     <motion.div
                                         key={certificate.id}
                                         variants={getCertificatesVariants(index)}
                                         initial="hidden"
                                         animate={certificatesVisible ? "visible" : "hidden"}
-                                        className="bg-[#23234a]/80 rounded-2xl p-4 sm:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
+                                        className="bg-[#23234a]/80 rounded-2xl p-3 sm:p-4 md:p-6 shadow-2xl border border-[#5A5EE6]/30 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-purple-500/10 transition-all duration-300"
                                     >
-                                        <div className="flex items-start gap-4">
-                                            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                                        <div className="flex items-start gap-3 sm:gap-4">
+                                            <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
                                                 {getCertificateIcon(certificate.organization)}
                                             </div>
                                             <div className="flex-1">
-                                                <h4 className="text-lg sm:text-xl font-bold text-white mb-2">{certificate.title}</h4>
-                                                <p className="text-gray-300 mb-2">{certificate.organization}</p>
-                                                <p className="text-gray-400 text-sm mb-3">{certificate.date}</p>
+                                                <h4 className="text-sm sm:text-lg md:text-xl font-bold text-white mb-1 sm:mb-2">{certificate.title}</h4>
+                                                <p className="text-gray-300 text-sm sm:text-base mb-1 sm:mb-2">{certificate.organization}</p>
+                                                <p className="text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3">{certificate.date}</p>
                                                 
                                                 {/* Skills, Certificate ID ve Certificate Link - sadece genişletildiğinde görünür */}
                                                 {expandedItems.has(certificate.id.toString()) && (
                                                     <>
                                                         {certificate.skills && (
-                                                            <div className="flex flex-wrap gap-2">
+                                                            <div className="flex flex-wrap gap-1 sm:gap-2">
                                                                 {certificate.skills.map((skill, index) => (
                                                                     <span
                                                                         key={index}
-                                                                        className="px-2 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
+                                                                        className="px-1 sm:px-2 py-0.5 sm:py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs"
                                                                     >
                                                                         {skill}
                                                                     </span>
@@ -360,7 +360,7 @@ const Education = () => {
                                                             </div>
                                                         )}
                                                         {certificate.certificateId && (
-                                                            <p className="text-gray-400 text-sm mt-3">
+                                                            <p className="text-gray-400 text-xs sm:text-sm mt-2 sm:mt-3">
                                                                 Certificate ID: {certificate.certificateId}
                                                             </p>
                                                         )}
@@ -369,7 +369,7 @@ const Education = () => {
                                                                 href={certificate.certificate}
                                                                 target="_blank"
                                                                 rel="noopener noreferrer"
-                                                                className="inline-block mt-3 text-blue-400 hover:text-blue-300 transition-colors"
+                                                                className="inline-block mt-2 sm:mt-3 text-blue-400 hover:text-blue-300 transition-colors text-xs sm:text-sm"
                                                             >
                                                                 View Certificate
                                                             </a>
@@ -381,7 +381,7 @@ const Education = () => {
                                                 <div className="flex justify-end mt-2">
                                                     <button
                                                         onClick={() => toggleExpanded(certificate.id.toString())}
-                                                        className="text-blue-400 hover:text-blue-300 transition-colors text-sm"
+                                                        className="text-blue-400 hover:text-blue-300 transition-colors text-xs sm:text-sm"
                                                     >
                                                         {expandedItems.has(certificate.id.toString()) ? 'Show Less' : 'Show More'}
                                                     </button>

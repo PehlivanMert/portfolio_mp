@@ -140,7 +140,7 @@ export const Blog = () => {
           Here you can find my blog posts where I share my experiences and thoughts in the software world.
         </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {loading ? (
             <div className="col-span-full flex justify-center items-center py-20">
               <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
@@ -181,13 +181,13 @@ export const Blog = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                   </div>
                 )}
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 line-clamp-2">{post.title}</h3>
-                  <div className="flex items-center gap-2 text-gray-400 text-sm mb-3 sm:mb-4">
-                    <FaCalendarAlt className="text-blue-400 text-sm" />
+                <div className="p-3 sm:p-4 md:p-6">
+                  <h3 className="text-sm sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3 line-clamp-2">{post.title}</h3>
+                  <div className="flex items-center gap-1 sm:gap-2 text-gray-400 text-xs sm:text-sm mb-2 sm:mb-3 md:mb-4">
+                    <FaCalendarAlt className="text-blue-400 text-xs sm:text-sm" />
                     <span>{post.pubDate}</span>
                   </div>
-                  <p className="text-gray-300 text-sm mb-4 sm:mb-6 line-clamp-3 relative">
+                  <p className="text-gray-300 text-xs sm:text-sm mb-3 sm:mb-4 md:mb-6 line-clamp-3 relative">
                     {post.description}
                     <span className="absolute bottom-0 right-0 bg-gradient-to-l from-[#23234a]/80 to-transparent w-12 h-full"></span>
                   </p>
@@ -196,10 +196,10 @@ export const Blog = () => {
                       href={post.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors group font-medium"
+                      className="inline-flex items-center gap-1 sm:gap-2 text-blue-400 hover:text-blue-300 transition-colors group font-medium text-xs sm:text-sm"
                     >
                       <span>Read More</span>
-                      <FaArrowRight className="transform group-hover:translate-x-1 transition-transform" />
+                      <FaArrowRight className="transform group-hover:translate-x-1 transition-transform text-xs sm:text-sm" />
                     </a>
                   </div>
                 </div>
