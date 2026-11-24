@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FaCode, FaServer, FaDatabase, FaTools, FaCloud, FaJava, FaAws } from "react-icons/fa";
 import { SiSpring, SiSpringboot, SiJavascript, SiTypescript, SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiMysql, SiRedis, SiDocker, SiKubernetes, SiGithub, SiGitlab, SiJira, SiConfluence, SiPostman, SiSwagger, SiIntellijidea, SiEclipseide, SiVsco, SiQuarkus, SiApachekafka, SiRabbitmq, SiVim, SiLinux, SiUbuntu } from "react-icons/si";
 import { BsLightbulb, BsPeople, BsChatDots, BsLightningCharge, BsCheckCircle, BsBook, BsRocketTakeoff, BsGraphUp, BsClock, BsHeart } from "react-icons/bs";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useStaggerAnimation } from "../../hooks/useScrollAnimation";
 import circleScatterHaikeiCertificates from "../../Assets/wallpapers/circle-scatter-haikei-certificates.svg";
 
@@ -22,24 +22,6 @@ const softSkills = [
 
 const Skills = () => {
     const [activeCategory, setActiveCategory] = useState("all");
-    const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-
-    useEffect(() => {
-        setDimensions({
-            width: window.innerWidth,
-            height: window.innerHeight
-        });
-
-        const handleResize = () => {
-            setDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight
-            });
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     const categories = [
         { id: "all", name: "All Skills" },
@@ -140,31 +122,6 @@ const Skills = () => {
 
     return (
         <section id="skills" className="min-h-screen py-20 bg-[#23234a] relative">
-            {/* Animated background particles */}
-            <div className="absolute inset-0 overflow-hidden z-0">
-                {[...Array(18)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute w-2 h-2 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full opacity-30"
-                        initial={{
-                            x: Math.random() * dimensions.width,
-                            y: Math.random() * dimensions.height,
-                            scale: Math.random() * 0.7 + 0.3,
-                        }}
-                        animate={{
-                            y: [0, Math.random() * dimensions.height],
-                            opacity: [0.2, 0.5, 0.2],
-                        }}
-                        transition={{
-                            duration: Math.random() * 8 + 6,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: Math.random() * 2,
-                        }}
-                    />
-                ))}
-            </div>
-
             <div className="container mx-auto px-4 relative z-10">
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}

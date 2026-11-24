@@ -63,30 +63,6 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-b from-[#23234a] via-[#18181b] to-[#23234a] overflow-hidden">
-      {/* Animated background particles */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-30"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              scale: Math.random() * 0.7 + 0.3,
-            }}
-            animate={{
-              y: [0, Math.random() * window.innerHeight],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: Math.random() * 8 + 6,
-              repeat: Infinity,
-              ease: "linear",
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
       <div className="relative z-10 w-full flex flex-col justify-center items-center px-4">
         <motion.div
           initial="hidden"

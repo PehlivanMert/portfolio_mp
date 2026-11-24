@@ -399,31 +399,6 @@ const Education = () => {
 
     return (
         <section id="education" className="py-24 bg-gradient-to-b from-[#23234a] via-[#18181b] to-[#23234a] relative overflow-hidden">
-            {/* Animated background particles */}
-            <div className="absolute inset-0 overflow-hidden z-0">
-                {[...Array(18)].map((_, i) => (
-                    <motion.div
-                        key={i}
-                        className="absolute w-2 h-2 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full opacity-30"
-                        initial={{
-                            x: Math.random() * window.innerWidth,
-                            y: Math.random() * window.innerHeight,
-                            scale: Math.random() * 0.7 + 0.3,
-                        }}
-                        animate={{
-                            y: [0, Math.random() * window.innerHeight],
-                            opacity: [0.2, 0.5, 0.2],
-                        }}
-                        transition={{
-                            duration: Math.random() * 8 + 6,
-                            repeat: Infinity,
-                            ease: "linear",
-                            delay: Math.random() * 2,
-                        }}
-                    />
-                ))}
-            </div>
-
             <div className="container mx-auto px-4 relative z-10">
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
