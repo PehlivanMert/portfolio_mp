@@ -1,4 +1,5 @@
 import ParticleBackground from "./Components/ParticleBackground";
+import EcosystemShowcase from "./Components/EcosystemShowcase";
 import Contact from "./Sections/Contact";
 import Footer from "./Sections/Footer";
 import Hero from "./Sections/Hero";
@@ -55,6 +56,7 @@ function App() {
       <Navbar />
       <main className="pt-20">
         <Hero />
+        <EcosystemShowcase />
         <AboutMe />
         <Skills />
         <Projects />
