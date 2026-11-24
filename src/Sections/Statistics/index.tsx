@@ -82,6 +82,14 @@ const COLORS = [
 
 const GITHUB_USERNAME = "PehlivanMert";
 
+// Yerel saat dilimi sapmasını önleyen güvenli tarih formatlayıcı (YYYY-MM-DD)
+const formatLocalDate = (d: Date): string => {
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+};
+
 const DEFAULT_LANGUAGE_BREAKDOWN = [
     { name: 'Java', value: 46 },
     { name: 'TypeScript', value: 28 },
@@ -156,8 +164,7 @@ const Statistics = () => {
                 `https://github-contributions-api.jogruber.de/v4/${GITHUB_USERNAME}`,
                 {
                     headers: {
-                        'Accept': 'application/json',
-                        'User-Agent': 'portfolio-mp'
+                        'Accept': 'application/json'
                     }
                 }
             );
@@ -189,8 +196,7 @@ const Statistics = () => {
             try {
                 const userResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, {
                     headers: {
-                        'Accept': 'application/vnd.github.v3+json',
-                        'User-Agent': 'portfolio-mp'
+                        'Accept': 'application/vnd.github.v3+json'
                     }
                 });
 
@@ -221,7 +227,7 @@ const Statistics = () => {
 
             // Önce tüm günleri oluştur
             for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-                const dateStr = d.toISOString().split('T')[0];
+                const dateStr = formatLocalDate(d);
                 allDays.set(dateStr, { count: 0, level: 'NONE' });
             }
 
@@ -245,7 +251,7 @@ const Statistics = () => {
                 }))
                 .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
-            const totalContributions = sortedContributions.reduce((sum, c) => sum + c.count, 0) || 308;
+            const totalContributions = sortedContributions.reduce((sum, c) => sum + c.count, 0);
 
             setStats({
                 totalProjects,
@@ -297,7 +303,7 @@ const Statistics = () => {
             const endDate = new Date(selectedYear, 11, 31);
 
             for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-                const dateStr = d.toISOString().split('T')[0];
+                const dateStr = formatLocalDate(d);
                 allDays.set(dateStr, { count: 0, level: 'NONE' });
             }
 
@@ -629,7 +635,7 @@ const Statistics = () => {
 
                                         // Yılın tüm günlerini ekle
                                         for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
-                                            const dateStr = d.toISOString().split('T')[0];
+                                            const dateStr = formatLocalDate(d);
                                             const contribution = stats?.contributions.data.find(c => c.date === dateStr);
                                             days.push({
                                                 date: new Date(d),

@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 interface Particle {
   id: number;
@@ -11,6 +11,8 @@ interface Particle {
 }
 
 export const ParticleBackground = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const particles: Particle[] = useMemo(() => {
     return Array.from({ length: 28 }, (_, i) => ({
       id: i,
@@ -21,6 +23,10 @@ export const ParticleBackground = () => {
       opacity: Math.random() * 0.35 + 0.15,
     }));
   }, []);
+
+  if (shouldReduceMotion) {
+    return null;
+  }
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">

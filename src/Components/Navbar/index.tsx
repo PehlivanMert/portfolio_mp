@@ -20,7 +20,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "skills", "projects", "statistics", "education", "blog", "contact"];
+      const sections = ["ecosystem", "about", "skills", "projects", "statistics", "education", "blog", "contact"];
       sections.forEach(section => {
         const element = document.getElementById(section);
         if (element && element.getBoundingClientRect().top <= 100) {
@@ -33,6 +33,7 @@ const Navbar = () => {
   }, []);
 
   const links = [
+    { id: "ecosystem", label: "Ecosystem" },
     { id: "about", label: "About Me" },
     { id: "skills", label: "Technical Skills" },
     { id: "projects", label: "Projects" },
