@@ -38,9 +38,9 @@ function App() {
       <Navbar />
       <main className="pt-20">
         <Hero />
-        <EcosystemShowcase />
         <AboutMe />
         <Skills />
+        <EcosystemShowcase />
         <Projects />
         <Statistics />
         <Education />
