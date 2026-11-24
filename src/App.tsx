@@ -33,10 +33,16 @@ function App() {
   }, []);
 
   return (
-    <div className="App min-h-screen relative bg-white text-black">
+    <div className="App min-h-screen relative bg-[#18181b] text-white selection:bg-purple-500 selection:text-white">
+      {/* Fixed Cosmic Dark Gradient Background */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 bg-gradient-to-b from-[#23234a] via-[#18181b] to-[#23234a]" 
+        aria-hidden="true" 
+      />
+      {/* Gentle Snowfall Layer — in the background behind all content */}
       <ParticleBackground />
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-20 relative z-10">
         <Hero />
         <AboutMe />
         <Skills />

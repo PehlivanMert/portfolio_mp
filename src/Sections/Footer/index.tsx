@@ -7,7 +7,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-12 bg-gradient-to-b from-[#23234a] via-[#18181b] to-[#23234a] relative overflow-hidden">
+    <footer className="py-12 relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-center justify-center space-y-8">
           <motion.div

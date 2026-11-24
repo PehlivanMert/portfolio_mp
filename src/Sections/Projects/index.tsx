@@ -59,7 +59,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-24 bg-gradient-to-b from-[#23234a] via-[#18181b] to-[#23234a] relative overflow-hidden">
+    <section id="projects" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}

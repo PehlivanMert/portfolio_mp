@@ -10,7 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 // Skeleton Loading Component
 const StatisticsSkeleton = () => (
-    <section id="statistics" className="min-h-screen py-20 bg-[#23234a] relative">
+    <section id="statistics" className="min-h-screen py-20 relative">
         <img
             src={layeredWavesHero}
             alt="layered waves background"
@@ -387,7 +387,7 @@ const Statistics = () => {
     // Error durumunda
     if (error) {
         return (
-            <section id="statistics" className="min-h-screen py-20 bg-[#23234a] relative">
+            <section id="statistics" className="min-h-screen py-20 relative">
                 <img
                     src={layeredWavesHero}
                     alt="layered waves background"
@@ -419,7 +419,7 @@ const Statistics = () => {
     }
 
     return (
-        <section id="statistics" className="min-h-screen py-20 bg-[#23234a] relative">
+        <section id="statistics" className="min-h-screen py-20 relative">
             <img
                 src={layeredWavesHero}
                 alt="layered waves background"

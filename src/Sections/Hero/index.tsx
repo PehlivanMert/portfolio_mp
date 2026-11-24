@@ -62,7 +62,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-center items-center bg-gradient-to-b from-[#23234a] via-[#18181b] to-[#23234a] overflow-hidden">
+    <section className="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden">
       <div className="relative z-10 w-full flex flex-col justify-center items-center px-4">
         <motion.div
           initial="hidden"

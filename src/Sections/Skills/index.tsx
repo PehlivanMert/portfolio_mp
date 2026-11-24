@@ -121,7 +121,7 @@ const Skills = () => {
     });
 
     return (
-        <section id="skills" className="min-h-screen py-20 bg-[#23234a] relative">
+        <section id="skills" className="min-h-screen py-20 relative">
             <div className="container mx-auto px-4 relative z-10">
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}

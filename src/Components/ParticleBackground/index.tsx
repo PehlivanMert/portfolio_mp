@@ -3,35 +3,35 @@ import React, { useMemo } from 'react';
 interface Snowflake {
   id: number;
   x: number; // 0 to 100%
-  size: number; // 2px to 6.5px
-  duration: number; // 6s to 12s
+  size: number; // 2px to 5px
+  duration: number; // 8s to 16s (calm, gentle float)
   delay: number; // negative delay in seconds for instant full-screen coverage
   sway: number; // horizontal sway distance in px
-  opacity: number; // 0.4 to 0.95
+  opacity: number; // 0.35 to 0.75
   blur: number; // depth blur in px
 }
 
 export const ParticleBackground: React.FC = () => {
   const snowflakes: Snowflake[] = useMemo(() => {
-    return Array.from({ length: 55 }, (_, i) => {
-      const duration = 6 + Math.random() * 6; // 6s - 12s
+    return Array.from({ length: 48 }, (_, i) => {
+      const duration = 8 + Math.random() * 8; // 8s - 16s
       return {
         id: i,
         x: Math.random() * 100,
-        size: Math.random() * 4.5 + 2, // 2px to 6.5px
+        size: Math.random() * 3 + 2, // 2px to 5px
         duration,
-        // Negative delay ensures snowflakes are already falling across the entire screen on initial load
+        // Negative delay ensures snowflakes are already falling throughout the screen on load
         delay: -(Math.random() * duration),
-        sway: (Math.random() - 0.5) * 40, // -20px to +20px
-        opacity: Math.random() * 0.55 + 0.4, // 0.4 to 0.95
-        blur: Math.random() > 0.6 ? 0.8 : 0, // 3D depth of field effect
+        sway: (Math.random() - 0.5) * 30, // -15px to +15px
+        opacity: Math.random() * 0.4 + 0.35, // 0.35 to 0.75 (soft, non-distracting)
+        blur: Math.random() > 0.5 ? 0.6 : 0, // 3D depth of field
       };
     });
   }, []);
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none overflow-hidden z-30"
+      className="fixed inset-0 pointer-events-none overflow-hidden z-[1]"
       aria-hidden="true"
     >
       <style>{`
@@ -57,7 +57,7 @@ export const ParticleBackground: React.FC = () => {
       {snowflakes.map((flake) => (
         <div
           key={flake.id}
-          className="snowflake-item absolute rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.95)]"
+          className="snowflake-item absolute rounded-full bg-white shadow-[0_0_4px_rgba(255,255,255,0.7)]"
           style={
             {
               left: `${flake.x}%`,

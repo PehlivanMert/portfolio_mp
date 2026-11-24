@@ -81,7 +81,7 @@ const services: CompanionService[] = [
 
 export const EcosystemShowcase: React.FC = () => {
   return (
-    <section id="ecosystem" className="py-20 bg-gradient-to-b from-[#23234a] via-[#1a1a36] to-[#23234a] relative overflow-hidden">
+    <section id="ecosystem" className="py-20 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
