@@ -37,7 +37,7 @@ export class CacheManager {
     }
   }
 
-  // Clear all caches (PWA + Browser)
+  // Clear all caches (PWA + Browser Asset Caches) safely
   async clearAllCaches(): Promise<void> {
     try {
       // Clear PWA caches
@@ -45,7 +45,7 @@ export class CacheManager {
         const cacheNames = await caches.keys();
         await Promise.all(
           cacheNames.map(cacheName => {
-            console.log('Clearing PWA cache:', cacheName);
+            console.log('Clearing cache:', cacheName);
             return caches.delete(cacheName);
           })
         );
@@ -61,21 +61,7 @@ export class CacheManager {
         this.swRegistration.active?.postMessage({ type: 'CLEAR_CACHE' });
       }
 
-      // Clear localStorage and sessionStorage
-      localStorage.clear();
-      sessionStorage.clear();
-
-      // Clear IndexedDB
-      if ('indexedDB' in window) {
-        const databases = await window.indexedDB.databases();
-        databases.forEach(db => {
-          if (db.name) {
-            window.indexedDB.deleteDatabase(db.name);
-          }
-        });
-      }
-
-      console.log('All caches cleared successfully');
+      console.log('Asset caches cleared safely without touching user storage');
     } catch (error) {
       console.error('Error clearing caches:', error);
     }
@@ -111,16 +97,13 @@ export class CacheManager {
     }
   }
 
-  // Automatic update without user interaction
+  // Automatic update without disrupting user
   private async autoUpdate(): Promise<void> {
     try {
-      console.log('Auto-updating application...');
-      
-      // Clear all caches
-      await this.clearAllCaches();
-      
-      // Reload the page to get fresh content
-      window.location.reload();
+      console.log('Silent cache update on new service worker...');
+      if ('caches' in window) {
+        await caches.delete('portfolio-cache-v1');
+      }
     } catch (error) {
       console.error('Error during auto-update:', error);
     }

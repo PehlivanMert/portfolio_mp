@@ -18,36 +18,18 @@ const APP_VERSION = '2.0.2';
 
 function App() {
   useEffect(() => {
-    // Check for version changes and clear cache if needed
+    // Check for version changes and clear cache safely if needed
     const checkVersionAndClearCache = async () => {
       const storedVersion = localStorage.getItem('app_version');
       
       if (storedVersion !== APP_VERSION) {
-        console.log('Version changed, clearing cache...');
-        console.log('Previous version:', storedVersion);
-        console.log('Current version:', APP_VERSION);
-        
-        // Clear all caches
+        console.log('Version updated:', storedVersion, '->', APP_VERSION);
         await cacheManager.clearAllCaches();
-        
-        // Store new version
         localStorage.setItem('app_version', APP_VERSION);
-        
-        // Reload page to ensure fresh content
-        window.location.reload();
       }
     };
 
-    // Check for updates every 5 minutes
-    const updateInterval = setInterval(() => {
-      cacheManager.checkForUpdates();
-    }, 5 * 60 * 1000);
-
-    // Initial version check
     checkVersionAndClearCache();
-
-    // Cleanup interval on unmount
-    return () => clearInterval(updateInterval);
   }, []);
 
   return (
