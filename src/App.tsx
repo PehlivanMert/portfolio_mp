@@ -1,3 +1,4 @@
+import ParticleBackground from "./Components/ParticleBackground";
 import Contact from "./Sections/Contact";
 import Footer from "./Sections/Footer";
 import Hero from "./Sections/Hero";
@@ -50,6 +51,7 @@ function App() {
 
   return (
     <div className="App min-h-screen relative bg-white text-black">
+      <ParticleBackground />
       <Navbar />
       <main className="pt-20">
         <Hero />
