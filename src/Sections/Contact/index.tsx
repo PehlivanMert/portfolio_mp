@@ -20,29 +20,75 @@ const Contact = () => {
     try {
       if (!form.current) return;
 
-      const templateParams = {
-        name: form.current.user_name.value,
-        email: form.current.user_email.value,
-        message: form.current.message.value,
-        time: new Date().toLocaleString()
-      };
+      const userName = (form.current.elements.namedItem('user_name') as HTMLInputElement)?.value || '';
+      const userEmail = (form.current.elements.namedItem('user_email') as HTMLInputElement)?.value || '';
+      const userMessage = (form.current.elements.namedItem('message') as HTMLTextAreaElement)?.value || '';
 
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_spwrwuf',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_nr3ulu9',
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'GjZMTqmpdDVpB8KJy'
-      );
+      let sent = false;
+
+      // 1. Direct delivery to mert@mertpehlivan.co.uk via FormSubmit endpoint
+      try {
+        const resp = await fetch('https://formsubmit.co/ajax/mert@mertpehlivan.co.uk', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: userName,
+            email: userEmail,
+            message: userMessage,
+            _subject: `Portfolyo İletişim Mesajı: ${userName}`,
+            _template: 'table'
+          })
+        });
+        const data = await resp.json().catch(() => null);
+        if (resp.ok && data && (data.success === 'true' || data.success === true)) {
+          sent = true;
+        }
+      } catch (err) {
+        console.warn('FormSubmit direct fetch error:', err);
+      }
+
+      // 2. EmailJS fallback
+      if (!sent) {
+        try {
+          const templateParams = {
+            name: userName,
+            email: userEmail,
+            message: userMessage,
+            time: new Date().toLocaleString()
+          };
+
+          await emailjs.send(
+            import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_spwrwuf',
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_nr3ulu9',
+            templateParams,
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'GjZMTqmpdDVpB8KJy'
+          );
+          sent = true;
+        } catch (emailErr) {
+          console.warn('EmailJS error:', emailErr);
+        }
+      }
+
+      // 3. Fallback: trigger mailto if needed
+      if (!sent) {
+        window.open(
+          `mailto:mert@mertpehlivan.co.uk?subject=${encodeURIComponent('Portfolyo İletişim: ' + userName)}&body=${encodeURIComponent(userMessage + '\n\nGönderen: ' + userName + ' (' + userEmail + ')')}`,
+          '_blank'
+        );
+      }
 
       setSubmitStatus({
         type: 'success',
-        message: 'Mesajınız başarıyla gönderildi!'
+        message: 'Mesajınız doğrudan mert@mertpehlivan.co.uk adresine iletildi!'
       });
       form.current.reset();
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'Mesaj gönderilirken bir hata oluştu. Lütfen tekrar deneyin.'
+        message: 'Mesaj gönderilirken bir hata oluştu. Lütfen mert@mertpehlivan.co.uk adresine doğrudan e-posta gönderin.'
       });
     } finally {
       setIsSubmitting(false);
@@ -109,7 +155,7 @@ const Contact = () => {
                     
                     {/* Email Card */}
                     <motion.a 
-                        href="mailto:s.mertpehlivan@proton.me"
+                        href="mailto:mert@mertpehlivan.co.uk"
                         className="flex flex-col items-center justify-center gap-3 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-300 h-full"
                         whileHover={{ y: -5 }}
                     >
@@ -119,6 +165,7 @@ const Contact = () => {
                             alt="Email QR" 
                             className="w-full max-w-[120px] sm:max-w-[140px] aspect-square rounded-lg border-2 border-white/20" 
                         />
+                        <span className="text-xs sm:text-sm text-gray-300 font-medium break-all">mert@mertpehlivan.co.uk</span>
                     </motion.a>
     
                     {/* Telegram Card */}

@@ -41,9 +41,11 @@ const Projects = () => {
 
   const categories = [
     { id: "all", name: "All Projects" },
+    { id: "ai & automation", name: "AI & Automation" },
+    { id: "web app", name: "Web & Mobile Apps" },
     { id: "microservices", name: "Microservices" },
     { id: "monolithic", name: "Monolithic" },
-    { id: "web app", name: "Web Apps" }
+    { id: "3d printing", name: "3D Printing & Hardware" }
   ];
 
   const openModal = (project: any) => {

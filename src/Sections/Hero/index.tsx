@@ -120,21 +120,13 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.8 }}
               className="inline-block"
             >
-              Java
+              Full-Stack, Java & AI Systems
             </motion.span>{" "}
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1 }}
-              className="inline-block text-purple-400"
-            >
-              Backend
-            </motion.span>{" "}
-            <motion.span
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
-              className="inline-block"
+              className="inline-block text-purple-400 font-semibold"
             >
               Developer
             </motion.span>
